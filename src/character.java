@@ -3,20 +3,27 @@ package src;
 import java.util.ArrayList;
 
 public class character {
-    //instance variable/attrib
+    //instance variable/attributes
     private String name;
 
     //position
-    private int row;
-    private int col;
+    private static int currentRow = 3;  // starting position
+    private static int currentCol = 0;
 
     //attributes
     private int health;
 
     //inventory
-    private ArrayList<String> inventory; //should it be string...?
+    //private ArrayList<String> inventory; //should it be string...?
+    //cards and such
+
+
+
+
 
     //constructors
+
+    /* 
     public Character(String name) {
         this.name = name; 
 
@@ -78,4 +85,5 @@ public class character {
             }
         }
     }
+        */
 }

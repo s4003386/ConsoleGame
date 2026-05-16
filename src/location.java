@@ -3,17 +3,23 @@ package src;
 import java.util.Scanner;
 
 public class location {
+
+    private String locationName;
+    private String locationDescription;
+
+
+    //map
+    public location(String locationName, String locationDescription){
+        this.locationName = locationName;
+        this.locationDescription = locationDescription;
+    }
+
+
+
+
     
-    static Scanner input = new Scanner(System.in);
-
-    static Character player;
-
-    static Location[][] map = new Location [4][4];
-
-
-
-
     //create player
+    /* 
     public static void createPlayer(){
         System.out.println("\n ======== Character creation");
 
@@ -23,12 +29,12 @@ public class location {
         //create the player object
         player new Character(name);
 
+    }*/
+
+    @Override
+    public String toString() {
+        return locationName + " - " + locationDescription;
     }
 
-    public static void show
 
-    public static void showLocation(){
-        //current location
-        Location currentLocation - map[player.getRow()]
-    }
 }
