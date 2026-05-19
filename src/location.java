@@ -16,7 +16,7 @@ public class location {
     public location(String locationName, String locationDescription, boolean isElevatorTile){
         this.locationName = locationName;
         this.locationDescription = locationDescription;
-        this.isElevatorTile = isElevatorTile;
+        this.isElevatorTile = isElevatorTile; //staaaaaticccc uuuuuuuuuuuouuuuuuuuu
     }
 
     public static boolean getIsElevatorTile(){

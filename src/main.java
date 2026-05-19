@@ -7,6 +7,7 @@ public class main {
         static Scanner input = new Scanner(System.in);
         private static location[][] map = new location[4][4]; 
         private static Character mainCharacter = new Character();
+        private static String menuLocation;
 
 
     public static void setUpGame(){
@@ -37,16 +38,31 @@ public class main {
     }
 
     public static void moveMenu(){
+
+        System.out.println("\n");
+
         //boolean isElevatorPresent = location.getIsElevatorTile();
         if (location.getIsElevatorTile()) {
-            System.out.println("is elevator present?" + location.getIsElevatorTile());
+            System.out.println("1. north");
+            System.out.println("2. east");
+            System.out.println("2. west");
+        } else {
+            System.out.println("2. east");
+            System.out.println("2. west");
         }
 
+        menuLocation = input.nextLine();
+        if (menuLocation.equals("2")){
+
+        }
+
+        /* 
         System.out.println("\n");
         System.out.println("1. north");
         System.out.println("2. east");
         System.out.println("3. south");
         System.out.println("2. west");
+        */
     }
     
 
@@ -56,31 +72,27 @@ public class main {
         
         setUpGame();
 
-        
         System.out.println("New Game");
 
-
-        //for testing
-
-        showMenu();
-        String menuLocation = input.nextLine();
-
-        if (menuLocation.equals("1")){
-            System.out.println("You are currently in...");
-            System.out.println(map[mainCharacter.getRow()][mainCharacter.getCol()]); 
-
-            System.out.println("is elevator present? " + location.getIsElevatorTile());
-
-
-        } else if (menuLocation.equals("2")){
-            moveMenu();
-            menuLocation = input.nextLine();
-        }
-
-        /* 
+        
         do {
+            //for testing
+            showMenu();
+            menuLocation = input.nextLine();
+
+            if (menuLocation.equals("1")){
+                System.out.println("You are currently in...");
+                System.out.println(map[mainCharacter.getRow()][mainCharacter.getCol()]); 
+                System.out.println("is elevator present? " + map[mainCharacter.getRow()][mainCharacter.getCol()].getIsElevatorTile());
+
+
+            } else if (menuLocation.equals("2")){
+                moveMenu();
+                menuLocation = input.nextLine();
+            }
+
         } while (gameRunning);
-         */
+         
 
     } 
 }
