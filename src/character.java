@@ -2,13 +2,14 @@ package src;
 
 import java.util.ArrayList;
 
-public class character {
+public class Character {
     //instance variable/attributes
     private String name;
 
     //position
-    private static int currentRow = 3;  // starting position
-    private static int currentCol = 0;
+    private static int currentRow;  
+    private static int currentCol;
+    //private static boolean isElevatorTile;
 
     //attributes
     private int health;
@@ -39,32 +40,53 @@ public class character {
         return name;
     }
 
-    public int getCol(){
-        return col;
+    */
+
+    public int getRow(){
+        return currentRow;
     }
+    
+    public int getCol(){
+        return currentCol;
+    }
+
+    /* 
+    public boolean getIsElevatorTile(){
+        return isElevatorTile;
+    }*/
+
+    //default constructor
+    public Character(){
+        this.currentRow = 3; //start bottom left
+        this.currentCol = 0;
+        //this.isElevatorTile = false;
+    }
+
+    
 
     //position methods
     public void setPosition(int row, int col){
-        this.row = row;
-        this.col = col;
+        this.currentRow = row;
+        this.currentCol = col;
     }
 
     public void moveNorth() {
-        row --;
+        currentRow --;
     }
 
     public void moveSouth (){
-        row++;
+        currentRow++;
     }
 
     public void moveEast(){
-        col++;
+        currentCol++;
     }
 
     public void moveWest() {
-        col--;
+        currentCol--;
     }
 
+    /* 
 
     //inventory methods
     public void addItem(String item){

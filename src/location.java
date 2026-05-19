@@ -2,16 +2,25 @@ package src;
 
 import java.util.Scanner;
 
+
+//for location data on specific tiles or whatever
+
 public class location {
 
     private String locationName;
     private String locationDescription;
+    private static boolean isElevatorTile;
 
 
     //map
-    public location(String locationName, String locationDescription){
+    public location(String locationName, String locationDescription, boolean isElevatorTile){
         this.locationName = locationName;
         this.locationDescription = locationDescription;
+        this.isElevatorTile = isElevatorTile;
+    }
+
+    public static boolean getIsElevatorTile(){
+        return isElevatorTile;
     }
 
 
@@ -31,6 +40,7 @@ public class location {
 
     }*/
 
+        
     @Override
     public String toString() {
         return locationName + " - " + locationDescription;
