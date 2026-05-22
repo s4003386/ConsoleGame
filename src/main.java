@@ -24,6 +24,10 @@ public class main {
             map [2][3] = new location("Room 4 floor 1", "n/a", false);
     }
 
+    public static void storyIntro(){
+
+    }
+
     public static void showMenu(){
         System.out.println("=====================");
         System.out.println("Test menu");
@@ -34,7 +38,10 @@ public class main {
     }
 
     public static void showLocation(){
-        //soon
+        System.out.println("You are currently in...");
+        System.out.println(map[mainCharacter.getRow()][mainCharacter.getCol()]); 
+        System.out.println("is elevator present? " + map[mainCharacter.getRow()][mainCharacter.getCol()].getIsElevatorTile());
+
     }
 
     public static void moveMenu(){
@@ -42,17 +49,22 @@ public class main {
         System.out.println("\n");
 
         //boolean isElevatorPresent = location.getIsElevatorTile();
-        if (location.getIsElevatorTile()) {
+        if (map[mainCharacter.getRow()][mainCharacter.getCol()].getIsElevatorTile()) {
             System.out.println("1. north");
             System.out.println("2. east");
-            System.out.println("2. west");
+            System.out.println("3. west");
         } else {
             System.out.println("2. east");
-            System.out.println("2. west");
+            System.out.println("3. west");
         }
+
 
         menuLocation = input.nextLine();
         if (menuLocation.equals("2")){
+            mainCharacter.moveEast();
+            System.out.println("You have moved east. Current location:");
+            System.out.println(map[mainCharacter.getRow()][mainCharacter.getCol()]); 
+            System.out.println("is elevator present? " + map[mainCharacter.getRow()][mainCharacter.getCol()].getIsElevatorTile());
 
         }
 
@@ -81,10 +93,7 @@ public class main {
             menuLocation = input.nextLine();
 
             if (menuLocation.equals("1")){
-                System.out.println("You are currently in...");
-                System.out.println(map[mainCharacter.getRow()][mainCharacter.getCol()]); 
-                System.out.println("is elevator present? " + map[mainCharacter.getRow()][mainCharacter.getCol()].getIsElevatorTile());
-
+               showLocation();
 
             } else if (menuLocation.equals("2")){
                 moveMenu();

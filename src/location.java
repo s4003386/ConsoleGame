@@ -9,17 +9,17 @@ public class location {
 
     private String locationName;
     private String locationDescription;
-    private static boolean isElevatorTile;
+    private boolean isElevatorTile;
 
 
     //map
     public location(String locationName, String locationDescription, boolean isElevatorTile){
         this.locationName = locationName;
         this.locationDescription = locationDescription;
-        this.isElevatorTile = isElevatorTile; //staaaaaticccc uuuuuuuuuuuouuuuuuuuu
+        this.isElevatorTile = isElevatorTile; 
     }
 
-    public static boolean getIsElevatorTile(){
+    public boolean getIsElevatorTile(){
         return isElevatorTile;
     }
 
