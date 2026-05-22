@@ -8,6 +8,7 @@ public class main {
         private static location[][] map = new location[4][4]; 
         private static Character mainCharacter = new Character();
         private static String menuLocation;
+        static Story RunningStory = new Story();
 
 
     public static void setUpGame(){
@@ -18,14 +19,22 @@ public class main {
             map [3][2] = new location("Room 3 floor 1", "Rec room", false);
             map [3][3] = new location("Room 4 floor 1", " ---innacessable", false);
 
-            map [2][0] = new location("Room 1 floor 1", "n/a", false);
-            map [2][1] = new location("Room 2 floor 1", "n/a", false);
-            map [2][2] = new location("Room 3 floor 1", "n/a", false);
-            map [2][3] = new location("Room 4 floor 1", "n/a", false);
-    }
+            map [2][0] = new location("Room 1 floor 2", "n/a", false);
+            map [2][1] = new location("Room 2 floor 2", "n/a", false);
+            map [2][2] = new location("Room 3 floor 2", "n/a", false);
+            map [2][3] = new location("Room 4 floor 2", "n/a", false);
 
-    public static void storyIntro(){
+            //floor 3
+            map [1][0] = new location("Room 1 floor 3", "n/a", false);
+            map [1][1] = new location("Room 2 floor 3", "n/a", false);
+            map [1][2] = new location("Room 3 floor 3", "n/a", false);
+            map [1][3] = new location("Room 4 floor 3", "n/a", false);
 
+            //floor 4
+            map [0][0] = new location("Room 1 floor 4", "n/a", false);
+            map [0][1] = new location("Room 2 floor 4", "n/a", false);
+            map [0][2] = new location("Room 3 floor 4", "n/a", false);
+            map [0][3] = new location("Room 4 floor 4", "n/a", false);
     }
 
     public static void showMenu(){
@@ -53,6 +62,7 @@ public class main {
             System.out.println("1. north");
             System.out.println("2. east");
             System.out.println("3. west");
+            System.out.println("4. South"); //need another condition for 1st and 3rd floor to hide north and south options
         } else {
             System.out.println("2. east");
             System.out.println("3. west");
@@ -60,35 +70,47 @@ public class main {
 
 
         menuLocation = input.nextLine();
-        if (menuLocation.equals("2")){
+
+
+        if (menuLocation.equals("1")){
+            System.out.println("north");
+        } else if (menuLocation.equals("2")){
+            //insert a check here at some point
             mainCharacter.moveEast();
             System.out.println("You have moved east. Current location:");
             System.out.println(map[mainCharacter.getRow()][mainCharacter.getCol()]); 
             System.out.println("is elevator present? " + map[mainCharacter.getRow()][mainCharacter.getCol()].getIsElevatorTile());
 
-        }
+        } else if (menuLocation.equals("3")){
+            mainCharacter.moveWest();
+            
+        } else if (menuLocation.equals("4")){
+            mainCharacter.moveSouth();
+        } 
 
-        /* 
-        System.out.println("\n");
-        System.out.println("1. north");
-        System.out.println("2. east");
-        System.out.println("3. south");
-        System.out.println("2. west");
-        */
     }
     
 
     
     public static void main(String[] args){
-        System.out.println("main");
-        
         setUpGame();
-
         System.out.println("New Game");
 
-        
+        //everything happens while running. Quitting stops this process
         do {
-            //for testing
+
+            
+            if (!RunningStory.isIntroCutsceneCompleted()){
+                RunningStory.introCutscene(input);
+            }
+
+            if(!RunningStory.isEventFloor1Completed()){
+                RunningStory.eventFloor1(input);
+            }
+            
+            
+
+
             showMenu();
             menuLocation = input.nextLine();
 
@@ -100,7 +122,7 @@ public class main {
                 menuLocation = input.nextLine();
             }
 
-        } while (gameRunning);
+        } while (gameRunning); //constantly looping fyi
          
 
     } 
