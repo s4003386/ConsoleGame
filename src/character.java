@@ -7,8 +7,8 @@ public class Character {
     private String name;
 
     //position
-    private static int currentRow;  
-    private static int currentCol;
+    private int currentRow;  
+    private int currentCol;
     //private static boolean isElevatorTile;
 
     //attributes
@@ -57,8 +57,8 @@ public class Character {
 
     //default constructor
     public Character(){
-        this.currentRow = 3; //start bottom left
-        this.currentCol = 0;
+        this.currentCol = 3; //start bottom left
+        this.currentRow = 0;
         //this.isElevatorTile = false;
     }
 
@@ -71,19 +71,19 @@ public class Character {
     }
 
     public void moveNorth() {
-        currentRow --;
+        currentCol --;
     }
 
     public void moveSouth (){
-        currentRow++;
-    }
-
-    public void moveEast(){
         currentCol++;
     }
 
+    public void moveEast(){
+        currentRow++;
+    }
+
     public void moveWest() {
-        currentCol--;
+        currentRow--;
     }
 
     /* 

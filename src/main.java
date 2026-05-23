@@ -14,12 +14,25 @@ public class main {
     public static void setUpGame(){
         //'location' counts as one individual room. each is one object
         // to string in the class for location display
-            map [3][0] = new location("Room 1 floor 1", "Foyer", false);
-            map [3][1] = new location("Room 2 floor 1", "Elevator room", true);
-            map [3][2] = new location("Room 3 floor 1", "Rec room", false);
-            map [3][3] = new location("Room 4 floor 1", " ---innacessable", false);
 
-            map [2][0] = new location("Room 1 floor 2", "n/a", false);
+        //chart for idiots (me)
+        /*
+        -------------------------
+        | 0.0 | 0.1 | 0.2 | 0.3 |
+        | 1.0 | 1.1 | 1.2 | 1.3 |
+        | 2.0 | 2.1 | 2.2 | 2.3 |
+        | 3.0 | 3.1 | 3.2 | 3.3 |
+        -------------------------
+        */
+
+
+        // [col] [row] 
+            map [3][0] = new location("Room 1 floor 1", "[3][0] Foyer", false);
+            map [3][1] = new location("Room 2 floor 1", "[3][1] Elevator room", true);
+            map [3][2] = new location("Room 3 floor 1", "[3][2] Rec room", false);
+            map [3][3] = new location("Room 4 floor 1", "[3][3]---innacessable", false);
+
+            map [2][0] = new location("Room 1 floor 2", "[2][0] n/a", false);
             map [2][1] = new location("Room 2 floor 2", "n/a", false);
             map [2][2] = new location("Room 3 floor 2", "n/a", false);
             map [2][3] = new location("Room 4 floor 2", "n/a", false);
@@ -48,8 +61,8 @@ public class main {
 
     public static void showLocation(){
         System.out.println("You are currently in...");
-        System.out.println(map[mainCharacter.getRow()][mainCharacter.getCol()]); 
-        System.out.println("is elevator present? " + map[mainCharacter.getRow()][mainCharacter.getCol()].getIsElevatorTile());
+        System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]); 
+        System.out.println("is elevator present? " + map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile());
 
     }
 
@@ -58,7 +71,7 @@ public class main {
         System.out.println("\n");
 
         //boolean isElevatorPresent = location.getIsElevatorTile();
-        if (map[mainCharacter.getRow()][mainCharacter.getCol()].getIsElevatorTile()) {
+        if (map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile()) {
             System.out.println("1. north");
             System.out.println("2. east");
             System.out.println("3. west");
@@ -72,14 +85,35 @@ public class main {
         menuLocation = input.nextLine();
 
 
+            //north
         if (menuLocation.equals("1")){
-            System.out.println("north");
+            
+            //can only go north if on elevator tile and not on 4th floor
+            if (map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile()){
+                mainCharacter.moveNorth();
+                
+            } else {
+                
+                System.out.println("Cannot go north");
+            }
+            
+
+            //east
         } else if (menuLocation.equals("2")){
-            //insert a check here at some point
-            mainCharacter.moveEast();
-            System.out.println("You have moved east. Current location:");
-            System.out.println(map[mainCharacter.getRow()][mainCharacter.getCol()]); 
-            System.out.println("is elevator present? " + map[mainCharacter.getRow()][mainCharacter.getCol()].getIsElevatorTile());
+
+            //cannot go east if already at row 3 - furthest east
+            if (mainCharacter.getRow() > 2){
+                System.out.println(mainCharacter.getRow());
+                System.out.println("Cannot go this way");
+            } else {
+                mainCharacter.moveEast();
+                System.out.println("You have moved east. Current location:");
+                System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]); 
+                System.out.println("is elevator present? " + map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile());
+            }
+            
+
+           
 
         } else if (menuLocation.equals("3")){
             mainCharacter.moveWest();
@@ -100,6 +134,7 @@ public class main {
         do {
 
             
+            /* delete comment to run story
             if (!RunningStory.isIntroCutsceneCompleted()){
                 RunningStory.introCutscene(input);
             }
@@ -107,6 +142,7 @@ public class main {
             if(!RunningStory.isEventFloor1Completed()){
                 RunningStory.eventFloor1(input);
             }
+            */
             
             
 
