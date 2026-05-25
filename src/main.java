@@ -134,15 +134,15 @@ public class main {
         do {
 
             
-            /* delete comment to run story
+            
             if (!RunningStory.isIntroCutsceneCompleted()){
                 RunningStory.introCutscene(input);
             }
 
-            if(!RunningStory.isEventFloor1Completed()){
-                RunningStory.eventFloor1(input);
+            if(!RunningStory.isEventFloor1Room1Completed()){
+                RunningStory.eventFloor1Room1(input);
             }
-            */
+            
             
             
 
