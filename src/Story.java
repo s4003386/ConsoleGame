@@ -24,7 +24,7 @@ public class Story {
             input.nextLine();
         System.out.println("I look up. The night sky is filled with light from the highest point in the city, Sharktown casino.");
         input.nextLine();
-        System.out.println("My father disappeared a week ago. He left to Sharktown with the hope of hitting it big. Now I'm in destitute.");
+        System.out.println("My father disappeared a week ago. He left for Sharktown with the hope of hitting it big. Now I'm in destitution");
         input.nextLine();
         System.out.println("shuffle*");
         input.nextLine();
