@@ -27,27 +27,27 @@ public class main {
 
 
         // [col] [row] 
-            map [3][0] = new location("Room 1 floor 1", "[3][0] Foyer", false);
-            map [3][1] = new location("Room 2 floor 1", "[3][1] Elevator room", true);
-            map [3][2] = new location("Room 3 floor 1", "[3][2] Rec room", false);
-            map [3][3] = new location("Room 4 floor 1", "[3][3]---innacessable", false);
+            map [3][0] = new location("Floor 1 Room 1", "[3][0] Foyer", false);
+            map [3][1] = new location("Floor 1 Room 2", "[3][1] Elevator room", true);
+            map [3][2] = new location("Floor 1 Room 3", "[3][2] Rec room", false);
+            map [3][3] = new location("Floor 1 Room 4", "[3][3]---innacessable", false);
 
-            map [2][0] = new location("Room 1 floor 2", "[2][0] n/a", false);
-            map [2][1] = new location("Room 2 floor 2", "n/a", false);
-            map [2][2] = new location("Room 3 floor 2", "n/a", false);
-            map [2][3] = new location("Room 4 floor 2", "n/a", false);
+            map [2][0] = new location("Floor 2 Room 1", "[2][0] n/a", false);
+            map [2][1] = new location("Floor 2 Room 2", "n/a", false);
+            map [2][2] = new location("Floor 2 Room 3", "n/a", false);
+            map [2][3] = new location("Floor 2 Room 4", "n/a", false);
 
             //floor 3
-            map [1][0] = new location("Room 1 floor 3", "n/a", false);
-            map [1][1] = new location("Room 2 floor 3", "n/a", false);
-            map [1][2] = new location("Room 3 floor 3", "n/a", false);
-            map [1][3] = new location("Room 4 floor 3", "n/a", false);
+            map [1][0] = new location("Floor 3 Room 1", "n/a", false);
+            map [1][1] = new location("Floor 3 Room 2", "n/a", false);
+            map [1][2] = new location("Floor 3 Room 3", "n/a", false);
+            map [1][3] = new location("Floor 3 Room 4", "n/a", false);
 
             //floor 4
-            map [0][0] = new location("Room 1 floor 4", "n/a", false);
-            map [0][1] = new location("Room 2 floor 4", "n/a", false);
-            map [0][2] = new location("Room 3 floor 4", "n/a", false);
-            map [0][3] = new location("Room 4 floor 4", "n/a", false);
+            map [0][0] = new location("Floor 4 Room 1", "n/a", false);
+            map [0][1] = new location("Floor 4 Room 2", "n/a", false);
+            map [0][2] = new location("Floor 4 Room 3", "n/a", false);
+            map [0][3] = new location("Floor 4 Room 4", "n/a", false);
     }
 
     public static void showMenu(){

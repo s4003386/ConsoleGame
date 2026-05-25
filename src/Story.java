@@ -6,7 +6,8 @@ import java.util.Random;
 public class Story {
     //add colours and timing delays if there is time
     private boolean introCutsceneCompleted = false; //default false always
-    private boolean eventFloor1Completed = false;
+    private boolean eventFloor1Room1Completed = false;
+    private boolean eventFloor1Room2Completed = false;
     private int playerChoice;
 
     public static final String ANSI_RESET = "\u001B[0m";
@@ -62,6 +63,7 @@ public class Story {
     }
 
 
+    //"Floor 1 Room 1", "[3][0] Foyer",
     public void eventFloor1Room1(Scanner input){ //presumably inventory / buffsdebuffs etc also are inputted here
         System.out.println("Will you play a game?");
 
@@ -90,10 +92,8 @@ public class Story {
         }
 
 
-        eventFloor1Completed = true;
+        eventFloor1Room1Completed = true;
     }
-
-
     public void eventFloor1Room1Choice1(Scanner input){ //player aggrees to play a game
         System.out.println("He takes you to a bright red machine and gives you a peculiar coin. It pulses like a heart in your hand.");
         input.nextLine();
@@ -139,41 +139,46 @@ public class Story {
         }
         
     }
-
     public void eventFloor1Room1Choice2(Scanner input){ //player says 'no thanks'
         System.out.println("\"Don't give me that answer\"");
         input.nextLine();
         
-/*
-	“Don’t give me that answer”
+            /*
+                “Don’t give me that answer”
 
-	He dragged me by the arm to a place behind the poker machines. 
+                He dragged me by the arm to a place behind the poker machines. 
 
-	“You see these things in my hand?”
+                “You see these things in my hand?”
 
-	He flips a coin with his thumb several times. It always landed on heads.
+                He flips a coin with his thumb several times. It always landed on heads.
 
-	“See this? I paid good money for this coin. Blokes from out back don’t know this but the house here makes and sells their own coin.”
+                “See this? I paid good money for this coin. Blokes from out back don’t know this but the house here makes and sells their own coin.”
 
-	“This stuff mogs physics. You wont see this thing lose… Usually. Which is why your pockets are looking real good at the moment.” 
+                “This stuff mogs physics. You wont see this thing lose… Usually. Which is why your pockets are looking real good at the moment.” 
 
-	“Homeboy is strapped for cash and if you know what's good, ill leave you unshanked if you hand over what you got right now.”
+                “Homeboy is strapped for cash and if you know what's good, ill leave you unshanked if you hand over what you got right now.”
 
-	<Battle initiated>
+                <Battle initiated>
 
-*/
+            */
     }
     
     public boolean isEventFloor1Room1Completed(){
-        return eventFloor1Completed;
+        return eventFloor1Room1Completed;
     }
 
 
 
 
+//"Floor 1 Room 2", "[3][1] Elevator room", 
+    public void eventFloor1Room2(){
 
+    }
+    public boolean isEventFloor1Room2Completed(){
+        return eventFloor1Room2Completed;
+    }
 
-    public void eventFloor2(){
+    public void eventFloor2Room1(){
 
     }
 
