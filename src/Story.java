@@ -19,10 +19,52 @@ public class Story {
 
 // start of game
     public void introCutscene(Scanner input){
-        //System.out.println("Press x to skip");
-        //System.out.println("Press y for auto");
+
+
+        String[] lines = {
+            "The time is midnight. Below me is the body of the local 'red black' syndicate.",
+            "I look up. The night sky is filled with light from the highest point in the city, Sharktown casino.",
+            "My father disappeared a week ago. He left for Sharktown with the hope of hitting it big. Now I'm in destitution",
+            "shuffle*",
+            "In a red and black shirt, I head towards the flashing lights of the casino.",
+            ".",
+            ".",
+            ".",
+            "Floor 1: Lobby",
+            "The security guard of this place took a quick glance at me, and simply nodded. It didn't matter if this outfit was covered in rain and blood.",
+            "My original goal was to get to the poker machines, but another man sitting on a couch hollers for my attention.",
+            Speaker1 + " \"Who are you?\" He asks. \"I didn't know the guys out east had business with us.\" " + ANSI_RESET,
+            "\"...They don't. I'm here by my own volition.\"",
+            Speaker1 + "\"If you're after the machines, lets play a game then eh? Whoever rolls highest is the winner and ill throw my chips your way.\"" + ANSI_RESET
+        };
+
+        System.out.println("Enter to continue text, Press x to skip, Press y for auto");
+        String choice = input.nextLine().trim().toLowerCase(); //'choice' is used to record input
+
+        /*for (int i = 0; i < lines.length; i++) {
+    String line = lines[i];
+    System.out.println(line);
+} */
+        if (choice.equals("x")) {
+            for (String i : lines){
+                System.out.println(i);
+            }
+        } else if (choice.equals("y")){
+            for (String i : lines){
+                System.out.println(i); //figure the timing out later
+            }
+        } else {
+            for (String i : lines){
+                System.out.println(i);
+                input.nextLine(); //wont allow mid cutscene skip but i'm too stoopid rn to think of anything that works
+            }
+            
+        }
+
+        /* 
+        //old system
         System.out.println("The time is midnight. Below me is the body of the local 'red black' syndicate.");
-            input.nextLine();
+        input.nextLine();
         System.out.println("I look up. The night sky is filled with light from the highest point in the city, Sharktown casino.");
         input.nextLine();
         System.out.println("My father disappeared a week ago. He left for Sharktown with the hope of hitting it big. Now I'm in destitution");
@@ -47,19 +89,13 @@ public class Story {
         input.nextLine();
         System.out.println(Speaker1 + "\"If you're after the machines, lets play a game then eh? Whoever rolls highest is the winner and ill throw my chips your way.\""  + ANSI_RESET);
         input.nextLine();
+        */
 
         introCutsceneCompleted = true;
     } 
     public boolean isIntroCutsceneCompleted(){
         return introCutsceneCompleted;
     }
-    /* no clue how to even set up a skip system T_T
-    public void inputField(Scanner input){
-        String inputFieldString = input.nextLine();
-        if (inputFieldString.equals("x")){
-            
-        }
-    }*/
 
 
 
