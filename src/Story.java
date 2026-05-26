@@ -9,6 +9,7 @@ public class Story {
     private boolean eventFloor1Room1Completed = false;
     private boolean eventFloor1Room2Completed = false;
     private int playerChoice;
+    private boolean debugWinLoseEvent = false;
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String Speaker1 = "\u001B[31m";
@@ -16,7 +17,7 @@ public class Story {
     public static final String ANSI_BLUE = "\u001B[34m";
 
 
-
+// start of game
     public void introCutscene(Scanner input){
         //System.out.println("Press x to skip");
         //System.out.println("Press y for auto");
@@ -49,7 +50,9 @@ public class Story {
 
         introCutsceneCompleted = true;
     } 
-
+    public boolean isIntroCutsceneCompleted(){
+        return introCutsceneCompleted;
+    }
     /* no clue how to even set up a skip system T_T
     public void inputField(Scanner input){
         String inputFieldString = input.nextLine();
@@ -58,9 +61,7 @@ public class Story {
         }
     }*/
 
-    public boolean isIntroCutsceneCompleted(){
-        return introCutsceneCompleted;
-    }
+
 
 
     //"Floor 1 Room 1", "[3][0] Foyer",
@@ -162,7 +163,6 @@ public class Story {
 
             */
     }
-    
     public boolean isEventFloor1Room1Completed(){
         return eventFloor1Room1Completed;
     }
@@ -178,8 +178,19 @@ public class Story {
         return eventFloor1Room2Completed;
     }
 
+
+
+
     public void eventFloor2Room1(){
 
     }
 
+
+
+
+/* DEBUG COMMANDS WOO */
+
+    public void debugWinLoseEvent(){
+
+    }
 }

@@ -15,7 +15,8 @@ public class Character {
     private int health;
 
     //inventory
-    //private ArrayList<String> inventory; //should it be string...?
+    private ArrayList<String> inventory; 
+    
     //cards and such
 
 
@@ -71,7 +72,7 @@ public class Character {
     }
 
     public void moveNorth() {
-        currentCol --;
+        currentCol--;
     }
 
     public void moveSouth (){
