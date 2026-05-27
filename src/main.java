@@ -2,6 +2,8 @@ package src;
 
 import java.util.Scanner;
 
+//something something remember 3 data types need to be used as inputs for game..?
+
 public class main {
         private static boolean gameRunning = true;
         static Scanner input = new Scanner(System.in);
@@ -50,13 +52,34 @@ public class main {
             map [0][3] = new location("Floor 4 Room 4", "n/a", false);
     }
 
+    public static void setUpPlayerName(Scanner input){
+        System.out.println("What is your name?");
+        String inputName = input.nextLine();
+        mainCharacter.setName(inputName);
+    }
+
+
     public static void showMenu(){
         System.out.println("=====================");
         System.out.println("Test menu");
         System.out.println("=====================");
         System.out.println("1. Show current location");
         System.out.println("2. Move to a new location");
-        //and then battles or something idk. change move to a new location for after battles when that happens
+        System.out.println("3. Show inventory");
+        System.out.println("4. *Debug* What story is marked complete?"); //debuuuug. remove later
+
+        menuLocation = input.nextLine();
+
+        if (menuLocation.equals("1")){
+            showLocation();
+        } else if (menuLocation.equals("2")){
+            moveMenu();
+            menuLocation = input.nextLine();
+        } else if (menuLocation.equals("3")){
+            showInventory();
+        } else if (menuLocation.equals("4")){
+            System.out.println("Soon");
+        }
     }
 
     public static void showLocation(){
@@ -64,6 +87,10 @@ public class main {
         System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]); 
         System.out.println("is elevator present? " + map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile());
 
+    }
+
+    public static void showInventory(){
+        mainCharacter.showInventory();
     }
 
     public static void moveMenu(){
@@ -127,8 +154,12 @@ public class main {
 
     
     public static void main(String[] args){
-        setUpGame();
         System.out.println("New Game");
+        setUpGame();
+
+
+        //input name? or are the inputs going to be used during battle or something
+
 
         //everything happens while running. Quitting stops this process
         do {
@@ -148,15 +179,7 @@ public class main {
 
 
             showMenu();
-            menuLocation = input.nextLine();
 
-            if (menuLocation.equals("1")){
-               showLocation();
-
-            } else if (menuLocation.equals("2")){
-                moveMenu();
-                menuLocation = input.nextLine();
-            }
 
         } while (gameRunning); //constantly looping fyi
          

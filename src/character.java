@@ -5,6 +5,12 @@ import java.util.ArrayList;
 public class Character {
     //instance variable/attributes
     private String name;
+    public String getName(){
+        return name;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
 
     //position
     private int currentRow;  
@@ -15,33 +21,17 @@ public class Character {
     private int health;
 
     //inventory
-    private ArrayList<String> inventory; 
+    private ArrayList<String> buffAndDebuff; 
+    private int[] NoOfCoin = new int[7];
+    private String[] NameOfCoin = new String[7];
     
     //cards and such
+    private ArrayList<String> cardList; //not sure how you are planning on storing cards but I'm putting them here
 
 
 
 
 
-    //constructors
-
-    /* 
-    public Character(String name) {
-        this.name = name; 
-
-        //start position
-        this.row = 0;
-        this.col = 0;
-
-        inventory = new ArrayList<>();
-    }
-
-    //getters
-    public String  getName() {
-        return name;
-    }
-
-    */
 
     public int getRow(){
         return currentRow;
@@ -51,10 +41,6 @@ public class Character {
         return currentCol;
     }
 
-    /* 
-    public boolean getIsElevatorTile(){
-        return isElevatorTile;
-    }*/
 
     //default constructor
     public Character(){
@@ -92,21 +78,21 @@ public class Character {
     //inventory methods
     public void addItem(String item){
         inventory.add(item);
-
     }
+        */
 
     public void showInventory() {
         System.out.println("\n =========Inventory");
     
         //check if inven is populated with items
-        if (inventory.isEmpty()){
+        if (buffAndDebuff.isEmpty()){
             System.out.println("inven is empty");
         } else {
             //if inven has items, then print:
-            for(String item: inventory) {
+            for(String item: buffAndDebuff) {
                 System.out.println("- " + item);
             }
         }
     }
-        */
+        
 }
