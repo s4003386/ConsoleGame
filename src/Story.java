@@ -24,6 +24,11 @@ public class Story {
     private boolean eventFloor4Room3Completed = false;
     private boolean eventFloor4Room4Completed = false;
 
+    private boolean eventFloor3Room4Completed = false;
+    private boolean eventFloor2Room4Completed = false;
+    private boolean eventFloor1Room4Completed = false;
+    
+
     private boolean debugWinLoseEvent = false;
 
     public static final String ANSI_RESET = "\u001B[0m"; //reset
@@ -79,9 +84,44 @@ public class Story {
     }
 
 
+    //debugging methods
+    public boolean winBattleDebug(){
+        System.out.println(".");
+        System.out.println("Win or lose this event? (debug)"); // default win for now
+        System.out.println("Encounter won (debug - winBattleDebug())");
+        debugWinLoseEvent = true;
+        return debugWinLoseEvent;
+
+    }
+
+    public void showCompletedEvents(){
+        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
+        System.out.println("[3][1] F1 R2 elevator: " + isEventFloor1Room2Completed());
+        System.out.println("[3][2] F1 R3: " + isEventFloor1Room3Completed());
+        
+        /* 
+        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
+        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
+        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
+
+        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
+        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
+        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
+
+        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
+        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
+        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
+        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
+        */
+    }
 
 
-    //"Floor 1 Room 1", "[3][0] Foyer",
+
+
+// FLOOR 11111111111111111111111111111111111111111111111
+
+
+//"Floor 1 Room 1", "[3][0] Foyer",
     public void eventFloor1Room1(Scanner input){ //presumably inventory / buffsdebuffs etc also are inputted here
         int playerChoice;
 
@@ -236,9 +276,6 @@ public class Story {
         return eventFloor1Room1Completed;
     }
 
-
-
-
 //"Floor 1 Room 2", "[3][1] Elevator room", 
     public void eventFloor1Room2(Scanner input){
         String[] lines = {"Before you could do anything, a group of 3 blocked your route towards the elevator.",
@@ -263,6 +300,7 @@ public class Story {
         input.nextLine();
 
 
+
         /*
 
         Battle won
@@ -281,19 +319,177 @@ public class Story {
         return eventFloor1Room2Completed;
     }
 
+//"Floor 1 Room 3", "[3][2] Rec room",
+    public void eventFloor1Room3(Scanner input){
+        System.out.println("eventFloor1Room3");
+        input.nextLine();
+
+        eventFloor1Room3Completed = true;
+    }
+    public boolean isEventFloor1Room3Completed(){
+        return eventFloor1Room3Completed;
+    }
+
+
+// FLOOR 22222222222222222222222222222222
 
 
 
-    public void eventFloor2Room1(){
+//"Floor 2 Room 1", "[2][0] Foyer",
+    public void eventFloor2Room1(Scanner input){
+        System.out.println("eventFloor2Room1");
+        input.nextLine();
 
+        eventFloor2Room1Completed = true;
+    }
+    public boolean isEventFloor2Room1Completed(){
+        return eventFloor2Room1Completed;
+    }
+    
+//"Floor 2 Room 2", "[2][1] Foyer",
+    public void eventFloor2Room2(Scanner input){
+        System.out.println("eventFloor2Room2");
+        input.nextLine();
+
+        eventFloor2Room2Completed = true;
+    }
+    public boolean isEventFloor2Room2Completed(){
+        return eventFloor2Room2Completed;
+    }
+
+//"Floor 2 Room 3", "[2][2] Foyer",
+    public void eventFloor2Room3(Scanner input){
+        System.out.println("eventFloor2Room3");
+        input.nextLine();
+
+        eventFloor2Room3Completed = true;
+    }
+    public boolean isEventFloor2Room3Completed(){
+        return eventFloor2Room3Completed;
+    }
+
+
+// FLOOR 333333333333333333333333333333333333
+
+
+//"Floor 3 Room 1", "[1][0] Foyer",
+    public void eventFloor3Room1(Scanner input){
+        System.out.println("eventFloor3Room1");
+        input.nextLine();
+
+        eventFloor3Room1Completed = true;
+    }
+    public boolean isEventFloor3Room1Completed(){
+        return eventFloor3Room1Completed;
+    }
+
+//"Floor 3 Room 2", "[1][1] Foyer",
+    public void eventFloor3Room2(Scanner input){
+        System.out.println("eventFloor3Room2");
+        input.nextLine();
+
+        eventFloor3Room2Completed = true;
+    }
+    public boolean isEventFloor3Room2Completed(){
+        return eventFloor3Room2Completed;
+    }
+
+//"Floor 3 Room 3", "[1][2] Foyer",
+    public void eventFloor3Room3(Scanner input){
+        System.out.println("eventFloor3Room3");
+        input.nextLine();
+
+        eventFloor3Room3Completed = true;
+    }
+    public boolean isEventFloor3Room3Completed(){
+        return eventFloor3Room3Completed;
+    }
+
+
+// FLOOR 4444444444444444444444444444444
+
+
+//"Floor 4 Room 1", "[0][0] Foyer",
+    public void eventFloor4Room1(Scanner input){
+        System.out.println("eventFloor4Room1");
+        input.nextLine();
+
+        eventFloor4Room1Completed = true;
+    }
+    public boolean isEventFloor4Room1Completed(){
+        return eventFloor4Room1Completed;
+    }
+
+//"Floor 4 Room 2", "[0][1] Foyer",
+    public void eventFloor4Room2(Scanner input){
+        System.out.println("eventFloor4Room2");
+        input.nextLine();
+
+        eventFloor4Room2Completed = true;
+    }
+    public boolean isEventFloor4Room2Completed(){
+        return eventFloor4Room2Completed;
+    }
+
+//"Floor 4 Room 3", "[0][2] Foyer",
+    public void eventFloor4Room3(Scanner input){
+        System.out.println("eventFloor4Room3");
+        input.nextLine();
+
+        eventFloor4Room3Completed = true;
+    }
+    public boolean isEventFloor4Room3Completed(){
+        return eventFloor4Room3Completed;
     }
 
 
 
+//SPECIAL ROOOOOOOOOOOOOOOOOOOOMS
 
-/* DEBUG COMMANDS WOO */
 
-    public void debugWinLoseEvent(){
+//"Floor 4 Room 4", "[0][3] Head office",
+    public void eventFloor4Room4(Scanner input){
+        System.out.println("eventFloor4Room4");
+        input.nextLine();
 
+        eventFloor4Room4Completed = true;
     }
+    public boolean isEventFloor4Room4Completed(){
+        return eventFloor4Room4Completed;
+    }
+
+//"Floor 3 Room 4", "[1][3] Head office elevator 1",
+    public void eventFloor3Room4(Scanner input){
+        System.out.println("eventFloor3Room4");
+        input.nextLine();
+
+        eventFloor3Room4Completed = true;
+    }
+    public boolean isEventFloor3Room4(){
+        return eventFloor3Room4Completed;
+    }
+
+//"Floor 2 Room 4", "[2][3] Head office elevator 2",
+    public void eventFloor2Room4(Scanner input){
+        System.out.println("eventFloor2Room4");
+        input.nextLine();
+
+        eventFloor2Room4Completed = true;
+    }
+    public boolean isEventFloor2Room4(){
+        return eventFloor2Room4Completed;
+    }
+
+//"Floor 1 Room 4", "[3][3] Head office elevator 3 - Factory floor",
+    public void eventFloor1Room4(Scanner input){
+        System.out.println("eventFloor1Room4");
+        input.nextLine();
+
+        eventFloor1Room4Completed = true;
+    }
+    public boolean isEventFloor1Room4(){
+        return eventFloor1Room4Completed;
+    }
+
+
 }
