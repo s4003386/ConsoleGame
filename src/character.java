@@ -22,6 +22,7 @@ public class Character {
 
     //inventory
     private ArrayList<String> buffAndDebuff; 
+    private ArrayList<String> keyItems; //contains keycards for travelling up floors, etc
     private int[] NoOfCoin = new int[7];
     private String[] NameOfCoin = new String[7];
     

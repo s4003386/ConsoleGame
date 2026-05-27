@@ -7,6 +7,7 @@ public class Story {
     //add colours and timing delays if there is time
     private boolean introCutsceneCompleted = false; //default false always
 
+    //possibly the worst way of doing this but I digress
     private boolean eventFloor1Room1Completed = false;
     private boolean eventFloor1Room2Completed = false;
     private boolean eventFloor1Room3Completed = false;
@@ -465,7 +466,7 @@ public class Story {
 
         eventFloor3Room4Completed = true;
     }
-    public boolean isEventFloor3Room4(){
+    public boolean isEventFloor3Room4Completed(){
         return eventFloor3Room4Completed;
     }
 
@@ -476,7 +477,7 @@ public class Story {
 
         eventFloor2Room4Completed = true;
     }
-    public boolean isEventFloor2Room4(){
+    public boolean isEventFloor2Room4Completed(){
         return eventFloor2Room4Completed;
     }
 
@@ -487,7 +488,7 @@ public class Story {
 
         eventFloor1Room4Completed = true;
     }
-    public boolean isEventFloor1Room4(){
+    public boolean isEventFloor1Room4Completed(){
         return eventFloor1Room4Completed;
     }
 

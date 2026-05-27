@@ -76,6 +76,7 @@ public class main {
             } else if (menuLocation.equals("2")){
                 moveMenu();
                 menuLocation = input.nextLine();
+                locationStoryCheck(input);
 
                 //leaveMenu = true;
             } else if (menuLocation.equals("3")){
@@ -145,6 +146,9 @@ public class main {
             //can only go north if on elevator tile and not on 4th floor
             if (map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile()){
                 mainCharacter.moveNorth();
+                System.out.println("You have moved north. Current location:");
+                System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]); 
+                System.out.println("is elevator present? " + map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile());
                 
             } else {
                 
@@ -178,7 +182,177 @@ public class main {
 
     }
     
+    public static void locationStoryCheck(Scanner input){
+        //int[][] currentMap = new int[mainCharacter.getCol()][mainCharacter.getRow()];
 
+        int currentRow = mainCharacter.getRow();
+        int currentCol = mainCharacter.getCol();
+        
+        
+        //possibly also an awful way of doing this. idk.
+        if (currentCol == 3){ // floor 1
+            if (currentRow == 0){ // Floor 1 Room 1
+                boolean eventCompleted = RunningStory.isEventFloor1Room1Completed();
+                if (eventCompleted){
+                    System.out.println("There is nothing left here to do.");
+                } else {
+                    RunningStory.eventFloor1Room1(input);
+                }
+            } else if (currentRow == 1){ // Floor 1 Room 2 ELEVATOR
+                boolean eventCompleted = RunningStory.isEventFloor1Room2Completed();
+                if (eventCompleted){
+                    System.out.println("There is nothing left here to do.");
+                } else {
+                    RunningStory.eventFloor1Room2(input);
+                }
+            } else if (currentRow == 2){ // Floor 1 Room 3
+                boolean eventCompleted = RunningStory.isEventFloor1Room3Completed();
+                if (eventCompleted){
+                    System.out.println("There is nothing left here to do.");
+                } else {
+                    RunningStory.eventFloor1Room3(input);
+                }
+            } else if (currentRow == 3){ // Floor 1 Room 4 UNIQUE
+                boolean eventCompleted = RunningStory.isEventFloor1Room4Completed();
+                if (eventCompleted){
+                    System.out.println("There is nothing left here to do.");
+                } else {
+                    RunningStory.eventFloor1Room4(input);
+                }
+            } 
+        
+        } else if (currentCol == 2){ // floor 2
+
+           if (currentRow == 0){ // Floor 2 Room 1
+                boolean eventCompleted = RunningStory.isEventFloor2Room1Completed();
+                if (eventCompleted){
+                    System.out.println("There is nothing left here to do.");
+                } else {
+                    RunningStory.eventFloor2Room1(input);
+                }
+            } else if (currentRow == 1){ // Floor 2 Room 2 ELEVATOR
+                boolean eventCompleted = RunningStory.isEventFloor2Room2Completed();
+                if (eventCompleted){
+                    System.out.println("There is nothing left here to do.");
+                } else {
+                    RunningStory.eventFloor2Room2(input);
+                }
+            } else if (currentRow == 2){ // Floor 1 Room 3
+                boolean eventCompleted = RunningStory.isEventFloor2Room3Completed();
+                if (eventCompleted){
+                    System.out.println("There is nothing left here to do.");
+                } else {
+                    RunningStory.eventFloor2Room3(input);
+                }
+            } else if (currentRow == 3){ // Floor 1 Room 4 UNIQUE
+                boolean eventCompleted = RunningStory.isEventFloor2Room4Completed();
+                if (eventCompleted){
+                    System.out.println("There is nothing left here to do.");
+                } else {
+                    RunningStory.eventFloor2Room4(input);
+                }
+            }
+        
+        } else if (currentCol == 1){ // floor 3
+
+            if (currentRow == 0){ // Floor 1 Room 1
+                boolean eventCompleted = RunningStory.isEventFloor3Room1Completed();
+                if (eventCompleted){
+                    System.out.println("There is nothing left here to do.");
+                } else {
+                    RunningStory.eventFloor3Room1(input);
+                }
+            } else if (currentRow == 1){ // Floor 1 Room 2 ELEVATOR
+                boolean eventCompleted = RunningStory.isEventFloor3Room2Completed();
+                if (eventCompleted){
+                    System.out.println("There is nothing left here to do.");
+                } else {
+                    RunningStory.eventFloor3Room2(input);
+                }
+            } else if (currentRow == 2){ // Floor 1 Room 3
+                boolean eventCompleted = RunningStory.isEventFloor3Room3Completed();
+                if (eventCompleted){
+                    System.out.println("There is nothing left here to do.");
+                } else {
+                    RunningStory.eventFloor3Room3(input);
+                }
+            } else if (currentRow == 3){ // Floor 1 Room 4 UNIQUE
+                boolean eventCompleted = RunningStory.isEventFloor3Room4Completed();
+                if (eventCompleted){
+                    System.out.println("There is nothing left here to do.");
+                } else {
+                    RunningStory.eventFloor3Room4(input);
+                }
+            } 
+
+        } else if (currentCol == 0){ // floor 4
+
+            if (currentRow == 0){ // Floor 1 Room 1
+                boolean eventCompleted = RunningStory.isEventFloor4Room1Completed();
+                if (eventCompleted){
+                    System.out.println("There is nothing left here to do.");
+                } else {
+                    RunningStory.eventFloor4Room1(input);
+                }
+            } else if (currentRow == 1){ // Floor 1 Room 2 ELEVATOR
+                boolean eventCompleted = RunningStory.isEventFloor4Room2Completed();
+                if (eventCompleted){
+                    System.out.println("There is nothing left here to do.");
+                } else {
+                    RunningStory.eventFloor4Room2(input);
+                }
+            } else if (currentRow == 2){ // Floor 1 Room 3
+                boolean eventCompleted = RunningStory.isEventFloor4Room3Completed();
+                if (eventCompleted){
+                    System.out.println("There is nothing left here to do.");
+                } else {
+                    RunningStory.eventFloor4Room3(input);
+                }
+            } else if (currentRow == 3){ // Floor 1 Room 4 UNIQUE
+                boolean eventCompleted = RunningStory.isEventFloor4Room4Completed();
+                if (eventCompleted){
+                    System.out.println("There is nothing left here to do.");
+                } else {
+                    RunningStory.eventFloor4Room4(input);
+                }
+
+            } 
+        } else {
+            System.out.println("Something went wrong (locationStoryCheck - CurrentCol)");
+        }
+        
+        /* 
+        switch(currentCol) {
+            case 1: //floor 1
+
+                switch (currentRow) {
+                    case 1: //floor 1 room 1
+                        boolean eventCompleted = RunningStory.isEventFloor1Room1Completed();
+
+                        break;
+                    case 2: //floor 1 room 2
+                        boolean eventCompleted = RunningStory.isEventFloor1Room1Completed();
+                        break;
+                    case 3: //floor 1 room 3
+                        break;
+                        
+                    default:
+                        System.out.println("Something is missing (locationStoryCheck - Floor 1 row x)");
+                        break;
+                }
+                break;
+            case 2:
+                // code block
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            default:
+                // code block
+            }
+        */
+    }
     
     public static void main(String[] args){
         System.out.println("New Game");
@@ -191,8 +365,7 @@ public class main {
         //everything happens while running. Quitting stops this process
         do {
 
-            //location based trigger..?
-
+            //1st story trigger always runs regardless of player input
             if (!RunningStory.isIntroCutsceneCompleted()){
                 RunningStory.introCutscene(input);
             }
@@ -202,10 +375,7 @@ public class main {
             }
             
             
-            
-
-
-            showMenu();
+            showMenu(); //navigation happens in menu. This thing just loops forever
 
 
         } while (gameRunning); //constantly looping fyi
