@@ -1,5 +1,6 @@
 package src;
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -31,6 +32,13 @@ public class Story {
     
 
     private boolean debugWinLoseEvent = false;
+
+
+
+    ArrayList<String> F1R1Reward = new ArrayList<>();
+    Battle F1R1 = new Battle("F1R1Battle", 1 ,  F1R1Reward, F1R1Reward, F1R1Reward);
+
+
 
     public static final String ANSI_RESET = "\u001B[0m"; //reset
     public static final String Speaker1 = "\u001B[31m"; //red
@@ -213,7 +221,7 @@ public class Story {
 
                 System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 System.out.println("");
-                F1R1Battle(); //
+                F1R1Battle(F1R1); //
 
             
             } else if (playerChoice == 2){
@@ -225,7 +233,7 @@ public class Story {
 
                 System.out.println("*Battle start*");///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 System.out.println(""); 
-                F1R1Battle();
+                F1R1Battle(F1R1);
             }
             
 
@@ -247,7 +255,7 @@ public class Story {
 
             System.out.println("*Battle initiated*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             System.out.println("");
-            F1R1Battle();
+            F1R1Battle(F1R1);
             //main.callBattle(BattleFloor1Room1);
 
             
@@ -258,14 +266,10 @@ public class Story {
 
     //absolute spagghetti
 
-    public void F1R1Battle(){
+    public void F1R1Battle(Battle Battle){
 
-        main.callBattle();
-        /* 
-        Battle F1R1 = new Battle();
-        F1R1.
-        main.callBattle(F1R1);
-        */
+        main.callBattle(Battle);
+
     }
 
 
@@ -298,7 +302,7 @@ public class Story {
 
         System.out.println("*Battle Initiated*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         System.out.println("");
-        F1R1Battle();
+        F1R1Battle(F1R1);
         //main.callBattle(BattleFloor1Room1);
         
 

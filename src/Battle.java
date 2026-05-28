@@ -4,14 +4,27 @@ import java.util.ArrayList;
 public class Battle {
     private String BattleID;
 
-    private ArrayList<String> RewardedCoins;
+    private int numberOfWaves;
+    private ArrayList<String> rewardedCoins;
+    private ArrayList<String> rewardedPassives;
     private ArrayList<String> EnemiesList; //...?
 
+    //passives etc, idk. u figure it out.
 
 
 
+    public Battle(String BattleID, int numberOfWaves, ArrayList<String> rewardedCoins, ArrayList<String> rewardedPassives, ArrayList<String> EnemiesList){
 
+        this.BattleID = BattleID;
+        this.numberOfWaves = numberOfWaves;
+        this.rewardedCoins = rewardedCoins;
+        this.rewardedPassives = rewardedPassives;
+        this.EnemiesList = EnemiesList;
+    }
 
+    public String getBattleID(){
+        return BattleID;
+    }
 
 
 

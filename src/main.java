@@ -1,6 +1,8 @@
 package src;
 
 import java.util.Scanner;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 //something something remember 3 data types need to be used as inputs for game..?
 
@@ -50,6 +52,9 @@ public class main {
             map [0][1] = new location("Floor 4 Room 2", "[0][1] n/a", true); //elevator
             map [0][2] = new location("Floor 4 Room 3", "[0][2] n/a", false);
             map [0][3] = new location("Floor 4 Room 4", "[0][3] Head office", false); //special
+    
+            
+    
     }
 
     public static void setUpPlayerName(Scanner input){
@@ -405,24 +410,25 @@ public class main {
         */
     }
     
-    public static void callBattle( /*Whatever input is needed, I guess */){ //Called from story class
+    public static void callBattle(Battle Battle){ //Called from story class
         Boolean isBattleWon = false;
         System.out.println("debug, floor1room1battle method");
         System.out.println("========================");
         
 
         isBattleWon = RunningStory.winBattleDebug();
-        /*
-        System.out.println("Won battle " + BattleID);
+        
+        System.out.println("Won battle " + Battle.getBattleID());
 
         
 
         //Rewards are dispensed here. Kiera I have no idea what you are doing so just change it to suit whatever you have written
+        /* 
         if (isBattleWon){
             System.out.println("You have won the battle");
             //add inventory
             switch (BattleID) {
-                case F1R1: // Magic number :(. Floor 1 Room 1
+                case F1R1: 
                     
                     break;
                 
