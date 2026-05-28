@@ -7,7 +7,7 @@ public class Story {
     //add colours and timing delays if there is time
     private boolean introCutsceneCompleted = false; //default false always
 
-    //possibly the worst way of doing this but I digress
+    //possibly the worst way of doing this but I digress. Gets marked completed if the method associated with it is called
     private boolean eventFloor1Room1Completed = false;
     private boolean eventFloor1Room2Completed = false;
     private boolean eventFloor1Room3Completed = false;
@@ -63,13 +63,8 @@ public class Story {
         if (choice.equals("x")) {
             for (String i : lines){
                 System.out.println(i);
+                System.out.println("");
             }
-            /* 
-        } else if (choice.equals("y")){
-            for (String i : lines){
-                System.out.println(i); //figure the timing out later
-            }
-        */
         } else {
             for (String i : lines){
                 System.out.println(i);
@@ -90,6 +85,7 @@ public class Story {
         System.out.println(".");
         System.out.println("Win or lose this event? (debug)"); // default win for now
         System.out.println("Encounter won (debug - winBattleDebug())");
+        System.out.println("");
         debugWinLoseEvent = true;
         return debugWinLoseEvent;
 
@@ -100,20 +96,24 @@ public class Story {
         System.out.println("[3][1] F1 R2 elevator: " + isEventFloor1Room2Completed());
         System.out.println("[3][2] F1 R3: " + isEventFloor1Room3Completed());
         
-        /* 
-        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
-        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
-        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
+        
+        System.out.println("[2][0] F1 R1: " + isEventFloor2Room1Completed());
+        System.out.println("[2][1] F1 R1: " + isEventFloor2Room2Completed());
+        System.out.println("[2][2] F1 R1: " + isEventFloor2Room3Completed());
 
-        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
-        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
-        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
+        System.out.println("[1][0] F1 R1: " + isEventFloor3Room1Completed());
+        System.out.println("[1][1] F1 R1: " + isEventFloor3Room2Completed());
+        System.out.println("[1][2] F1 R1: " + isEventFloor3Room3Completed());
 
-        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
-        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
-        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
-        System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
-        */
+        System.out.println("[0][0] F1 R1: " + isEventFloor4Room1Completed());
+        System.out.println("[0][1] F1 R1: " + isEventFloor4Room2Completed());
+        System.out.println("[0][2] F1 R1: " + isEventFloor4Room3Completed());
+        System.out.println("[0][3] F1 R1: " + isEventFloor4Room4Completed());
+
+        System.out.println("[1][3] F1 R1: " + isEventFloor3Room4Completed());
+        System.out.println("[2][3] F1 R1: " + isEventFloor2Room4Completed());
+        System.out.println("[3][3] F1 R1: " + isEventFloor1Room4Completed());
+        
     }
 
 
@@ -142,12 +142,14 @@ public class Story {
 
         while (hasPlayerMadeChoice == false){
             if (playerChoice == 1){
+                System.out.println("");
                 System.out.println("You picked choice 1");
                 eventFloor1Room1Choice1(input);
                 hasPlayerMadeChoice = true;
                 break;
 
             } else if (playerChoice == 2){
+                System.out.println("");
                 System.out.println("You picked choice 2");
                 eventFloor1Room1Choice2(input);
                 hasPlayerMadeChoice = true;
@@ -159,6 +161,8 @@ public class Story {
     }
     public void eventFloor1Room1Choice1(Scanner input){ //player aggrees to play a game
         int playerChoice;
+        System.out.println("(x to skip, enter to continue)"); 
+        
         String[] lines = {"He takes you to a bright red machine and gives you a peculiar coin. It pulses like a heart in your hand.",
                             "All around you are people who's eyes are desperately glued to the machines. They aren't checking if they are winning or losing at all.",
                             Speaker1 + "\"What are you waiting for? Just spin already\"" + ANSI_RESET
@@ -188,8 +192,8 @@ public class Story {
         System.out.println("Rolled a " + coinflip);
 
         if (coinflip == 1){
-           // boolean hasPlayerChose = false;
             System.out.println("Event coinflip head");
+            System.out.println("");
 
             System.out.println(Speaker1 + "\"What!? I paid good money to get those chips. Don't tell me I gave you the good one!?\"" + ANSI_RESET);
             input.nextLine();
@@ -200,28 +204,28 @@ public class Story {
 
             playerChoice = input.nextInt();
             input.nextLine();
-            //hasPlayerChose = false;
 
-            
             if (playerChoice == 1){
                 System.out.println("You chose option 1");
+                System.out.println("");
                 System.out.println(Speaker1 + "\"…Chap, you got to stop believing in what everyone says. I'm trying to rob you over here.\"" + ANSI_RESET);
                 input.nextLine();
 
-                System.out.println("*Battle start*");
+                System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                System.out.println("");
+                F1R1Battle(); //
 
-                //battle initiated here
-                //on battle win, recieve a white coin
-                //battle 1 here. Return if battle won or lost btw so I can do after battle story
+            
             } else if (playerChoice == 2){
                 System.out.println("You chose option 2");
+                System.out.println("");
                 System.out.println(Speaker1 + "\"I never said you had a choice, did I?\"" + ANSI_RESET);
                 input.nextLine();
-                System.out.println("*Battle start*");
-                            
 
-                //(Battle initiated).Received a cheap good roll coin x1
-                //Battle 1 here
+
+                System.out.println("*Battle start*");///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                System.out.println(""); 
+                F1R1Battle();
             }
             
 
@@ -241,26 +245,49 @@ public class Story {
             input.nextLine();
             
 
-            System.out.println("*Battle initiated*");
+            System.out.println("*Battle initiated*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            System.out.println("");
+            F1R1Battle();
+            //main.callBattle(BattleFloor1Room1);
 
-            //Battle 1 here
+            
         }
         
     }
+
+
+    //absolute spagghetti
+
+    public void F1R1Battle(){
+
+        main.callBattle();
+        /* 
+        Battle F1R1 = new Battle();
+        F1R1.
+        main.callBattle(F1R1);
+        */
+    }
+
+
     public void eventFloor1Room1Choice2(Scanner input){ //player says 'no thanks'
-        String[] lines = {"\"Don't give me that answer.\"",
+        System.out.println("(x to skip, enter to continue)");    
+    
+        String[] lines = {Speaker1 + "\"Don't give me that answer.\"" + ANSI_RESET,
                             "He dragged me by the arm to a place behind the poker machines. ",
-                            " \"You see these things in my hand?\"",
+                            Speaker1 + " \"You see these things in my hand?\"" + ANSI_RESET,
                             "He flips a coin with his thumb several times. It always landed on heads.",
-                            " \" See this? I paid good money for this coin. Blokes from out back don't know this but the house here makes and sells their own coin.\"",
-                            " \"This stuff mogs physics. You wont see this thing lose… Usually. Which is why your pockets are looking real good at the moment.\" ",
-                            "\"Homeboy is strapped for cash and if you know what's good, ill leave you unshanked if you hand over what you got right now.\""
+                            Speaker1 + " \" See this? I paid good money for this coin. Blokes from out back don't know this but the house here makes and sells their own coin.\"" + ANSI_RESET,
+                            Speaker1 + " \"This stuff mogs physics. You wont see this thing lose… Usually. Which is why your pockets are looking real good at the moment.\" " + ANSI_RESET,
+                            Speaker1 + "\"Homeboy is strapped for cash and if you know what's good, ill leave you unshanked if you hand over what you got right now.\"" + ANSI_RESET
         };
         String choice = input.nextLine().trim().toLowerCase(); //to be honest, there is probably a better way of doing this but I cant really be bothered rn
     
+        System.out.println(""); //formatting
+        
         if (choice.equals("x")) {
             for (String i : lines){
                 System.out.println(i);
+                System.out.println("");
             }
         } else {
             for (String i : lines){
@@ -269,10 +296,15 @@ public class Story {
             }
         }
 
-        System.out.println("*Battle Initiated*");
-        //Battle 1 initiated. Same thing as before
+        System.out.println("*Battle Initiated*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println("");
+        F1R1Battle();
+        //main.callBattle(BattleFloor1Room1);
+        
 
     }
+
+
     public boolean isEventFloor1Room1Completed(){
         return eventFloor1Room1Completed;
     }
@@ -300,6 +332,7 @@ public class Story {
 
         System.out.println("*Battle initiated*");
         input.nextLine();
+        System.out.println("");
 
 
 

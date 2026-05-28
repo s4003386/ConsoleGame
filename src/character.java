@@ -23,14 +23,16 @@ public class Character {
     //inventory
     private ArrayList<String> buffAndDebuff; 
     private ArrayList<String> keyItems; //contains keycards for travelling up floors, etc
-    private int[] NoOfCoin = new int[7];
-    private String[] NameOfCoin = new String[7];
+    private ArrayList<String> Coins;
     
     //cards and such
     private ArrayList<String> cardList; //not sure how you are planning on storing cards but I'm putting them here
 
 
 
+
+
+    
 
 
 

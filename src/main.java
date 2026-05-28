@@ -405,22 +405,42 @@ public class main {
         */
     }
     
+    public static void callBattle( /*Whatever input is needed, I guess */){ //Called from story class
+        Boolean isBattleWon = false;
+        System.out.println("debug, floor1room1battle method");
+        System.out.println("========================");
+        
+
+        isBattleWon = RunningStory.winBattleDebug();
+        /*
+        System.out.println("Won battle " + BattleID);
+
+        
+
+        //Rewards are dispensed here. Kiera I have no idea what you are doing so just change it to suit whatever you have written
+        if (isBattleWon){
+            System.out.println("You have won the battle");
+            //add inventory
+            switch (BattleID) {
+                case F1R1: // Magic number :(. Floor 1 Room 1
+                    
+                    break;
+                
+                default:
+                    break;
+            }
+        }
+             */
+    }
     public static void main(String[] args){
         System.out.println("New Game");
         setUpGame();
 
-
-        //input name? or are the inputs going to be used during battle or something
-
-
-        //everything happens while running. Quitting stops this process
         do {
-
             //1st story trigger always runs regardless of player input
             if (!RunningStory.isIntroCutsceneCompleted()){
                 RunningStory.introCutscene(input);
             }
-
             if(!RunningStory.isEventFloor1Room1Completed()){
                 RunningStory.eventFloor1Room1(input);
             }
