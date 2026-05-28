@@ -111,6 +111,7 @@ public class main {
         System.out.println("\n");
 
         //boolean isElevatorPresent = location.getIsElevatorTile();
+        //I feel like this would be a case where enums would be used...?
 
 
         //condition: Is player at [3][x] - unable to move south
@@ -119,21 +120,52 @@ public class main {
         //condition: Is player at [x][0] - unable to move west
         //condition: Is player at [x][2] - unable to move east UNLESS on floor [0][x]
 
-        //condition: If player is on [0][3] - ONLY able to move south - may be forcibly moved?
+        //condition: If player is on [x][3] - ONLY able to move south - may be forcibly moved?
+
+        int currentCol = mainCharacter.getCol();
+        int currentRow = mainCharacter.getRow();
+        boolean hasMoved = false;
 
         
 
+        while (!hasMoved){ //while having not moved
 
+        }
 
-
+        //:eyebrow_raise
         if (map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile()) {
-            System.out.println("1. north");
-            System.out.println("2. east");
-            System.out.println("3. west");
-            System.out.println("4. South"); //need another condition for 1st and 3rd floor to hide north and south options
-        } else {
-            System.out.println("2. east");
-            System.out.println("3. west");
+            if (currentCol == 3){ //ground floor
+            System.out.println("1. North");
+            System.out.println("2. East");
+            System.out.println("3. West");
+
+            } else if (currentCol == 0){ // 4th floor
+                if (currentRow == 3) { //Special rooms. 
+                    System.out.println("4. South"); 
+                } else {
+                    System.out.println("2. East");
+                    System.out.println("3. West");
+                    System.out.println("4. South"); 
+                }
+            } else { //2-3 floor
+                System.out.println("1. North");
+                System.out.println("2. East");
+                System.out.println("3. West");
+                System.out.println("4. South"); 
+            }
+
+        } else { //not an elevator tile
+            if (currentRow == 3) {// special rooms
+                System.out.println("4. South"); 
+            } else if (currentRow == 2){ //rightmost nonspecial room
+                System.out.println("3. West");
+            } else if (currentRow == 0){ //leftmost room
+                System.out.println("2. East");
+            } else { // technically not needed, I guess? center room
+                System.out.println("2. East");
+                System.out.println("3. West");
+            }
+
         }
 
 
@@ -145,13 +177,14 @@ public class main {
             
             //can only go north if on elevator tile and not on 4th floor
             if (map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile()){
+                //should only be able to move north if prerequisites are met.
+                
                 mainCharacter.moveNorth();
                 System.out.println("You have moved north. Current location:");
                 System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]); 
                 System.out.println("is elevator present? " + map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile());
                 
             } else {
-                
                 System.out.println("Cannot go north");
             }
             
@@ -159,16 +192,34 @@ public class main {
             //east
         } else if (menuLocation.equals("2")){
 
-            //cannot go east if already at row 3 - furthest east
-            if (mainCharacter.getRow() > 2){
-                System.out.println(mainCharacter.getRow());
-                System.out.println("Cannot go this way");
-            } else {
-                mainCharacter.moveEast();
-                System.out.println("You have moved east. Current location:");
-                System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]); 
-                System.out.println("is elevator present? " + map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile());
+            //check if at floor 4 (col0). 
+            //Floor 4 true, row > 2
+            //floor 4 false, row > 1 - prevent moving into special room
+
+
+            if (currentCol == 0){ //floor 4
+                if (mainCharacter.getRow() > 2){
+                    System.out.println(mainCharacter.getRow());
+                    System.out.println("Cannot go this way");
+                } else {
+                    mainCharacter.moveEast();
+                    System.out.println("You have moved east. Current location:");
+                    System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]); 
+                    System.out.println("is elevator present? " + map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile());
+                }
+            } else { //every other floor
+                if (mainCharacter.getRow() > 1){
+                    System.out.println(mainCharacter.getRow());
+                    System.out.println("Cannot go this way");
+                } else {
+                    mainCharacter.moveEast();
+                    System.out.println("You have moved east. Current location:");
+                    System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]); 
+                    System.out.println("is elevator present? " + map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile());
+                }
             }
+            //cannot go east if already at row 3 - furthest east
+
             
 
            

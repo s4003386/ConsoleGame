@@ -279,6 +279,7 @@ public class Story {
 
 //"Floor 1 Room 2", "[3][1] Elevator room", 
     public void eventFloor1Room2(Scanner input){
+        System.out.println("x to skip, enter to continue");
         String[] lines = {"Before you could do anything, a group of 3 blocked your route towards the elevator.",
             "\"Look, to be frank, the moment you started running your mouth, I knew you weren't one of us folk.\"",
             "\"Who did you have to beat up to get that shirt? Huh? We aren't letting this go.\"",
