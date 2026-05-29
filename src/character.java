@@ -80,29 +80,24 @@ public class Character {
         currentRow--;
     }
 
+    /* 
 
+    //inventory methods
+    public void addItem(String item){
+        inventory.add(item);
+    }
+        */
 
-
-    //Inventory methods
     public void addCoinItem(Coin[] rewardedCoinItem){
         Coins.addAll(Arrays.asList(rewardedCoinItem));
-    }
-
-    public void addKeyItem(ArrayList<String> rewardedKeyItem){
-        keyItems.addAll(rewardedKeyItem);
-    }
-
-    public ArrayList<String> getKeyItems(){
-        return keyItems;
     }
 
     public void showInventory() {
         System.out.println("\n =========Inventory");
     
 
-        System.out.println(" === coins ===");
         if(Coins.isEmpty()){
-            System.out.println("Inventory is empty.");
+            System.out.println("inven is empty");
         } else {
 
             Map<Coin, Long> counts = Coins.stream()
@@ -123,19 +118,13 @@ public class Character {
 
             /* 
             for(Coin item: Coins) {
-                System.out.println("- " + item); 
-            }*/
-        }
-
-        System.out.println(" === Key Items === ");
-        if(keyItems.isEmpty()){
-            System.out.println("Inventory is empty.");
-        } else {
-            for(String items: keyItems){
-                System.out.println("- " + items);
+                
+                System.out.println("- " + item); //add a to string at some point
             }
+        }*/
         }
-    }
+    } 
+
 
     //overload used by main to print coins
     //nvm I give up
@@ -153,5 +142,6 @@ public class Character {
             );
     }
     */
+        
         
 }

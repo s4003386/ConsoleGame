@@ -5,7 +5,6 @@ import src.Coin.CoinType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 
@@ -45,13 +44,8 @@ public class Story {
     //floor 1 room 1
     Coin[] F1R1Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE) }; //every coin is an object 'coin' with an enum type to deternine roll chance
     ArrayList<String> EmptyArray = new ArrayList<String>();
-    Battle F1R1 = new Battle("F1R1Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); //called when the story calls for it
-    //everything temporary right now is just an ArrayList string but it can be changed when it needs to in the battles class. just dont forget to change them here
+    Battle F1R1 = new Battle("F1R1Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray); //called when the story calls for it
 
-    //floor 2 room 2
-    Coin[] F1R2Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)};
-    ArrayList<String> F1R2KeyItems = new ArrayList<String>(List.of("Floor2_Keycard"));
-    Battle F1R2 = new Battle("F1R2Battle", 1 ,  F1R1Reward, EmptyArray, F1R2KeyItems, EmptyArray); //called when the story calls for it
 
 
     public static final String ANSI_RESET = "\u001B[0m"; //reset
@@ -104,10 +98,10 @@ public class Story {
 
     //debugging methods
     public boolean winBattleDebug(){
-        //System.out.println(".");
-        //System.out.println("Win or lose this event? (debug)"); // default win for now
-        //System.out.println("Encounter won (debug - winBattleDebug())");
-        //System.out.println("");
+        System.out.println(".");
+        System.out.println("Win or lose this event? (debug)"); // default win for now
+        System.out.println("Encounter won (debug - winBattleDebug())");
+        System.out.println("");
         debugWinLoseEvent = true;
         return debugWinLoseEvent;
 
@@ -138,13 +132,6 @@ public class Story {
         
     }
 
-
-    //absolute spagghetti
-    public void storyBattle(Battle Battle){
-
-        main.callBattle(Battle);
-
-    }
 
 
 
@@ -218,7 +205,6 @@ public class Story {
 
         Random rng = new Random();
         int coinflip = rng.nextInt(1, 3);
-        System.out.println("");
         System.out.println("Rolled a " + coinflip);
 
         if (coinflip == 1){
@@ -243,7 +229,7 @@ public class Story {
 
                 System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 System.out.println("");
-                storyBattle(F1R1); //
+                F1R1Battle(F1R1); //
 
             
             } else if (playerChoice == 2){
@@ -255,7 +241,7 @@ public class Story {
 
                 System.out.println("*Battle start*");///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 System.out.println(""); 
-                storyBattle(F1R1);
+                F1R1Battle(F1R1);
             }
             
 
@@ -277,7 +263,7 @@ public class Story {
 
             System.out.println("*Battle initiated*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             System.out.println("");
-            storyBattle(F1R1);
+            F1R1Battle(F1R1);
             //main.callBattle(BattleFloor1Room1);
 
             
@@ -286,6 +272,13 @@ public class Story {
     }
 
 
+    //absolute spagghetti
+
+    public void F1R1Battle(Battle Battle){
+
+        main.callBattle(Battle);
+
+    }
 
 
     public void eventFloor1Room1Choice2(Scanner input){ //player says 'no thanks'
@@ -317,34 +310,29 @@ public class Story {
 
         System.out.println("*Battle Initiated*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         System.out.println("");
-        storyBattle(F1R1);
+        F1R1Battle(F1R1);
         //main.callBattle(BattleFloor1Room1);
         
 
     }
 
+
     public boolean isEventFloor1Room1Completed(){
         return eventFloor1Room1Completed;
     }
-
-
-
-
-
 
 //"Floor 1 Room 2", "[3][1] Elevator room", 
     public void eventFloor1Room2(Scanner input){
         System.out.println("x to skip, enter to continue");
         String[] lines = {"Before you could do anything, a group of 3 blocked your route towards the elevator.",
-            Speaker1 + "\"Look, to be frank, the moment you started running your mouth, I knew you weren't one of us folk.\"",
-            "\"Who did you have to beat up to get that shirt? Huh? We aren't letting this go.\"" + ANSI_RESET,
+            "\"Look, to be frank, the moment you started running your mouth, I knew you weren't one of us folk.\"",
+            "\"Who did you have to beat up to get that shirt? Huh? We aren't letting this go.\"",
         };
         String choice = input.nextLine().trim().toLowerCase(); //'choice' is used to record input
 
         if (choice.equals("x")) {
             for (String i : lines){
                 System.out.println(i);
-                System.out.println("");
             }
         } else {
             for (String i : lines){
@@ -354,54 +342,29 @@ public class Story {
             
         }
 
-        System.out.println("*Battle initiated*"); ////////////////////////////////////////////////////
+        System.out.println("*Battle initiated*");
         input.nextLine();
         System.out.println("");
-        storyBattle(F1R2);
 
-        if(winBattleDebug()){ ////!!!!!!!!!!!!! replace with getter method in whatever class is used for the actual fight
-            eventFloor1Room2OnWin(input);
-        }
-    }
 
-    public void eventFloor1Room2OnWin(Scanner input){
-        System.out.println("===============");
-        System.out.println("x to skip, enter to continue");
-        String[] lines = {Speaker1 +  "\"Okay, okay, I get it. You can stop. I may be a hooligan but I know my limits\"",
-            "\"Mates, we leave this one\""  + ANSI_RESET, 
-            "They ran away.",
-            "(You have reached a space with an elevator. After completing any events that happen in this space, you may choose to go up the elevator to the next floor or explore around in other rooms for a bit.)",
-            "(Exploring comes with risks, but you might find many useful items to help you on your way to the top floor."
-        };
-        String choice = input.nextLine().trim().toLowerCase();
 
-        if (choice.equals("x")) {
-            for (String i : lines){
-                System.out.println(i);
-                System.out.println("");
-            }
-        } else {
-            for (String i : lines){
-                System.out.println(i);
-                input.nextLine(); //wont allow mid cutscene skip but i'm too stoopid rn to think of anything that works
-            }
-            
-        }
+        /*
 
+        Battle won
+        “Okay, okay, I get it. You can stop. I may be a hooligan but I know my limits.”
+        “Mates, we leave this one”
+        They ran away.
+        (You have reached a space with an elevator. After completing any events that happen in this space, you may choose to go up the elevator to the next floor or explore around in other rooms for a bit.)
+        (Exploring comes with risks, but you might find many useful items to help you on your way to the top floor.
+        */
+
+        //on win
         eventFloor1Room2Completed = true;
+
     }
     public boolean isEventFloor1Room2Completed(){
         return eventFloor1Room2Completed;
     }
-
-
-
-
-
-
-
-
-
 
 //"Floor 1 Room 3", "[3][2] Rec room",
     public void eventFloor1Room3(Scanner input){
