@@ -420,8 +420,10 @@ public class main {
         
         System.out.println("Won battle " + Battle.getBattleID()); //battleID from story class
 
+        //we have our first bug, chat
         if (isBattleWon){ //Rewards are dispensed here.
             mainCharacter.addCoinItem(Battle.getCoinRewards());
+            //passives or whatever else
         } //else do something else on loss
 
 
