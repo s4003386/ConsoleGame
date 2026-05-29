@@ -97,21 +97,11 @@ public class Character {
             System.out.println("inven is empty");
         } else {
             for(Coin item: Coins) {
+                
                 System.out.println("- " + item); //add a to string at some point
             }
         }
 
-        /* 
-        //check if inven is populated with items
-        if (buffAndDebuff.isEmpty()){
-            System.out.println("inven is empty");
-        } else {
-            //if inven has items, then print:
-            for(String item: buffAndDebuff) {
-                System.out.println("- " + item);
-            }
-        }
-            */
     }
         
 }

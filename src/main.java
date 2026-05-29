@@ -79,6 +79,7 @@ public class main {
             if (menuLocation.equals("1")){
                 showLocation();
             } else if (menuLocation.equals("2")){
+                System.out.println("Moving menu");
                 moveMenu();
                 menuLocation = input.nextLine();
                 locationStoryCheck(input);
@@ -115,11 +116,7 @@ public class main {
     public static void moveMenu(){
 
         System.out.println("\n");
-
-        //boolean isElevatorPresent = location.getIsElevatorTile();
-        //I feel like this would be a case where enums would be used...?
-
-
+System.out.println("Moving menu 2");
         //condition: Is player at [3][x] - unable to move south
         //condition: Is player at [0][x] - unable to move north
 
@@ -130,6 +127,7 @@ public class main {
 
         int currentCol = mainCharacter.getCol();
         int currentRow = mainCharacter.getRow();
+        System.out.println("col:" + currentCol + "\nrow:" + currentRow);
         boolean hasMoved = false;
 
         
@@ -139,6 +137,7 @@ public class main {
         }
 
         //:eyebrow_raise
+        //bug here, again
         if (map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile()) {
             if (currentCol == 3){ //ground floor
             System.out.println("1. North");
