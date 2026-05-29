@@ -22,9 +22,9 @@ public class Character {
     private int health;
 
     //inventory
-    private ArrayList<String> buffAndDebuff; 
-    private ArrayList<String> keyItems; //contains keycards for travelling up floors, etc
-    private ArrayList<Coin> Coins;
+    private ArrayList<String> buffAndDebuff = new ArrayList<>(); 
+    private ArrayList<String> keyItems = new ArrayList<>(); //contains keycards for travelling up floors, etc
+    private ArrayList<Coin> Coins = new ArrayList<>();
     
     //cards and such
     private ArrayList<String> cardList; //not sure how you are planning on storing cards but I'm putting them here
@@ -97,7 +97,7 @@ public class Character {
             System.out.println("inven is empty");
         } else {
             for(Coin item: Coins) {
-                System.out.println("- " + item);
+                System.out.println("- " + item); //add a to string at some point
             }
         }
 

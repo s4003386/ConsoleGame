@@ -85,8 +85,9 @@ public class main {
 
                 //leaveMenu = true;
             } else if (menuLocation.equals("3")){
-                //showInventory(); chat look, I found a bug
-                System.out.println("For now, innacessable");
+                
+                mainCharacter.showInventory();
+                //System.out.println("For now, innacessable");
             } else if (menuLocation.equals("4")){
                 RunningStory.showCompletedEvents();
             }
