@@ -1,4 +1,5 @@
 package src;
+import java.util.ArrayList;
 
 public class Coin {
     private CoinType type;
@@ -14,6 +15,12 @@ public class Coin {
         YELLOW,
         GREY
     }
+
+    
+    public CoinType getCoinType(Coin target){
+        return target.type;
+    }
+
 
     public Coin(CoinType coinType){
         this.type = coinType;

@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
+import src.Coin.CoinType;
+
 public class Battle {
     private String BattleID;
 
@@ -44,10 +46,11 @@ public class Battle {
         return isEmpty;
     }
 
-    public int getCoinFrequency(Coin[] Coins, Coin target){
+    public int getCoinFrequency(Coin[] Coins, CoinType target){
         int quantity = Collections.frequency(Arrays.asList(Coins), target);
         return quantity;
     }
+
 
     public ArrayList<String> getKeyItemsRewards(){
         return rewardedKeyItems;

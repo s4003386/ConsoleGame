@@ -1,9 +1,11 @@
 package src;
 
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Map;
 
 //something something remember 3 data types need to be used as inputs for game..?
 
@@ -506,10 +508,18 @@ public class main {
                 //print which coins recieved
                 System.out.println("");
                 System.out.println("You recieved: ");
-                for(Coin item: Battle.getCoinRewards()) {
-                    
-                    System.out.println("- " + Battle.getCoinFrequency(Battle.getCoinRewards(), item) + " "+ item + " COIN"); 
+                //mainCharacter.printCoins(Battle.getCoinRewards());
+                
+
+                /* 
+                ArrayList<Coin> coinDisplayArray = new ArrayList<>();*/
+                //temp array for display
+                for (Coin item : Battle.getCoinRewards()){
+                    System.out.println("- " + item + " COIN"); 
                 }
+
+                
+                
             }
 
             //if key items exists as a reward 
