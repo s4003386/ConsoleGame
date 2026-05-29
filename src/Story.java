@@ -1,6 +1,10 @@
 package src;
 import java.util.Scanner;
+
+import src.Coin.CoinType;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 
@@ -35,8 +39,11 @@ public class Story {
 
 
 
-    ArrayList<String> F1R1Reward = new ArrayList<>();
-    Battle F1R1 = new Battle("F1R1Battle", 1 ,  F1R1Reward, F1R1Reward, F1R1Reward);
+
+
+    Coin[] F1R1Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)}; //every coin is an object 'coin' with an enum type to deternine roll chance
+    ArrayList<String> EmptyArray = new ArrayList<String>();
+    Battle F1R1 = new Battle("F1R1Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray); //called when the story calls for it
 
 
 

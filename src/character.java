@@ -1,6 +1,7 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Character {
     //instance variable/attributes
@@ -23,7 +24,7 @@ public class Character {
     //inventory
     private ArrayList<String> buffAndDebuff; 
     private ArrayList<String> keyItems; //contains keycards for travelling up floors, etc
-    private ArrayList<String> Coins;
+    private ArrayList<Coin> Coins;
     
     //cards and such
     private ArrayList<String> cardList; //not sure how you are planning on storing cards but I'm putting them here
@@ -84,9 +85,23 @@ public class Character {
     }
         */
 
+    public void addCoinItem(Coin[] rewardedCoinItem){
+        Coins.addAll(Arrays.asList(rewardedCoinItem));
+    }
+
     public void showInventory() {
         System.out.println("\n =========Inventory");
     
+
+        if(Coins.isEmpty()){
+            System.out.println("inven is empty");
+        } else {
+            for(Coin item: Coins) {
+                System.out.println("- " + item);
+            }
+        }
+
+        /* 
         //check if inven is populated with items
         if (buffAndDebuff.isEmpty()){
             System.out.println("inven is empty");
@@ -96,6 +111,7 @@ public class Character {
                 System.out.println("- " + item);
             }
         }
+            */
     }
         
 }

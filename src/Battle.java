@@ -5,7 +5,7 @@ public class Battle {
     private String BattleID;
 
     private int numberOfWaves;
-    private ArrayList<String> rewardedCoins;
+    private Coin[] rewardedCoins;
     private ArrayList<String> rewardedPassives;
     private ArrayList<String> EnemiesList; //...?
 
@@ -13,7 +13,7 @@ public class Battle {
 
 
 
-    public Battle(String BattleID, int numberOfWaves, ArrayList<String> rewardedCoins, ArrayList<String> rewardedPassives, ArrayList<String> EnemiesList){
+    public Battle(String BattleID, int numberOfWaves, Coin[] rewardedCoins, ArrayList<String> rewardedPassives, ArrayList<String> EnemiesList){
 
         this.BattleID = BattleID;
         this.numberOfWaves = numberOfWaves;
@@ -24,6 +24,10 @@ public class Battle {
 
     public String getBattleID(){
         return BattleID;
+    }
+
+    public Coin[] getCoinRewards(){
+        return rewardedCoins;
     }
 
 

@@ -418,25 +418,16 @@ public class main {
 
         isBattleWon = RunningStory.winBattleDebug();
         
-        System.out.println("Won battle " + Battle.getBattleID());
+        System.out.println("Won battle " + Battle.getBattleID()); //battleID from story class
 
-        
+        if (isBattleWon){ //Rewards are dispensed here.
+            mainCharacter.addCoinItem(Battle.getCoinRewards());
+        } //else do something else on loss
 
-        //Rewards are dispensed here. Kiera I have no idea what you are doing so just change it to suit whatever you have written
-        /* 
-        if (isBattleWon){
-            System.out.println("You have won the battle");
-            //add inventory
-            switch (BattleID) {
-                case F1R1: 
-                    
-                    break;
-                
-                default:
-                    break;
-            }
-        }
-             */
+
+
+        // Kiera I have no idea what you are doing so just change it to suit whatever you have written
+
     }
     public static void main(String[] args){
         System.out.println("New Game");
