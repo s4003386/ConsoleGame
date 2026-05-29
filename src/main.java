@@ -1,8 +1,9 @@
 package src;
 
 import java.util.Scanner;
-import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Collections;
 
 //something something remember 3 data types need to be used as inputs for game..?
 
@@ -13,6 +14,8 @@ public class main {
         private static Character mainCharacter = new Character();
         private static String menuLocation;
         static Story RunningStory = new Story();
+
+
 
 
     public static void setUpGame(){
@@ -67,11 +70,14 @@ public class main {
         boolean leaveMenu = false;
         while (leaveMenu==false){
             System.out.println("=====================");
-            System.out.println("Test menu");
+            System.out.println("Menu");
             System.out.println("=====================");
             System.out.println("1. Show current location");
             System.out.println("2. Move to a new location");
             System.out.println("3. Show inventory");
+            //show active passive
+            //show current deck 
+            //etc
             System.out.println("4. *Debug* What story is marked complete?"); //debuuuug. remove later
 
             menuLocation = input.nextLine();
@@ -116,7 +122,7 @@ public class main {
     public static void moveMenu(){
 
         System.out.println("\n");
-System.out.println("Moving menu 2");
+        
         //condition: Is player at [3][x] - unable to move south
         //condition: Is player at [0][x] - unable to move north
 
@@ -128,21 +134,21 @@ System.out.println("Moving menu 2");
         int currentCol = mainCharacter.getCol();
         int currentRow = mainCharacter.getRow();
         System.out.println("col:" + currentCol + "\nrow:" + currentRow);
-        boolean hasMoved = false;
+        //boolean hasMoved = false;
 
-        
 
-        while (!hasMoved){ //while having not moved
-
-        }
-
+        //if on elevator tile, check
         //:eyebrow_raise
-        //bug here, again
         if (map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile()) {
             if (currentCol == 3){ //ground floor
-            System.out.println("1. North");
-            System.out.println("2. East");
-            System.out.println("3. West");
+                if(keyItemCheckFloor2()){ //check if player has floor 2 keycard
+                    System.out.println("1. North");
+                    System.out.println("2. East");
+                    System.out.println("3. West");
+                } else {
+                    System.out.println("2. East");
+                    System.out.println("3. West");
+                }
 
             } else if (currentCol == 0){ // 4th floor
                 if (currentRow == 3) { //Special rooms. 
@@ -152,11 +158,31 @@ System.out.println("Moving menu 2");
                     System.out.println("3. West");
                     System.out.println("4. South"); 
                 }
-            } else { //2-3 floor
-                System.out.println("1. North");
-                System.out.println("2. East");
-                System.out.println("3. West");
-                System.out.println("4. South"); 
+            } else if (currentCol == 2){ //2nd floor
+                if(keyItemCheckFloor3()){ //check if player has floor 3 keycard
+                    System.out.println("1. North");
+                    System.out.println("2. East");
+                    System.out.println("3. West");
+                    System.out.println("4. South"); 
+                } else {
+                    System.out.println("2. East");
+                    System.out.println("3. West");
+                    System.out.println("4. South"); 
+                }
+
+            } else if (currentCol == 1){ //3rd floor
+                if(keyItemCheckFloor4()){ //check if player has floor 4 keycard
+                    System.out.println("1. North");
+                    System.out.println("2. East");
+                    System.out.println("3. West");
+                    System.out.println("4. South"); 
+                } else {
+                    System.out.println("2. East");
+                    System.out.println("3. West");
+                    System.out.println("4. South"); 
+                }
+                 
+                
             }
 
         } else { //not an elevator tile
@@ -176,18 +202,38 @@ System.out.println("Moving menu 2");
 
         menuLocation = input.nextLine();
 
-
             //north
         if (menuLocation.equals("1")){
             
             //can only go north if on elevator tile and not on 4th floor
-            if (map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile()){
-                //should only be able to move north if prerequisites are met.
+            if (map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile()){ //is on elevator tile
+                if (currentCol == 3){ // if moving from ground floor to floor 2
+                    if(keyItemCheckFloor2()){ //has keycard
+                        mainCharacter.moveNorth();
+                        System.out.println("You have moved north. Current location:");
+                        System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]); 
+                        //System.out.println("is elevator present? " + map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile());
+                    }
+
+                } else if (currentCol == 2){ //floor 2 --> f3
+                    if (keyItemCheckFloor3()){
+                        System.out.println("You have moved north. Current location:");
+                        System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]);                         
+                    }
+
+                } else if (currentCol == 1){
+                    if (keyItemCheckFloor4()){
+                        System.out.println("You have moved north. Current location:");
+                        System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]);                         
+                    }
+
+                } else if (currentCol == 0){
+
+                } else {
+                    System.out.println("Something wrong occured (moveMenu)");
+                }
                 
-                mainCharacter.moveNorth();
-                System.out.println("You have moved north. Current location:");
-                System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]); 
-                System.out.println("is elevator present? " + map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile());
+                
                 
             } else {
                 System.out.println("Cannot go north");
@@ -238,12 +284,12 @@ System.out.println("Moving menu 2");
 
     }
     
+    //checks if the story has already been completed for any new area that the player moves in
     public static void locationStoryCheck(Scanner input){
         //int[][] currentMap = new int[mainCharacter.getCol()][mainCharacter.getRow()];
 
         int currentRow = mainCharacter.getRow();
         int currentCol = mainCharacter.getCol();
-        
         
         //possibly also an awful way of doing this. idk.
         if (currentCol == 3){ // floor 1
@@ -410,27 +456,87 @@ System.out.println("Moving menu 2");
         */
     }
     
+    //checks if a player can move up to a certain floor
+        //Floor2_Keycard
+        //Floor3_Keycard
+        //Floor4_Keycard
+    public static boolean keyItemCheckFloor2(){
+        ArrayList<String> keyItemList = mainCharacter.getKeyItems();
+        boolean floor2Unlock = false;
+
+        if (keyItemList.contains("Floor2_Keycard")){
+            floor2Unlock = true;
+        } 
+        return floor2Unlock;
+    }
+    public static boolean keyItemCheckFloor3(){
+        ArrayList<String> keyItemList = mainCharacter.getKeyItems();
+        boolean floor3Unlock = false;
+
+        if (keyItemList.contains("Floor3_Keycard")){
+            floor3Unlock = true;
+        } 
+        return floor3Unlock;
+    }
+    public static boolean keyItemCheckFloor4(){
+        ArrayList<String> keyItemList = mainCharacter.getKeyItems();
+        boolean floor4Unlock = false;
+
+        if (keyItemList.contains("Floor4_Keycard")){
+            floor4Unlock = true;
+        } 
+        return floor4Unlock;
+    }
+
     public static void callBattle(Battle Battle){ //Called from story class
         Boolean isBattleWon = false;
-        System.out.println("debug, floor1room1battle method");
         System.out.println("========================");
-        
 
-        isBattleWon = RunningStory.winBattleDebug();
+        isBattleWon = RunningStory.winBattleDebug(); // replace winBattleDebug with real getter method at some point
         
         System.out.println("Won battle " + Battle.getBattleID()); //battleID from story class
-
-        //we have our first bug, chat
+       
         if (isBattleWon){ //Rewards are dispensed here.
-            mainCharacter.addCoinItem(Battle.getCoinRewards());
+
+            //if coins exist as a reward
+
+            if(!Battle.isCoinEmpty(Battle.getCoinRewards())){
+                mainCharacter.addCoinItem(Battle.getCoinRewards()); //add to inventory
+
+                //print which coins recieved
+                System.out.println("");
+                System.out.println("You recieved: ");
+                for(Coin item: Battle.getCoinRewards()) {
+                    
+                    System.out.println("- " + Battle.getCoinFrequency(Battle.getCoinRewards(), item) + " "+ item + " COIN"); 
+                }
+            }
+
+            //if key items exists as a reward 
+            if(!Battle.getKeyItemsRewards().isEmpty()){
+                //add key items to inventory
+                mainCharacter.addKeyItem(Battle.getKeyItemsRewards());
+                System.out.println("- " + Battle.getKeyItemsRewards());
+            }
+
+
+            
+
+
+
+
+
+            System.out.println("========================");
+            System.out.println("");
             //passives or whatever else
         } //else do something else on loss
 
-
-
         // Kiera I have no idea what you are doing so just change it to suit whatever you have written
-
     }
+
+
+
+
     public static void main(String[] args){
         System.out.println("New Game");
         setUpGame();

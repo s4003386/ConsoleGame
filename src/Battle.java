@@ -1,11 +1,14 @@
 package src;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class Battle {
     private String BattleID;
 
     private int numberOfWaves;
     private Coin[] rewardedCoins;
+    private ArrayList<String> rewardedKeyItems;
     private ArrayList<String> rewardedPassives;
     private ArrayList<String> EnemiesList; //...?
 
@@ -13,11 +16,12 @@ public class Battle {
 
 
 
-    public Battle(String BattleID, int numberOfWaves, Coin[] rewardedCoins, ArrayList<String> rewardedPassives, ArrayList<String> EnemiesList){
+    public Battle(String BattleID, int numberOfWaves, Coin[] rewardedCoins, ArrayList<String> rewardedPassives, ArrayList<String> rewardedKeyItems, ArrayList<String> EnemiesList){
 
         this.BattleID = BattleID;
         this.numberOfWaves = numberOfWaves;
         this.rewardedCoins = rewardedCoins;
+        this.rewardedKeyItems = rewardedKeyItems;
         this.rewardedPassives = rewardedPassives;
         this.EnemiesList = EnemiesList;
     }
@@ -28,6 +32,25 @@ public class Battle {
 
     public Coin[] getCoinRewards(){
         return rewardedCoins;
+    }
+
+    public boolean isCoinEmpty(Coin[] CoinList) {
+        boolean isEmpty;
+        if (CoinList != null && CoinList.length > 0) {
+            isEmpty = false;
+        } else {
+            isEmpty = true;
+        }
+        return isEmpty;
+    }
+
+    public int getCoinFrequency(Coin[] Coins, Coin target){
+        int quantity = Collections.frequency(Arrays.asList(Coins), target);
+        return quantity;
+    }
+
+    public ArrayList<String> getKeyItemsRewards(){
+        return rewardedKeyItems;
     }
 
 
