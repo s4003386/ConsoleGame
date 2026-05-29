@@ -7,6 +7,10 @@ import java.util.Collections;
 
 //something something remember 3 data types need to be used as inputs for game..?
 
+
+//current list of bugs:
+//when moving west from [3][1], input is still allowed. This shouldnt be the case and is probably also true for other movement options
+
 public class main {
         private static boolean gameRunning = true;
         static Scanner input = new Scanner(System.in);
@@ -116,8 +120,6 @@ public class main {
     public static void showInventory(){
         mainCharacter.showInventory();
     }
-
-
 
     public static void moveMenu(){
         System.out.println("\n");
@@ -287,7 +289,6 @@ public class main {
 
         } else if (menuLocation.equals("3")){
             mainCharacter.moveWest();
-            
         } else if (menuLocation.equals("4")){
             mainCharacter.moveSouth();
         } 
@@ -295,8 +296,6 @@ public class main {
     }
                 
 
-    
-    
     //checks if the story has already been completed for any new area that the player moves in
     public static void locationStoryCheck(Scanner input){
         //int[][] currentMap = new int[mainCharacter.getCol()][mainCharacter.getRow()];
@@ -470,6 +469,23 @@ public class main {
             return floor4Unlock;
     }
 
+
+    //misc methods 
+    public static ArrayList<Coin> getCoinItems(){
+        return mainCharacter.getCoinItems();
+    }
+    public static void F1R3CoinEvent(Coin.CoinType targetType){
+        //fix later. zz
+        mainCharacter.getCoinItems();
+    }
+
+    public static boolean doesHaveCoin(Coin targetCoin){
+        boolean hasCoin = false;
+        if (mainCharacter.hasCoinInInventory(targetCoin)){
+            hasCoin = true;
+        }
+        return hasCoin;
+    }
 
 
     

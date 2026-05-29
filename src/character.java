@@ -91,6 +91,10 @@ public class Character {
         Coins.addAll(Arrays.asList(rewardedCoinItem));
     }
 
+    public ArrayList<Coin> getCoinItems(){
+        return this.Coins;
+    }
+
     public void addKeyItem(ArrayList<String> rewardedKeyItem){
         keyItems.addAll(rewardedKeyItem);
     }
@@ -135,6 +139,13 @@ public class Character {
         }
     }
 
+    public boolean hasCoinInInventory(Coin targetCoin){
+        boolean hasCoin = false;
+        if(Coins.contains(targetCoin)){
+            hasCoin = true;
+        }
+        return hasCoin;
+    }
     
         
 }

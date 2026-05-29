@@ -2,8 +2,6 @@
 
 import java.util.Scanner;
 
-//import main.Coin.CoinType;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -49,16 +47,25 @@ public class Story {
     Battle F1R1 = new Battle("F1R1Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); //called when the story calls for it
     //everything temporary right now is just an ArrayList string but it can be changed when it needs to in the battles class. just dont forget to change them here
 
-    //floor 2 room 2
+    //floor 1 room 2
     Coin[] F1R2Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)};
     ArrayList<String> F1R2KeyItems = new ArrayList<String>(List.of("Floor2_Keycard"));
     Battle F1R2 = new Battle("F1R2Battle", 1 ,  F1R1Reward, EmptyArray, F1R2KeyItems, EmptyArray); //called when the story calls for it
 
+    //floor 2
+    Coin[] F2R2Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)}; 
+    Battle F2R2 = new Battle("F1R1Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); 
+
+    Coin[] F2R1Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)}; 
+    ArrayList<String> F2R1KeyItems = new ArrayList<String>(List.of("Floor3_Keycard"));
+    Battle F2R1 = new Battle("F1R1Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); 
+    
 
     public static final String ANSI_RESET = "\u001B[0m"; //reset
     public static final String Speaker1 = "\u001B[31m"; //red
     public static final String Speaker2 = "\u001B[32m";//green
     public static final String Speaker3 = "\u001B[34m";//blue
+    public static final String Speaker4 = "\u001B[33m"; // yellow
 
 
 // start of game
@@ -80,7 +87,7 @@ public class Story {
             Speaker1 + "\"If you're after the machines, lets play a game then eh? Whoever rolls highest is the winner and ill throw my chips your way.\"" + ANSI_RESET
         };
 
-        System.out.println("Enter to continue text, Press x to skip");
+        System.out.println("Story event: Enter to continue text, Press x to skip");
         String choice = input.nextLine().trim().toLowerCase(); //'choice' is used to record input
 
         if (choice.equals("x")) {
@@ -192,7 +199,7 @@ public class Story {
     }
     public void eventFloor1Room1Choice1(Scanner input){ //player aggrees to play a game
         int playerChoice;
-        System.out.println("(x to skip, enter to continue)"); 
+        System.out.println("(Story event: x to skip, enter to continue)"); 
         
         String[] lines = {"He takes you to a bright red machine and gives you a peculiar coin. It pulses like a heart in your hand.",
                             "All around you are people who's eyes are desperately glued to the machines. They aren't checking if they are winning or losing at all.",
@@ -215,6 +222,7 @@ public class Story {
 
 
         boolean hasPulledTheLever = false;
+        System.out.println("What will you do?");
         System.out.println("----");
         while (!hasPulledTheLever){
             System.out.println("1. Pull the lever");
@@ -247,7 +255,7 @@ public class Story {
             if (playerChoice == 1){
                 System.out.println("You chose option 1");
                 System.out.println("");
-                System.out.println(Speaker1 + "\"…Chap, you got to stop believing in what everyone says. I'm trying to rob you over here.\"" + ANSI_RESET);
+                System.out.println(Speaker1 + "\"...Chap, you got to stop believing in what everyone says. I'm trying to rob you over here.\"" + ANSI_RESET);
                 input.nextLine();
 
                 System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -305,7 +313,7 @@ public class Story {
 
 
     public void eventFloor1Room1Choice2(Scanner input){ //player says 'no thanks'
-        System.out.println("(x to skip, enter to continue)");    
+        System.out.println("(Story event: x to skip, enter to continue)");    
     
         String[] lines = {Speaker1 + "\"Don't give me that answer.\"" + ANSI_RESET,
                             "He dragged me by the arm to a place behind the poker machines. ",
@@ -351,7 +359,7 @@ public class Story {
 
 //"Floor 1 Room 2", "[3][1] Elevator room", 
     public void eventFloor1Room2(Scanner input){
-        System.out.println("x to skip, enter to continue");
+        System.out.println("Story event: x to skip, enter to continue");
         String[] lines = {"Before you could do anything, a group of 3 blocked your route towards the elevator.",
             Speaker1 + "\"Look, to be frank, the moment you started running your mouth, I knew you weren't one of us folk.\"",
             "\"Who did you have to beat up to get that shirt? Huh? We aren't letting this go.\"" + ANSI_RESET,
@@ -383,7 +391,7 @@ public class Story {
 
     public void eventFloor1Room2OnWin(Scanner input){
         System.out.println("===============");
-        System.out.println("x to skip, enter to continue");
+        System.out.println("Story event: x to skip, enter to continue");
         String[] lines = {Speaker1 +  "\"Okay, okay, I get it. You can stop. I may be a hooligan but I know my limits\"",
             "\"Mates, we leave this one\""  + ANSI_RESET, 
             "They ran away.",
@@ -424,24 +432,202 @@ public class Story {
 
 //"Floor 1 Room 3", "[3][2] Rec room",
     public void eventFloor1Room3(Scanner input){
-        System.out.println("eventFloor1Room3");
-        input.nextLine();
+        System.out.println("Story event: x to skip, enter to continue");
+        String[] lines = {"The noise of the machines disappears as soon as you enter the room. Dust that was disturbed by your entrance begins to settle on your nose and you let out a sneeze.",
+        "You see that there is something huge covered by a cloth in the back of the room."
+        };
+        String choice = input.nextLine().trim().toLowerCase();
+        if (choice.equals("x")) {
+            for (String i : lines){
+                System.out.println(i);
+                System.out.println("");
+            }
+        } else {
+            for (String i : lines){
+                System.out.println(i);
+                input.nextLine(); 
+            }
+            
+        }
+
+        boolean hasPlayerMadeChoice = false;
+        
+        System.out.println("What will you do?");
+        System.out.println("----");
+        while(!hasPlayerMadeChoice){
+            System.out.println("1. Take off the cloth");
+            System.out.println("2. Leave and go back to the elevator");
+            String playerInput = input.nextLine().trim().toLowerCase();
+            System.out.println("");
+
+            if(playerInput.equals("1")){
+                //recieve 1 special item if there is time to implement
+                System.out.println("The off white sheet falls to the ground");
+                input.nextLine();
+                eventFloor1Room3Choice1(input);
+                hasPlayerMadeChoice = true;
+
+                
+            } else if (playerInput.equals("2")){
+                eventFloor1Room3Choice1(input);
+                hasPlayerMadeChoice = true;
+            }
+
+        }
 
         eventFloor1Room3Completed = true;
+    }
+    public void eventFloor1Room3Choice1(Scanner input){
+        System.out.println("You see that the sheet was hiding a monster of a slot machine underneath. A chair is needed to even reach the lever. ");
+        input.nextLine();
+
+        boolean hasPlayerMadeChoice = false;
+        boolean hasPlayerMadeCoinChoice = false;
+        
+        
+        System.out.println("There is already a coin in the slot. You can:");
+        System.out.println("----");
+        while(!hasPlayerMadeChoice){
+            System.out.println("1. Swap the coin with your own and pull the lever");
+            System.out.println("2. Pull the lever anyways");
+            System.out.println("3. Take the coin out of the slot");
+            String playerInput = input.nextLine().trim().toLowerCase();
+            System.out.println("");
+
+            if(playerInput.equals("1")){
+
+                while (!hasPlayerMadeCoinChoice){ //note, hasplayermadechoice is not turned true in this branch
+                    System.out.println("Your current inventory");
+                    main.showInventory();
+                    input.nextLine();
+
+
+                    System.out.println("Select a coin to use:");
+                    System.out.println("----");
+                    System.out.println("1. White coin (1% odds success)");
+                    System.out.println("2. Red coin (20% odds success)");
+                    System.out.println("3. Blue coin (35% odds success)");
+                    System.out.println("4. Green coin (50% odds success)");
+                    System.out.println("5. Black coin (65% odds success)");
+                    System.out.println("6. Purple coin (80% odds success)");
+                    System.out.println("7. Yellow coin (99% odds success)");
+                    System.out.println("8. Grey coin (100% odds success)");
+                    String playerCoinInput = input.nextLine().trim().toLowerCase();
+
+                    if(playerCoinInput.equals("1")){
+                        boolean hasWhiteCoin = false;
+                        for (Coin coin : main.getCoinItems()) {
+                            if (coin.getCoinType() == Coin.CoinType.WHITE) {
+                                hasWhiteCoin = true;
+                                break; 
+                            }
+                        }
+
+                        if (hasWhiteCoin){
+                            System.out.println("Found white coin");
+                            System.out.println("Use the White coin?"); //you have x amount
+                            System.out.println("----");
+                            System.out.println("1. Yes");
+                            System.out.println("2. No");
+
+                            String useCoinChoiceInput = input.nextLine().trim().toLowerCase();
+                            
+                            if (useCoinChoiceInput.equals("1")){
+                                //main.F1R3CoinEvent();
+                                hasPlayerMadeCoinChoice = true;
+                            }
+                            
+                            
+                        } else {
+                            System.out.println("No white coin found in inventory");
+                        }
+                    }
+                    
+
+
+
+                }
+                
+
+                //hasPlayerMadeChoice = true;
+            } else if (playerInput.equals("2")){
+                System.out.println("You pulled the lever");
+                hasPlayerMadeChoice = true;
+            } else if (playerInput.equals("3")){
+                System.out.println("You took the coin out");
+                hasPlayerMadeChoice = true;
+            }
+
+        }
+        
+    }
+    public void eventFloor1Room3Choice2(Scanner input){
+        System.out.println("You decided to leave.");
+        input.nextLine();
+
+        //force move player method if there is time
     }
     public boolean isEventFloor1Room3Completed(){
         return eventFloor1Room3Completed;
     }
 
 
+
+
+
 // FLOOR 22222222222222222222222222222222
 
 
 
-//"Floor 2 Room 1", "[2][0] Foyer",
+//"Floor 2 Room 1", "[2][0] West",
     public void eventFloor2Room1(Scanner input){
-        System.out.println("eventFloor2Room1");
-        input.nextLine();
+        System.out.println("Story event: x to skip, enter to continue");
+        String[] lines = {"You attempted to pick the topmost floor, but it seems you were only allowed to travel one floor upward without a keycard.",
+        "Leaving the elevator reveals a wide open space with poker tables scattered around evenly. These tables were populated with various syndicates of people.",
+        Speaker2 + "\"Look, I got another one.\"" + ANSI_RESET,
+        Speaker4 + "\"Looking a little rough there eh?\"" + ANSI_RESET,
+        "The fellow in the flashy suit gestures to your dirty shirt.",
+        "Another taps me on the shoulder as the dealer begins handing out cards.",
+        Speaker3 + "\"Don't question it. It 's just like this 'round this floor.\"" + ANSI_RESET,
+        "There are 3 others on this table. One in a black suit with golden embroidery, another is a woman an ordinary dress shirt with chinos, and the last - a good looking man in a red vest and bowtie.",
+        "You take another glance at the chips on the table. They are like the chips from before, vaguely pulsating with emotions that you can feel.",
+        Speaker3 + "\"How much 'r youse betting, mate?\"" + ANSI_RESET,
+        "You placed an amount of chips on the table. The player next to you bets half.",
+        Speaker3 + "\"Awright.\"" + ANSI_RESET,
+        "The dealer hands out the 2 face down cards. You have a 10 and king of hearts.",
+        Speaker2 + "\"Ha, I'm calling it. I'm winning.\"" + ANSI_RESET,
+        Speaker3 + "\"Big talk for someone who lost the round before.\"" +ANSI_RESET,
+        Speaker2 + "\"Don't give me that! I got bucketloads to spend tonight.\"" + ANSI_RESET,
+        "She raises the bet with 2 purple coins.",
+        Speaker4 + "\"Says you. You folk need to see my Lotus Emira in the basement.\"" + ANSI_RESET,
+        Speaker2 + "\"You brought your car to this place without private parking? That piece of junk'l just get stolen ere.\"" + ANSI_RESET,
+        Speaker4 + "\"Who cares, I'll get a new one after this.\"" + ANSI_RESET,
+        "The dealer places one more community card. It is a king of hearts",
+        Speaker2 + "\"All in!\"",
+        Speaker4 + "\"What!?\"",
+        Speaker2 + "I said what I said." + ANSI_RESET,
+        "Everyone finally reveals their cards. You have a royal flush.",
+        Speaker2 + "\"Huh!??\"" + Speaker3 +"\"Huh.\"" + Speaker4 + "\"Haa!?\"" + ANSI_RESET,
+        "There was silence around the table. Everyone is looking at you.",
+        Speaker2 + "Say, why don’t we settle this with hands instead?" + ANSI_RESET
+        };
+        String choice = input.nextLine().trim().toLowerCase();
+
+        if (choice.equals("x")) {
+            for (String i : lines){
+                System.out.println(i);
+                System.out.println("");
+            }
+        } else {
+            for (String i : lines){
+                System.out.println(i);
+                input.nextLine(); 
+            }
+            
+        }
+
+
+        //battle
 
         eventFloor2Room1Completed = true;
     }
@@ -449,7 +635,7 @@ public class Story {
         return eventFloor2Room1Completed;
     }
     
-//"Floor 2 Room 2", "[2][1] Foyer",
+//"Floor 2 Room 2", "[2][1] Elevator",
     public void eventFloor2Room2(Scanner input){
         System.out.println("eventFloor2Room2");
         input.nextLine();
@@ -460,7 +646,7 @@ public class Story {
         return eventFloor2Room2Completed;
     }
 
-//"Floor 2 Room 3", "[2][2] Foyer",
+//"Floor 2 Room 3", "[2][2] East",
     public void eventFloor2Room3(Scanner input){
         System.out.println("eventFloor2Room3");
         input.nextLine();

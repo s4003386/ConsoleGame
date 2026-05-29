@@ -20,38 +20,51 @@ public class Coin {
 
         switch (coinType) { //no default, has to be any of these
             case WHITE:
-                CoinRollChance = 1;
+                this.CoinRollChance = 1;
                 break;
         
             case RED:
-                CoinRollChance = 20;
+                this.CoinRollChance = 20;
                 break;
 
             case BLUE:
-                CoinRollChance = 35;
+                this.CoinRollChance = 35;
                 break;
             
             case GREEN:
-                CoinRollChance = 50;
+                this.CoinRollChance = 50;
                 break;
 
             case BLACK:
-                CoinRollChance = 65;
+                this.CoinRollChance = 65;
                 break;
 
             case PURPLE:
-                CoinRollChance = 80;
+                this.CoinRollChance = 80;
                 break;
 
             case YELLOW:
-                CoinRollChance = 99;
+                this.CoinRollChance = 99;
                 break;
 
             case GREY:
-                CoinRollChance = 100;
+                this.CoinRollChance = 100;
                 break;
 
         }
+    }
+
+    public CoinType getCoinType(Coin targetCoin){
+        return this.type;
+    }
+
+    public CoinType getCoinType(){
+        return this.type;
+    }
+    
+
+    public CoinType getCoinType(String targetCoin){
+        return this.type;
     }
 
 
