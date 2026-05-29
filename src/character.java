@@ -1,5 +1,3 @@
-package src;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
@@ -82,6 +80,12 @@ public class Character {
 
 
 
+
+
+
+
+
+
     //Inventory methods
     public void addCoinItem(Coin[] rewardedCoinItem){
         Coins.addAll(Arrays.asList(rewardedCoinItem));
@@ -118,6 +122,7 @@ public class Character {
             for(Coin item: Coins) {
                 System.out.println("- " + item); 
             }*/
+
         }
 
         System.out.println(" === Key Items === ");

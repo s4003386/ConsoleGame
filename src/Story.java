@@ -1,7 +1,8 @@
-package src;
+//package src;
+
 import java.util.Scanner;
 
-import src.Coin.CoinType;
+//import main.Coin.CoinType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -288,6 +289,13 @@ public class Story {
 
 
 
+
+
+
+
+
+
+
     public void eventFloor1Room1Choice2(Scanner input){ //player says 'no thanks'
         System.out.println("(x to skip, enter to continue)");    
     
@@ -322,6 +330,7 @@ public class Story {
         
 
     }
+
 
     public boolean isEventFloor1Room1Completed(){
         return eventFloor1Room1Completed;
@@ -388,7 +397,9 @@ public class Story {
             
         }
 
+
         eventFloor1Room2Completed = true;
+
     }
     public boolean isEventFloor1Room2Completed(){
         return eventFloor1Room2Completed;

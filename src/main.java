@@ -1,4 +1,4 @@
-package src;
+//package src;
 
 import java.util.Scanner;
 import java.util.Arrays;
@@ -14,8 +14,6 @@ public class main {
         private static Character mainCharacter = new Character();
         private static String menuLocation;
         static Story RunningStory = new Story();
-
-
 
 
     public static void setUpGame(){
@@ -99,9 +97,6 @@ public class main {
                 RunningStory.showCompletedEvents();
             }
         }
-
-
-
     }
 
     public static void showLocation(){
@@ -120,7 +115,6 @@ public class main {
     }
 
     public static void moveMenu(){
-
         System.out.println("\n");
         
         //condition: Is player at [3][x] - unable to move south
@@ -135,7 +129,6 @@ public class main {
         int currentRow = mainCharacter.getRow();
         System.out.println("col:" + currentCol + "\nrow:" + currentRow);
         //boolean hasMoved = false;
-
 
         //if on elevator tile, check
         //:eyebrow_raise
@@ -202,6 +195,7 @@ public class main {
 
         menuLocation = input.nextLine();
 
+
             //north
         if (menuLocation.equals("1")){
             
@@ -232,10 +226,7 @@ public class main {
                 } else {
                     System.out.println("Something wrong occured (moveMenu)");
                 }
-                
-                
-                
-            } else {
+                 } else {
                 System.out.println("Cannot go north");
             }
             
@@ -283,6 +274,9 @@ public class main {
         } 
 
     }
+                
+
+    
     
     //checks if the story has already been completed for any new area that the player moves in
     public static void locationStoryCheck(Scanner input){
@@ -291,6 +285,7 @@ public class main {
         int currentRow = mainCharacter.getRow();
         int currentCol = mainCharacter.getCol();
         
+
         //possibly also an awful way of doing this. idk.
         if (currentCol == 3){ // floor 1
             if (currentRow == 0){ // Floor 1 Room 1
@@ -422,80 +417,54 @@ public class main {
         } else {
             System.out.println("Something went wrong (locationStoryCheck - CurrentCol)");
         }
-        
-        /* 
-        switch(currentCol) {
-            case 1: //floor 1
-
-                switch (currentRow) {
-                    case 1: //floor 1 room 1
-                        boolean eventCompleted = RunningStory.isEventFloor1Room1Completed();
-
-                        break;
-                    case 2: //floor 1 room 2
-                        boolean eventCompleted = RunningStory.isEventFloor1Room1Completed();
-                        break;
-                    case 3: //floor 1 room 3
-                        break;
-                        
-                    default:
-                        System.out.println("Something is missing (locationStoryCheck - Floor 1 row x)");
-                        break;
-                }
-                break;
-            case 2:
-                // code block
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            default:
-                // code block
-            }
-        */
-    }
+        }
     
-    //checks if a player can move up to a certain floor
-        //Floor2_Keycard
-        //Floor3_Keycard
-        //Floor4_Keycard
+        //checks if a player can move up to a certain floor
+            //Floor2_Keycard
+            //Floor3_Keycard
+            //Floor4_Keycard
     public static boolean keyItemCheckFloor2(){
-        ArrayList<String> keyItemList = mainCharacter.getKeyItems();
-        boolean floor2Unlock = false;
+            ArrayList<String> keyItemList = mainCharacter.getKeyItems();
+            boolean floor2Unlock = false;
 
-        if (keyItemList.contains("Floor2_Keycard")){
-            floor2Unlock = true;
-        } 
-        return floor2Unlock;
-    }
+            if (keyItemList.contains("Floor2_Keycard")){
+                floor2Unlock = true;
+            } 
+            return floor2Unlock;
+        }
     public static boolean keyItemCheckFloor3(){
-        ArrayList<String> keyItemList = mainCharacter.getKeyItems();
-        boolean floor3Unlock = false;
+            ArrayList<String> keyItemList = mainCharacter.getKeyItems();
+            boolean floor3Unlock = false;
 
-        if (keyItemList.contains("Floor3_Keycard")){
-            floor3Unlock = true;
-        } 
-        return floor3Unlock;
-    }
+            if (keyItemList.contains("Floor3_Keycard")){
+                floor3Unlock = true;
+            } 
+            return floor3Unlock;
+        }
     public static boolean keyItemCheckFloor4(){
-        ArrayList<String> keyItemList = mainCharacter.getKeyItems();
-        boolean floor4Unlock = false;
+            ArrayList<String> keyItemList = mainCharacter.getKeyItems();
+            boolean floor4Unlock = false;
 
-        if (keyItemList.contains("Floor4_Keycard")){
-            floor4Unlock = true;
-        } 
-        return floor4Unlock;
+            if (keyItemList.contains("Floor4_Keycard")){
+                floor4Unlock = true;
+            } 
+            return floor4Unlock;
     }
 
+
+
+    
     public static void callBattle(Battle Battle){ //Called from story class
         Boolean isBattleWon = false;
+
         System.out.println("========================");
+
 
         isBattleWon = RunningStory.winBattleDebug(); // replace winBattleDebug with real getter method at some point
         
         System.out.println("Won battle " + Battle.getBattleID()); //battleID from story class
        
+
         if (isBattleWon){ //Rewards are dispensed here.
 
             //if coins exist as a reward
@@ -534,10 +503,8 @@ public class main {
         // Kiera I have no idea what you are doing so just change it to suit whatever you have written
     }
 
-
-
-
-    public static void main(String[] args){
+    
+    public static void main(String[] args) {
         System.out.println("New Game");
         setUpGame();
 
@@ -555,7 +522,6 @@ public class main {
 
 
         } while (gameRunning); //constantly looping fyi
-         
-
     } 
 }
+
