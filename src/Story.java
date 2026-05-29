@@ -43,7 +43,7 @@ public class Story {
 
 
     //floor 1 room 1
-    Coin[] F1R1Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE) }; //every coin is an object 'coin' with an enum type to deternine roll chance
+    Coin[] F1R1Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)}; //every coin is an object 'coin' with an enum type to deternine roll chance
     ArrayList<String> EmptyArray = new ArrayList<String>();
     Battle F1R1 = new Battle("F1R1Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); //called when the story calls for it
     //everything temporary right now is just an ArrayList string but it can be changed when it needs to in the battles class. just dont forget to change them here

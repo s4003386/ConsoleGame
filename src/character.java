@@ -2,7 +2,6 @@ package src;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -105,20 +104,14 @@ public class Character {
             System.out.println("Inventory is empty.");
         } else {
 
+
+            //what is long?
             Map<Coin, Long> counts = Coins.stream()
                 .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
 
             counts.forEach((coin, count) ->
                 System.out.println(count + " x " + coin)
             );
-            
-            /* 
-            Map<Coin, Long> counts = Coins.stream()
-                .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
-
-            counts.forEach((coin, count) ->
-                System.out.println(count + " x " + coin)
-            );*/
 
 
             /* 
@@ -137,21 +130,6 @@ public class Character {
         }
     }
 
-    //overload used by main to print coins
-    //nvm I give up
-    /* 
-    public void printCoins(Coin[] coins) {
-        printCoins(Arrays.asList(coins));   
-    }
-
-    public void printCoins(List<Coin> coins){
-            Map<Coin, Long> counts = Coins.stream()
-                .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
-
-            counts.forEach((coin, count) ->
-                System.out.println(count + " x " + coin)
-            );
-    }
-    */
+    
         
 }
