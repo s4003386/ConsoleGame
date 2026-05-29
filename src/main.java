@@ -37,21 +37,21 @@ public class main {
             map [3][2] = new location("Floor 1 Room 3", "[3][2] Rec room", false);
             map [3][3] = new location("Floor 1 Room 4", "[3][3] Head office elevator - Factory floor", false); //special
 
-            map [2][0] = new location("Floor 2 Room 1", "[2][0] n/a", false);
-            map [2][1] = new location("Floor 2 Room 2", "[2][1] n/a", true); // elevator
-            map [2][2] = new location("Floor 2 Room 3", "[2][2] n/a", false);
+            map [2][0] = new location("Floor 2 Room 1", "[2][0] Lower Fortuna West Wing", false);
+            map [2][1] = new location("Floor 2 Room 2", "[2][1] Poker tables", true); // elevator
+            map [2][2] = new location("Floor 2 Room 3", "[2][2] Lower Fixwood East Wing", false);
             map [2][3] = new location("Floor 2 Room 4", "[2][3] Head office elevator 2", false); //special
 
             //floor 3
-            map [1][0] = new location("Floor 3 Room 1", "[1][0] n/a", false);
-            map [1][1] = new location("Floor 3 Room 2", "[1][1] n/a", true); // elevator
-            map [1][2] = new location("Floor 3 Room 3", "[1][2] n/a", false); 
+            map [1][0] = new location("Floor 3 Room 1", "[1][0] Upper Fortuna Private room - West", false);
+            map [1][1] = new location("Floor 3 Room 2", "[1][1] Upper level Bar", true); // elevator
+            map [1][2] = new location("Floor 3 Room 3", "[1][2] Upper Fixwood Private room - East", false); 
             map [1][3] = new location("Floor 3 Room 4", "[1][3] Head office elevator 1", false); //special
 
             //floor 4
-            map [0][0] = new location("Floor 4 Room 1", "[0][0] n/a", false);
-            map [0][1] = new location("Floor 4 Room 2", "[0][1] n/a", true); //elevator
-            map [0][2] = new location("Floor 4 Room 3", "[0][2] n/a", false);
+            map [0][0] = new location("Floor 4 Room 1", "[0][0] Top Floor Lookout", false);
+            map [0][1] = new location("Floor 4 Room 2", "[0][1] Decorated hall", true); //elevator
+            map [0][2] = new location("Floor 4 Room 3", "[0][2] Main corridor", false);
             map [0][3] = new location("Floor 4 Room 4", "[0][3] Head office", false); //special
     
             
@@ -83,7 +83,6 @@ public class main {
             if (menuLocation.equals("1")){
                 showLocation();
             } else if (menuLocation.equals("2")){
-                System.out.println("Moving menu");
                 moveMenu();
                 menuLocation = input.nextLine();
                 locationStoryCheck(input);
@@ -100,22 +99,30 @@ public class main {
     }
 
     public static void showLocation(){
+        System.out.println("");
+        System.out.println("- - - - - -");
         System.out.println("You are currently in...");
         System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]); 
-        System.out.println("is elevator present? " + map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile());
-
+        
+        boolean isElevatorTile = map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile();
+        if (isElevatorTile){
+            System.out.println("You are currently near an elevator. You may travel upwards.");
+        }
+        System.out.println("- - - - - -");
+        System.out.println("");
+        
     }
 
     public static void showInventory(){
         mainCharacter.showInventory();
     }
 
-    public static void showCompletedEvents(){
 
-    }
 
     public static void moveMenu(){
         System.out.println("\n");
+        System.out.println("- - - - - -");
+        System.out.println("Move in which direction?");
         
         //condition: Is player at [3][x] - unable to move south
         //condition: Is player at [0][x] - unable to move north
@@ -127,15 +134,15 @@ public class main {
 
         int currentCol = mainCharacter.getCol();
         int currentRow = mainCharacter.getRow();
-        System.out.println("col:" + currentCol + "\nrow:" + currentRow);
-        //boolean hasMoved = false;
+        //System.out.println("col:" + currentCol + "\nrow:" + currentRow);
+   
 
         //if on elevator tile, check
         //:eyebrow_raise
         if (map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile()) {
             if (currentCol == 3){ //ground floor
                 if(keyItemCheckFloor2()){ //check if player has floor 2 keycard
-                    System.out.println("1. North");
+                    System.out.println("1. Upwards");
                     System.out.println("2. East");
                     System.out.println("3. West");
                 } else {
@@ -153,7 +160,7 @@ public class main {
                 }
             } else if (currentCol == 2){ //2nd floor
                 if(keyItemCheckFloor3()){ //check if player has floor 3 keycard
-                    System.out.println("1. North");
+                    System.out.println("1. Upwards");
                     System.out.println("2. East");
                     System.out.println("3. West");
                     System.out.println("4. South"); 
@@ -165,7 +172,7 @@ public class main {
 
             } else if (currentCol == 1){ //3rd floor
                 if(keyItemCheckFloor4()){ //check if player has floor 4 keycard
-                    System.out.println("1. North");
+                    System.out.println("1. Upwards");
                     System.out.println("2. East");
                     System.out.println("3. West");
                     System.out.println("4. South"); 
@@ -196,28 +203,33 @@ public class main {
         menuLocation = input.nextLine();
 
 
+        boolean isElevatorTile = map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile();
+
+        System.out.println("");
             //north
         if (menuLocation.equals("1")){
             
             //can only go north if on elevator tile and not on 4th floor
-            if (map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile()){ //is on elevator tile
+            if (isElevatorTile){ //is on elevator tile
                 if (currentCol == 3){ // if moving from ground floor to floor 2
                     if(keyItemCheckFloor2()){ //has keycard
                         mainCharacter.moveNorth();
-                        System.out.println("You have moved north. Current location:");
+                        
+                        System.out.println("You have moved Upwards. Current location:");
                         System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]); 
-                        //System.out.println("is elevator present? " + map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile());
+                    
+                        
                     }
 
                 } else if (currentCol == 2){ //floor 2 --> f3
                     if (keyItemCheckFloor3()){
-                        System.out.println("You have moved north. Current location:");
+                        System.out.println("You have moved Upwards. Current location:");
                         System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]);                         
                     }
 
                 } else if (currentCol == 1){
                     if (keyItemCheckFloor4()){
-                        System.out.println("You have moved north. Current location:");
+                        System.out.println("You have moved Upwards. Current location:");
                         System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]);                         
                     }
 
@@ -226,8 +238,8 @@ public class main {
                 } else {
                     System.out.println("Something wrong occured (moveMenu)");
                 }
-                 } else {
-                System.out.println("Cannot go north");
+            } else {
+                System.out.println("Cannot go Upwards");
             }
             
 
@@ -235,7 +247,7 @@ public class main {
         } else if (menuLocation.equals("2")){
 
             //check if at floor 4 (col0). 
-            //Floor 4 true, row > 2
+            //Floor 4 true, row > 2 - able to go to the furthest east room 
             //floor 4 false, row > 1 - prevent moving into special room
 
 
@@ -243,11 +255,16 @@ public class main {
                 if (mainCharacter.getRow() > 2){
                     System.out.println(mainCharacter.getRow());
                     System.out.println("Cannot go this way");
+
+                    //ideally, once in floor 4 room 4, controls for location are taken away because of the boss fight
                 } else {
                     mainCharacter.moveEast();
                     System.out.println("You have moved east. Current location:");
                     System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]); 
-                    System.out.println("is elevator present? " + map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile());
+                    if(isElevatorTile){
+                        System.out.println("You are near an elevator. You may move upwards");
+                    }
+
                 }
             } else { //every other floor
                 if (mainCharacter.getRow() > 1){
@@ -257,7 +274,9 @@ public class main {
                     mainCharacter.moveEast();
                     System.out.println("You have moved east. Current location:");
                     System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]); 
-                    System.out.println("is elevator present? " + map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile());
+                    if(isElevatorTile){
+                        System.out.println("You are near an elevator. You may move upwards");
+                    }
                 }
             }
             //cannot go east if already at row 3 - furthest east

@@ -67,12 +67,12 @@ public class Story {
             "The time is midnight. Below me is the body of the local 'red black' syndicate.",
             "I look up. The night sky is filled with light from the highest point in the city, Sharktown casino.",
             "My father disappeared a week ago. He left for Sharktown with the hope of hitting it big. Now I'm in destitution",
-            "shuffle*",
+            "*Shuffle*",
             "In a red and black shirt, I head towards the flashing lights of the casino.",
             ".",
             ".",
             ".",
-            "Floor 1 Room 1 - [3][0] Foyer",
+            "Floor 1 Room 1 - Foyer",
             "The security guard of this place took a quick glance at me, and simply nodded. It didn't matter if this outfit was covered in rain and blood.",
             "My original goal was to get to the poker machines, but another man sitting on a couch hollers for my attention.",
             Speaker1 + " \"Who are you?\" He asks. \"I didn't know the guys out east had business with us.\" " + ANSI_RESET,
@@ -120,22 +120,23 @@ public class Story {
         System.out.println("[3][2] F1 R3: " + isEventFloor1Room3Completed());
         
         
-        System.out.println("[2][0] F1 R1: " + isEventFloor2Room1Completed());
-        System.out.println("[2][1] F1 R1: " + isEventFloor2Room2Completed());
-        System.out.println("[2][2] F1 R1: " + isEventFloor2Room3Completed());
+        System.out.println("[2][0] F2 R1: " + isEventFloor2Room1Completed());
+        System.out.println("[2][1] F2 R2: " + isEventFloor2Room2Completed());
+        System.out.println("[2][2] F2 R3: " + isEventFloor2Room3Completed());
 
-        System.out.println("[1][0] F1 R1: " + isEventFloor3Room1Completed());
-        System.out.println("[1][1] F1 R1: " + isEventFloor3Room2Completed());
-        System.out.println("[1][2] F1 R1: " + isEventFloor3Room3Completed());
+        System.out.println("[1][0] F3 R1: " + isEventFloor3Room1Completed());
+        System.out.println("[1][1] F3 R2: " + isEventFloor3Room2Completed());
+        System.out.println("[1][2] F3 R3: " + isEventFloor3Room3Completed());
 
-        System.out.println("[0][0] F1 R1: " + isEventFloor4Room1Completed());
-        System.out.println("[0][1] F1 R1: " + isEventFloor4Room2Completed());
-        System.out.println("[0][2] F1 R1: " + isEventFloor4Room3Completed());
-        System.out.println("[0][3] F1 R1: " + isEventFloor4Room4Completed());
+        System.out.println("[0][0] F4 R1: " + isEventFloor4Room1Completed());
+        System.out.println("[0][1] F4 R2: " + isEventFloor4Room2Completed());
+        System.out.println("[0][2] F4 R3: " + isEventFloor4Room3Completed());
+        System.out.println("[0][3] F4 R4: " + isEventFloor4Room4Completed());
 
-        System.out.println("[1][3] F1 R1: " + isEventFloor3Room4Completed());
-        System.out.println("[2][3] F1 R1: " + isEventFloor2Room4Completed());
-        System.out.println("[3][3] F1 R1: " + isEventFloor1Room4Completed());
+        //special
+        System.out.println("[1][3] F3 R4: " + isEventFloor3Room4Completed());
+        System.out.println("[2][3] F2 R4: " + isEventFloor2Room4Completed());
+        System.out.println("[3][3] F1 R4: " + isEventFloor1Room4Completed());
         
     }
 
@@ -213,17 +214,24 @@ public class Story {
 
 
 
+        boolean hasPulledTheLever = false;
         System.out.println("----");
-        System.out.println("1. Pull the lever");
-        input.nextLine();
+        while (!hasPulledTheLever){
+            System.out.println("1. Pull the lever");
+            String nextInput = input.nextLine();
+
+            if (nextInput.equals("1")){
+                hasPulledTheLever = true;
+            }
+        }
+
 
         Random rng = new Random();
         int coinflip = rng.nextInt(1, 3);
         System.out.println("");
-        System.out.println("Rolled a " + coinflip);
 
         if (coinflip == 1){
-            System.out.println("Event coinflip head");
+            System.out.println("Coinflip event: Rolled head");
             System.out.println("");
 
             System.out.println(Speaker1 + "\"What!? I paid good money to get those chips. Don't tell me I gave you the good one!?\"" + ANSI_RESET);
@@ -261,7 +269,7 @@ public class Story {
             
 
         } else {
-            System.out.println("Event coinflip tails");
+            System.out.println("Coinflip event: Rolled Tails");
             input.nextLine();
 
             System.out.println(Speaker1 + " \"Chap you should have known that everything here is rigged.\" " + ANSI_RESET);
