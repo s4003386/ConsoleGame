@@ -95,6 +95,10 @@ public class Character {
         return this.Coins;
     }
 
+    public void loseAllCoins(){
+        this.Coins.removeAll(Coins);
+    }
+
     public void addKeyItem(ArrayList<String> rewardedKeyItem){
         keyItems.addAll(rewardedKeyItem);
     }

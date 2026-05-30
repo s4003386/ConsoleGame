@@ -328,14 +328,6 @@ public class Story {
 
 
 
-
-
-
-
-
-
-
-
     public void eventFloor1Room1Choice2(Scanner input){ //player says 'no thanks'
         System.out.println("(Story event: x to skip, enter to continue)");    
     
@@ -370,14 +362,9 @@ public class Story {
         
 
     }
-
-
     public boolean isEventFloor1Room1Completed(){
         return eventFloor1Room1Completed;
     }
-
-
-
 
 
 
@@ -444,12 +431,6 @@ public class Story {
     public boolean isEventFloor1Room2Completed(){
         return eventFloor1Room2Completed;
     }
-
-
-
-
-
-
 
 
 
@@ -667,63 +648,12 @@ public class Story {
 
     //"Floor 2 Room 1", "[2][0] West - Fortuna",
     public void eventFloor2Room1(Scanner input){
-
         System.out.println("Story event: x to skip, enter to continue");
-        String[] lines = {"You attempted to pick the topmost floor, but it seems you were only allowed to travel one floor upward without a keycard.",
-
+        String[] lines = {"You enter a room full of well dressed individuals. All of them turn to you awkwardly.",
+            "\"Did any of you invite this guy?\"",
+            "They all mumbled under their breath. \"No sir\", \"I said nothing sir\", \"Not a word sir.\"",
+            "\"Who are you?\"",
         };
-
-
-        /*
-        You enter a room full of well dressed individuals. All of them turn to you awkwardly.
-        “Did any of you invite this guy?”
-        They all mumbled under their breath. “No sir”, “I said nothing sir”, “Not a word sir.”
-        “Who are you?”
-        I’m just some guy - “Give this guy a good shank then.” immediate fight
-        I’m the Don of the RedBlacks - mood check. 50/50 to 10/90 depending on mood - immediate win if the player has a ‘mysterious keycard’
-        Win -
-        “Ah… You are?“
-        “What business do you have with us tonight then?”
-        I’m here to collect a debt
-        “You remember something like this?”
-        “Actually, I do. You remember the week before? Yvonne should have the invoice.”
-        “Well I’ll be damned.”
-        “Look, I'm going to be honest here. We don't have your money, and you're looking real easy to shut up.”
-        He points to your bloodied shirt. The men in the back start standing straight
-        “I’ll give you a choice. Join us in this match to earn your winnings back or lose the cash. Capiche? Winner takes all and a dinner at the top”
-        “No way, we’re inviting this guy in?”
-        “Shut it, Perry! Keep your manners in order!”
-        ‘Perry’ promptly had his pinky cut off
-        “We stay in line here. Fortuna takes loyalty veeeery seriously.”
-        “Tell me, what is your answer?”
-        Based on mood again
-        Win
-        One of the men whispers from the back
-        “Boss. What do we do?”
-        “Never said we weren’t allowed to rob them eh? My intentions are honest.”
-        Lose
-        (no fight, but you lose everything)
-        “Pleasure doing business with you…”
-        You were promptly led out the door
-        Drop out.
-        Perry locks the door
-        “You know the drill.”
-
-        Receive xyz coins after battle
-
-        Lose -
-        “Yeah right. We see through your bluff.”
-        The men in the back start standing straight
-
-        
-        */
-
-
-
-
-
-
-
 
         String choice = input.nextLine().trim().toLowerCase();
 
@@ -740,21 +670,174 @@ public class Story {
             
         }
 
+        boolean hasPlayerMadeChoice = false;
+        
+        System.out.println("\"Who are you?\"");
+        System.out.println("----");
+        while (!hasPlayerMadeChoice){
+            System.out.println("1. \"I'm just some guy\"");
+            System.out.println("2. \"I'm the Don of the RedBlacks\"");
+            choice = input.nextLine().trim().toLowerCase();
 
-        //battle
-        System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        System.out.println("");
-        storyBattle(F2R1);
+            if (choice.equals("1")) {
+                System.out.println("\"Give this guy a good shank then.\"");
+                input.nextLine();
+
+                System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                System.out.println("");
+                storyBattle(F2R1);
+
+                hasPlayerMadeChoice = true;
 
 
+            } else if (choice.equals("2")){
 
-        System.out.println("f2r1");
-        input.nextLine();
+                Random RNG = new Random();
+                int coinflip = RNG.nextInt(1, 3); //suppose to be based off modd or whatever but i'm lazy
+                
+                if(coinflip == 1){
+                    System.out.println("");
+                    System.out.println("Coinflip event win");
+                    input.nextLine();
+                    eventFloor2Room1eventWin(input);
+                    hasPlayerMadeChoice = true;
+
+                }else if ( coinflip == 2){
+                    System.out.println("");
+                    System.out.println("Coinflip event lose");
+                    input.nextLine();
+                    System.out.println("\"Yeah right. We see through your bluff.\"");
+                    input.nextLine();
+                    System.out.println("The men in the back start standing straight.");
+                    input.nextLine();
+
+                    System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    System.out.println("");
+                    storyBattle(F2R1);
+
+                    hasPlayerMadeChoice = true;
+
+                }
+            }
+        }
         eventFloor2Room1Completed = true;
     }
+
+    public void eventFloor2Room1eventWin(Scanner input){
+        System.out.println("Story event: x to skip, enter to continue");
+        String[] lines = {"\"Ah… You are?\"",
+            "\"What business do you have with us tonight then?\"",
+            "You say you are here to collect a debt",
+            "\"Any of you remember something like this?\"",
+            "\"Actually, I do. You remember the week before? Yvonne should have the invoice.\"",
+            "\"Well I'll be damned.\"",
+            "\"Look, I'm going to be honest here. We don't have your money, and you're looking real easy to shut up.\"",
+            "He points to your bloodied shirt. The men in the back start standing straight",
+            "\"I'll give you a choice. Join us in this match to earn your winnings back or lose the cash. Capiche? Winner takes all and a dinner at the top\"",
+            "\"No way, we're inviting this guy in?\"",
+            "'Perry' promptly had his pinky cut off",
+            "\"Stay in line will you! \"",
+            "A goon nudges and whispers to you",
+            "\"Fortuna takes loyalty veeeery seriously.\"",
+        };
+        String choice = input.nextLine().trim().toLowerCase();
+
+        if (choice.equals("x")) {
+            for (String i : lines){
+                System.out.println(i);
+                System.out.println("");
+            }
+        } else {
+            for (String i : lines){
+                System.out.println(i);
+                input.nextLine(); 
+            }
+            
+        }
+
+        boolean hasPlayerMadeChoice = false;
+
+        System.out.println("\"Tell me, what is your answer?\"");
+        System.out.println("----");
+        while (!hasPlayerMadeChoice){
+            System.out.println("1. Join the table");
+            System.out.println("2. Drop out and leave");
+            choice = input.nextLine().trim().toLowerCase();
+
+            if(choice.equals("1")){
+                System.out.println("");
+                System.out.println("You sit down at the table and begin to play a game...");
+                input.nextLine();
+                System.out.println(".");
+                input.nextLine();
+                System.out.println(".");
+                input.nextLine();
+                System.out.println("!!!");
+                input.nextLine();
+
+                Random RNG = new Random();
+                int coinflip = RNG.nextInt(1, 3);
+
+                if (coinflip == 1){
+                    System.out.println("Coinflip event: Heads");
+                    input.nextLine();
+                    System.out.println("You won the match.");
+                    input.nextLine();
+                    System.out.println("One of the men whispers from the back");
+                    input.nextLine();
+                    System.out.println("\"Boss. What do we do?\"");
+                    input.nextLine();
+                    System.out.println("\"Never said we weren't allowed to rob them eh? My intentions are honest.\"");
+                    input.nextLine();
+
+                    System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    System.out.println("");
+                    storyBattle(F2R1);
+
+                    hasPlayerMadeChoice = true;
+                }
+
+                } else if (choice.equals("2")){
+                    System.out.println("Coinflip event: Tails");
+                    input.nextLine();
+                    System.out.println("You lost the match.");
+                    input.nextLine();
+                    System.out.println("\"Pleasure doing business with you...\"");
+                    input.nextLine();
+
+                    //lose all coins event
+                    //no keycard rewarded
+
+                    hasPlayerMadeChoice = true;
+
+            } else if (choice.equals("2")){
+                System.out.println("Perry locks the doors behind you");
+                input.nextLine();
+                System.out.println("\"You know the drill, boys!\"");
+                input.nextLine();
+
+                System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                System.out.println("");
+                storyBattle(F2R1);
+
+                hasPlayerMadeChoice = true;
+
+            }
+        }
+
+
+    }
+
+
+
     public boolean isEventFloor2Room1Completed(){
         return eventFloor2Room1Completed;
     }
+
+
+
+
+
 
 //"Floor 2 Room 3", "[2][2] East - Fixwood",
     public void eventFloor2Room3(Scanner input){
@@ -768,49 +851,7 @@ public class Story {
         };
 
 
-        /*
-        You enter a room full of well dressed individuals. All of them turn to you awkwardly.
-        “Did any of you invite this guy?”
-        They all mumbled under their breath. “No sir”, “I said nothing sir”, “Not a word sir.”
-        “Who are you?”
-        I’m just some guy - “Give this guy a good shank then.” immediate fight
-        I’m the Don of the RedBlacks - mood check. 50/50 to 10/90 depending on mood - immediate win if the player has a ‘mysterious keycard’
-        Win -
-        “Ah… You are?“
-        “What business do you have with us tonight then?”
-        I’m here to collect a debt
-        “You remember something like this?”
-        “Actually, I do. You remember the week before? Yvonne should have the invoice.”
-        “Well I’ll be damned.”
-        “Look, I'm going to be honest here. We don't have your money, and you're looking real easy to shut up.”
-        He points to your bloodied shirt. The men in the back start standing straight
-        “I’ll give you a choice. Join us in this match to earn your winnings back or lose the cash. Capiche? Winner takes all and a dinner at the top”
-        “No way, we’re inviting this guy in?”
-        “Shut it, Perry! Keep your manners in order!”
-        ‘Perry’ promptly had his pinky cut off
-        “We stay in line here. Fortuna takes loyalty veeeery seriously.”
-        “Tell me, what is your answer?”
-        Based on mood again
-        Win
-        One of the men whispers from the back
-        “Boss. What do we do?”
-        “Never said we weren’t allowed to rob them eh? My intentions are honest.”
-        Lose
-        (no fight, but you lose everything)
-        “Pleasure doing business with you…”
-        You were promptly led out the door
-        Drop out.
-        Perry locks the door
-        “You know the drill.”
 
-        Receive xyz coins after battle
-
-        Lose -
-        “Yeah right. We see through your bluff.”
-        The men in the back start standing straight
-
-        
-        */
 
 
 

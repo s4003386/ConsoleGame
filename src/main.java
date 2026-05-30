@@ -81,6 +81,7 @@ public class main {
             //show current deck 
             //etc
             System.out.println("4. *Debug* What story is marked complete?"); //debuuuug. remove later
+            System.out.println("5. Debug, lose coins");
 
             menuLocation = input.nextLine();
 
@@ -98,6 +99,8 @@ public class main {
                 //System.out.println("For now, innacessable");
             } else if (menuLocation.equals("4")){
                 RunningStory.showCompletedEvents();
+            } else if (menuLocation.equals("5")){
+                loseCoinEvent();
             }
         }
     }
@@ -225,12 +228,16 @@ public class main {
 
                 } else if (currentCol == 2){ //floor 2 --> f3
                     if (keyItemCheckFloor3()){
+                        mainCharacter.moveNorth();
+
                         System.out.println("You have moved Upwards. Current location:");
                         System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]);                         
                     }
 
                 } else if (currentCol == 1){
                     if (keyItemCheckFloor4()){
+                        mainCharacter.moveNorth();
+                        
                         System.out.println("You have moved Upwards. Current location:");
                         System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]);                         
                     }
@@ -477,6 +484,16 @@ public class main {
     public static void F1R3CoinEvent(Coin.CoinType targetType){
         //fix later. zz
         mainCharacter.getCoinItems();
+    }
+    public static void F3R1Event(){
+        //if no battle occured, hand over the keycard anyways
+    }
+    public static void loseCoinEvent(){ //F2R1 event - Win deception event, lose Table event
+        mainCharacter.loseAllCoins();
+        System.out.println("You lost all your coins");
+        System.out.println("");
+        mainCharacter.showInventory();
+        System.out.println("");
     }
 
     public static boolean doesHaveCoin(Coin targetCoin){
