@@ -85,6 +85,18 @@ public class Story {
 
     //special
 
+
+
+
+
+
+    //misc
+    //F1R3 coin event
+     Coin[] F1R3WinCoinEvent = {new Coin(Coin.CoinType.PURPLE), new Coin(Coin.CoinType.PURPLE), new Coin(Coin.CoinType.PURPLE)};
+
+     //f3r1 coin event
+    Coin[] F3R1WinCoinEvent = {new Coin(Coin.CoinType.GREY), new Coin(Coin.CoinType.GREY), new Coin(Coin.CoinType.GREY)};
+
     public static final String ANSI_RESET = "\u001B[0m"; //reset
     public static final String Speaker1 = "\u001B[31m"; //red
     public static final String Speaker2 = "\u001B[32m";//green
@@ -499,9 +511,14 @@ public class Story {
             String playerInput = input.nextLine().trim().toLowerCase();
             System.out.println("");
 
-            if(playerInput.equals("1")){
+            if(playerInput.equals("1")){ // swap the coin
+                System.out.println(".");
+                input.nextLine();
 
+                /* 
+                
                 while (!hasPlayerMadeCoinChoice){ //note, hasplayermadechoice is not turned true in this branch
+                    
                     System.out.println("Your current inventory");
                     main.showInventory();
                     input.nextLine();
@@ -547,21 +564,57 @@ public class Story {
                             System.out.println("No white coin found in inventory");
                         }
                     }
+                }*/
+                
+                Random RNG = new Random();
+                int coinflip = RNG.nextInt(1, 3);
+
+                if (coinflip==1){ //win coin
+                    System.out.println("Coinflip event: Heads");
+                    input.nextLine();
+                    System.out.println("You won something!");
+
+                    //win some coins
+                    main.winCoinEvent(F1R3WinCoinEvent);
+                    //Coin[] F1R3WinCoinEvent = {new Coin(Coin.CoinType.PURPLE), new Coin(Coin.CoinType.PURPLE), new Coin(Coin.CoinType.PURPLE)};
+                    
+                    hasPlayerMadeChoice = true;
+                    
+                }else if (coinflip==2){ // lose coin
+                    System.out.println("Coinflip event: Tails");
+                    input.nextLine();
+                    System.out.println("You lost.");
+                    input.nextLine();
+
+                    main.lose1CoinEvent();
+
+                    //lose a coin
+
+                    hasPlayerMadeChoice = true;
+                }
                     
 
-
-
-                }
                 
-
-                //hasPlayerMadeChoice = true;
             } else if (playerInput.equals("2")){
                 System.out.println("You pulled the lever");
+                input.nextLine();
+                System.err.println(".");
+                input.nextLine();
+                System.out.println("Nothing happened");
+                input.nextLine();
+
                 hasPlayerMadeChoice = true;
             } else if (playerInput.equals("3")){
                 System.out.println("You took the coin out");
+                input.nextLine();
+
+                //recieve a white coin
+
                 hasPlayerMadeChoice = true;
             }
+
+            /* */
+
 
         }
         
@@ -580,13 +633,21 @@ public class Story {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 // FLOOR 22222222222222222222222222222222
 
-
-
-
-    
-//"Floor 2 Room 2", "[2][1] Elevator",
+//"Floor 2 Room 2", "[2][1] Elevator", done
     public void eventFloor2Room2(Scanner input){
         System.out.println("Story event: x to skip, enter to continue");
         String[] lines = {"You attempted to pick the topmost floor, but it seems you were only allowed to travel one floor upward without a keycard.",
@@ -646,7 +707,7 @@ public class Story {
     }
 
 
-    //"Floor 2 Room 1", "[2][0] West - Fortuna",
+    //"Floor 2 Room 1", "[2][0] West - Fortuna", done - need to add colour text at some point
     public void eventFloor2Room1(Scanner input){
         System.out.println("Story event: x to skip, enter to continue");
         String[] lines = {"You enter a room full of well dressed individuals. All of them turn to you awkwardly.",
@@ -805,6 +866,8 @@ public class Story {
                     System.out.println("\"Pleasure doing business with you...\"");
                     input.nextLine();
 
+                    main.loseCoinEvent();
+
                     //lose all coins event
                     //no keycard rewarded
 
@@ -828,38 +891,18 @@ public class Story {
 
     }
 
-
-
     public boolean isEventFloor2Room1Completed(){
         return eventFloor2Room1Completed;
     }
 
 
-
-
-
-
-//"Floor 2 Room 3", "[2][2] East - Fixwood",
+//"Floor 2 Room 3", "[2][2] East - Fixwood", Mood changing event + colour tba
     public void eventFloor2Room3(Scanner input){
-        System.out.println("eventFloor2Room3");
-        input.nextLine();
-
-
         System.out.println("Story event: x to skip, enter to continue");
-        String[] lines = {"You attempted to pick the topmost floor, but it seems you were only allowed to travel one floor upward without a keycard.",
-
+        String[] lines = {"A gaggle of plain clothed individuals sat around the poker table.",
+            "\"Marcus, who is this?\"",
+            "I don't know",
         };
-
-
-
-
-
-
-
-
-
-
-
         String choice = input.nextLine().trim().toLowerCase();
 
         if (choice.equals("x")) {
@@ -875,15 +918,40 @@ public class Story {
             
         }
 
+        boolean hasPlayerMadeChoice = false;
+
+        System.out.println("\"Are you one of the Redblack fellas? I didn't think they liked being up here.\"");
+        System.out.println("----");
+        while (!hasPlayerMadeChoice){
+            System.out.println("1. Say yes.");
+            System.out.println("2. Say no.");
+            choice = input.nextLine().trim().toLowerCase();
+
+            if(choice.equals("1")){
+                System.out.println("");
+                System.out.println("\"You must be new, because our kind have been told to kill you on sight. We have bounties to keep, you know?\"");
+                input.nextLine();
+
+                //lower mood event
+
+                hasPlayerMadeChoice = true;
+            } else if (choice.equals("2")){
+                System.out.println("");
+                System.out.println("\"Well good. One less to worry about.\"");
+                input.nextLine();
+                System.out.println("\"Say though, your pockets are looking awfully full for a regular layperson, and rent is due.\"");
+                input.nextLine();
+
+                //raise mood event
+
+                hasPlayerMadeChoice = true;
+            }
+        }
 
         //battle
         System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         System.out.println("");
         storyBattle(F2R3);
-
-
-
-
 
         eventFloor2Room3Completed = true;
     }
@@ -892,24 +960,57 @@ public class Story {
     }
 
 
+
+
+
+
+
+
 // FLOOR 333333333333333333333333333333333333
 
+//"Floor 3 Room 2", "[1][1] elevator",
+    public void eventFloor3Room2(Scanner input){ // only needs colours 
 
-//"Floor 3 Room 1", "[1][0] Foyer",
-    public void eventFloor3Room1(Scanner input){
-        System.out.println("eventFloor3Room1");
-        input.nextLine();
+        System.out.println("Story event: x to skip, enter to continue");
+        String[] lines = {"There was a man standing in the way of the entrance. He was a big guy with an even bigger suitcase, wearing a bespoke tailored black suit.",
+            "Behind him was more of the same. I stood out like a sore thumb.",
+            "\"You weren't who we were expecting, but we will let you in nonetheless.\"",
+            "He leads me to a large green table. In the back there is a bar with a man and a woman serving as bartenders.",
+            "\"Jack, is this really the guy who is meant to be here? I don't see no checks on him.\"",
+            "\"Don't go doubting someone cuz they aren't docked up to the nines, eh?\"",
+            "The bartender slid me a drink, and a voice calls out from the back",
+            "\"Baccarat tonite, drinks on me.\"",
+            "\"I hand over the district area to you if you best me this round\"",
+            "\"Bet\"",
+            ".",
+            ".",
+            ".",
+            "And thus, a lively game of Baccarat took place.",
+            "\"You &*%%&@#& I'll *&%$#$%^\"",
+            "*Loud slamming*",
+            "Every few seconds, glass shattering can be heard.",
+            "Someone grabs your shirt and flings you across the table.",
+            "There is no way you are leaving this room without a fight."
+        };
+        String choice = input.nextLine().trim().toLowerCase();
 
-        eventFloor3Room1Completed = true;
-    }
-    public boolean isEventFloor3Room1Completed(){
-        return eventFloor3Room1Completed;
-    }
+        if (choice.equals("x")) {
+            for (String i : lines){
+                System.out.println(i);
+                System.out.println("");
+            }
+        } else {
+            for (String i : lines){
+                System.out.println(i);
+                input.nextLine(); 
+            }
+            
+        }
 
-//"Floor 3 Room 2", "[1][1] Foyer",
-    public void eventFloor3Room2(Scanner input){
-        System.out.println("eventFloor3Room2");
-        input.nextLine();
+        //battle
+        System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println("");
+        storyBattle(F3R2);
 
         eventFloor3Room2Completed = true;
     }
@@ -917,7 +1018,119 @@ public class Story {
         return eventFloor3Room2Completed;
     }
 
-//"Floor 3 Room 3", "[1][2] Foyer",
+//"Floor 3 Room 1", "[1][0] Foyer Fortuna west",
+    public void eventFloor3Room1(Scanner input){
+        System.out.println("Story event: x to skip, enter to continue");
+        String[] lines = {"There was a grizzled man sitting on the far side of the bar. He sat alone, empty glass cup in hand with his subordinates off to the side discussing something unimportant.",
+            "The windows revealed the reflection of his face as well as yourself standing near the entrance of the room.",
+            "By now, you looked like a mess. He noticed.",
+            "\"Who are you? You gonna roughhouse this place like the rest of em?\"",
+            "You stood in place.",
+            "\"I've seen many people like you before. \"",
+            "He invites you to sit.",
+            "\"If y'ask me, Fortuna has lost its way. I was once the right hand advisor to the big boss, believe it or not.\"",
+            "\"Those threads on you tell me Fortuna has not changed since they disgraced me.\"",
+            "The soldato in the back quiet down.",
+            "\"Kid, what's your goal here? What are you trying to do?\"",
+        };
+        String choice = input.nextLine().trim().toLowerCase();
+
+        if (choice.equals("x")) {
+            for (String i : lines){
+                System.out.println(i);
+                System.out.println("");
+            }
+        } else {
+            for (String i : lines){
+                System.out.println(i);
+                input.nextLine(); 
+            }
+            
+        }
+
+        /*
+        There was a grizzled man sitting on the far side of the bar. He sat alone, empty glass cup in hand with his subordinates off to the side discussing something unimportant. 
+        The windows revealed the reflection of his face as well as yourself standing near the entrance of the room. 
+        By now, you looked like a mess. He noticed. 
+        “Who are you? You gonna roughhouse this place like the rest of em?”
+        You stood in place.
+        “I’ve seen many people like you before. ”
+        He invites you to sit.
+        “If y’ask me, Fortuna has lost its way. I was once the advisor, believe it or not.”
+        “Those threads on you tell me it has not changed since they disgraced me.”
+        The soldato in the back quiet down. 
+        “Kid, what's your goal here? What are you trying to do?”
+
+
+        Lie - Say you are here to make it big
+        “I’ve seen many like you… Always terrible at lying.”
+        “I don’t know why you are here, but if your goal is the top with nothing but scraps on you, ”
+
+        
+        */
+
+        boolean hasPlayerMadeChoice = false;
+
+        System.out.println("\"Kid, what's your goal here? What are you trying to do?\"");
+        System.out.println("----");
+        while (!hasPlayerMadeChoice){
+            System.out.println("1. Be honest. Say you are looking for your father");
+            System.out.println("2. Say you are here to make it big.");
+            choice = input.nextLine().trim().toLowerCase();
+
+            if(choice.equals("1")){
+                System.out.println("");
+                F3r1eventChoice1(input);
+
+                hasPlayerMadeChoice = true;
+            } else if (choice.equals("2")){
+                System.out.println("");
+
+
+                hasPlayerMadeChoice = true;
+            }
+        }
+        eventFloor3Room1Completed = true;
+    }
+    public void F3r1eventChoice1(Scanner input){//inconsistent naming, i'm sowwyyy. //choice 1 - player is honest
+        System.out.println("Story event: x to skip, enter to continue");
+        String[] lines = {"\"Is it just that?\"",
+            "\"Kid, I'll let you in on something. Your father is long gone. I guarantee it.\"",
+            "\"This place collects 'debt'. All sorts of debt. If yer father was lost here, his debt has already been collected.\"",
+            "\"...\"",
+            "\"I'll tell you right now. It's not worth the effort.\"",
+            "\"I tried in the past. Oh, I tried real hard. But big guys get big money to swing around. Their hands are everywhere.\"",
+            "\"The moment power gets to some people's head, they get a sickness. I've tried to cure it all I could but you see me. They don't want to be cured.\"",
+            "\"I warn you not to fall into the same sickness. Neither to fall to debt to the likes of us sharks.\"",
+        };
+        String choice = input.nextLine().trim().toLowerCase();
+
+        if (choice.equals("x")) {
+            for (String i : lines){
+                System.out.println(i);
+                System.out.println("");
+            }
+        } else {
+            for (String i : lines){
+                System.out.println(i);
+                input.nextLine(); 
+            }
+            
+        }
+
+        main.winCoinEvent(F1R3WinCoinEvent);
+        //
+    }
+    public void F3r1eventChoice2(){//choice 2 - player says they want to make it big
+
+    }
+    public boolean isEventFloor3Room1Completed(){ 
+        return eventFloor3Room1Completed;
+    }
+
+
+
+//"Floor 3 Room 3", "[1][2] Foyer east",
     public void eventFloor3Room3(Scanner input){
         System.out.println("eventFloor3Room3");
         input.nextLine();

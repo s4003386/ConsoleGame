@@ -478,7 +478,7 @@ public class main {
 
 
     //misc methods 
-    public static ArrayList<Coin> getCoinItems(){
+    public static ArrayList<Coin> getCoinItems(){ //getter
         return mainCharacter.getCoinItems();
     }
     public static void F1R3CoinEvent(Coin.CoinType targetType){
@@ -487,6 +487,22 @@ public class main {
     }
     public static void F3R1Event(){
         //if no battle occured, hand over the keycard anyways
+    }
+
+    public static void lose1CoinEvent(){ //F1R3 lose roll event
+        mainCharacter.lose1Coin();
+    }
+
+    public static void winCoinEvent(Coin[] coinsWon){ //F1R3 win coin event
+        mainCharacter.addCoinItem(coinsWon);
+
+        System.out.println("");
+        System.out.println("You recieved: ");
+        for(Coin item: coinsWon) {
+
+            System.out.println("- " + item + " COIN"); 
+        }
+        System.out.println("");
     }
     public static void loseCoinEvent(){ //F2R1 event - Win deception event, lose Table event
         mainCharacter.loseAllCoins();

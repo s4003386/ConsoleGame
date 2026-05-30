@@ -98,6 +98,11 @@ public class Character {
     public void loseAllCoins(){
         this.Coins.removeAll(Coins);
     }
+    public void lose1Coin(){
+        System.out.println("You lost a coin"); //find out how to name a specific coin at some point
+        this.Coins.remove(1);
+    }
+
 
     public void addKeyItem(ArrayList<String> rewardedKeyItem){
         keyItems.addAll(rewardedKeyItem);
