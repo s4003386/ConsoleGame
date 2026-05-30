@@ -43,32 +43,45 @@ public class Story {
 
     //floor 1 room 1
     Coin[] F1R1Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)}; //every coin is an object 'coin' with an enum type to deternine roll chance
-    ArrayList<String> EmptyArray = new ArrayList<String>();
+    ArrayList<String> EmptyArray = new ArrayList<String>(); //add whatever
     Battle F1R1 = new Battle("F1R1Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); //called when the story calls for it
     //everything temporary right now is just an ArrayList string but it can be changed when it needs to in the battles class. just dont forget to change them here
-
-    //floor 1 room 2
-    Coin[] F1R2Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)};
+    //floor 1 room 2 elevator
+    Coin[] F1R2Reward = {new Coin(Coin.CoinType.BLUE), new Coin(Coin.CoinType.GREEN), new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)};
     ArrayList<String> F1R2KeyItems = new ArrayList<String>(List.of("Floor2_Keycard"));
-    Battle F1R2 = new Battle("F1R2Battle", 1 ,  F1R1Reward, EmptyArray, F1R2KeyItems, EmptyArray); //called when the story calls for it
+    Battle F1R2 = new Battle("F1R2Battle", 1 ,  F1R2Reward, EmptyArray, F1R2KeyItems, EmptyArray); //called when the story calls for it
 
-    //floor 2
-    Coin[] F2R2Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)}; 
-    Battle F2R2 = new Battle("F2R2Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); 
-
-    Coin[] F2R1Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)}; 
+    //floor 2 ////////////////////////////////////////////////////
+    Coin[] F2R2Reward = {new Coin(Coin.CoinType.RED), new Coin(Coin.CoinType.PURPLE), new Coin(Coin.CoinType.GREEN)}; 
+    Battle F2R2 = new Battle("F2R2Battle", 1 ,  F2R2Reward, EmptyArray, EmptyArray, EmptyArray); 
+    //west r1
+    Coin[] F2R1Reward = {new Coin(Coin.CoinType.YELLOW), new Coin(Coin.CoinType.RED), new Coin(Coin.CoinType.BLUE)}; 
     ArrayList<String> F2R1KeyItems = new ArrayList<String>(List.of("Floor3_Keycard"));
-    Battle F2R1 = new Battle("F2R1Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); 
-    
-    Coin[] F2R3Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)}; 
+    Battle F2R1 = new Battle("F2R1Battle", 1 ,  F2R1Reward, EmptyArray, F2R1KeyItems, EmptyArray); 
+    //east r3
+    Coin[] F2R3Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.BLACK)}; 
     ArrayList<String> F2R3KeyItems = new ArrayList<String>(List.of("Floor3_Keycard"));
-    Battle F2R3 = new Battle("F2R3Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); 
+    Battle F2R3 = new Battle("F2R3Battle", 1 ,  F2R3Reward, EmptyArray, F2R3KeyItems, EmptyArray); 
 
-    //floor 3
-    Coin[] F3R2Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)}; 
-    Battle F3R2 = new Battle("F3R2Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); 
+    //floor 3 ////////////////////////////////////////////////////
+    Coin[] F3R2Reward = {new Coin(Coin.CoinType.GREEN), new Coin(Coin.CoinType.YELLOW), new Coin(Coin.CoinType.WHITE)}; 
+    Battle F3R2 = new Battle("F3R2Battle", 1 ,  F3R2Reward, EmptyArray, EmptyArray, EmptyArray); 
+    //west r1
+    Coin[] F3R1Reward = {new Coin(Coin.CoinType.RED), new Coin(Coin.CoinType.PURPLE), new Coin(Coin.CoinType.GREEN)}; 
+    ArrayList<String> F3R1KeyItems = new ArrayList<String>(List.of("Floor4_Keycard")); 
+    Battle F3R1 = new Battle("F3R1Battle", 1 ,  F2R2Reward, EmptyArray, EmptyArray, EmptyArray); 
+    //east r3
+    Coin[] F3R3Reward = {new Coin(Coin.CoinType.PURPLE), new Coin(Coin.CoinType.GREY), new Coin(Coin.CoinType.PURPLE)}; 
+    ArrayList<String> F3R3KeyItems = new ArrayList<String>(List.of("Floor4_Keycard")); 
+    Battle F3R3 = new Battle("F3R3Battle", 1 ,  F3R3Reward, EmptyArray, EmptyArray, EmptyArray); 
 
-    //floor 4
+
+    //floor 4 ///////////////////////////////////////////////////////
+    //no fight for elevator floor
+    //west - secretary
+    Coin[] F4R1Reward = {new Coin(Coin.CoinType.GREY), new Coin(Coin.CoinType.YELLOW), new Coin(Coin.CoinType.PURPLE)}; 
+    Battle F4R1 = new Battle("F4R1Battle", 1 ,  F4R1Reward, EmptyArray, EmptyArray, EmptyArray); 
+    //no fights for east room
 
     //special
 
