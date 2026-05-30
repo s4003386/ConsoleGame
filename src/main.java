@@ -192,9 +192,19 @@ public class main {
 
         } else { //not an elevator tile
             if (currentRow == 3) {// special rooms
-                System.out.println("4. South"); 
+                if (currentCol == 3){
+                    System.out.println("You are at the end.");
+                } else {
+                    System.out.println("4. South"); 
+                }
             } else if (currentRow == 2){ //rightmost nonspecial room
-                System.out.println("3. West");
+                if (currentCol ==0){ //on the 4th floor
+                    System.out.println("2. East");
+                    System.out.println("3. West");
+                } else {
+                    System.out.println("3. West");
+                }
+                
             } else if (currentRow == 0){ //leftmost room
                 System.out.println("2. East");
             } else { // technically not needed, I guess? center room
@@ -253,7 +263,7 @@ public class main {
             
 
             //east
-        } else if (menuLocation.equals("2")){
+        } else if (menuLocation.equals("2")){ //east
 
             //check if at floor 4 (col0). 
             //Floor 4 true, row > 2 - able to go to the furthest east room 
@@ -270,6 +280,7 @@ public class main {
                     mainCharacter.moveEast();
                     System.out.println("You have moved east. Current location:");
                     System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]); 
+                    isElevatorTile = map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile();
                     if(isElevatorTile){
                         System.out.println("You are near an elevator. You may move upwards");
                     }
@@ -283,6 +294,7 @@ public class main {
                     mainCharacter.moveEast();
                     System.out.println("You have moved east. Current location:");
                     System.out.println(map[mainCharacter.getCol()][mainCharacter.getRow()]); 
+                    isElevatorTile = map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile();
                     if(isElevatorTile){
                         System.out.println("You are near an elevator. You may move upwards");
                     }
@@ -296,6 +308,10 @@ public class main {
 
         } else if (menuLocation.equals("3")){
             mainCharacter.moveWest();
+                                isElevatorTile = map[mainCharacter.getCol()][mainCharacter.getRow()].getIsElevatorTile();
+                    if(isElevatorTile){
+                        System.out.println("You are near an elevator. You may move upwards");
+                    }
         } else if (menuLocation.equals("4")){
             mainCharacter.moveSouth();
         } 
@@ -440,7 +456,7 @@ public class main {
 
             } 
         } else {
-            System.out.println("Something went wrong (locationStoryCheck - CurrentCol)");
+            System.out.println("You did not move.");
         }
         }
     
@@ -504,6 +520,13 @@ public class main {
         }
         System.out.println("");
     }
+    public static void winKeyItemEvent(ArrayList<String> KeyItemWon){
+        mainCharacter.addKeyItem(KeyItemWon);
+        System.out.println("Key items - - -");
+        System.out.println(KeyItemWon);
+
+    }
+
     public static void loseCoinEvent(){ //F2R1 event - Win deception event, lose Table event
         mainCharacter.loseAllCoins();
         System.out.println("You lost all your coins");

@@ -69,11 +69,11 @@ public class Story {
     //west r1
     Coin[] F3R1Reward = {new Coin(Coin.CoinType.RED), new Coin(Coin.CoinType.PURPLE), new Coin(Coin.CoinType.GREEN)}; 
     ArrayList<String> F3R1KeyItems = new ArrayList<String>(List.of("Floor4_Keycard")); 
-    Battle F3R1 = new Battle("F3R1Battle", 1 ,  F2R2Reward, EmptyArray, EmptyArray, EmptyArray); 
+    Battle F3R1 = new Battle("F3R1Battle", 1 ,  F2R2Reward, EmptyArray, F3R1KeyItems, EmptyArray); 
     //east r3
     Coin[] F3R3Reward = {new Coin(Coin.CoinType.PURPLE), new Coin(Coin.CoinType.GREY), new Coin(Coin.CoinType.PURPLE)}; 
     ArrayList<String> F3R3KeyItems = new ArrayList<String>(List.of("Floor4_Keycard")); 
-    Battle F3R3 = new Battle("F3R3Battle", 1 ,  F3R3Reward, EmptyArray, EmptyArray, EmptyArray); 
+    Battle F3R3 = new Battle("F3R3Battle", 1 ,  F3R3Reward, EmptyArray, F3R3KeyItems, EmptyArray); 
 
 
     //floor 4 ///////////////////////////////////////////////////////
@@ -856,9 +856,8 @@ public class Story {
                     storyBattle(F2R1);
 
                     hasPlayerMadeChoice = true;
-                }
-
-                } else if (choice.equals("2")){
+                    
+                } else if (coinflip == 2){
                     System.out.println("Coinflip event: Tails");
                     input.nextLine();
                     System.out.println("You lost the match.");
@@ -872,6 +871,7 @@ public class Story {
                     //no keycard rewarded
 
                     hasPlayerMadeChoice = true;
+                 }
 
             } else if (choice.equals("2")){
                 System.out.println("Perry locks the doors behind you");
@@ -1018,7 +1018,7 @@ public class Story {
         return eventFloor3Room2Completed;
     }
 
-//"Floor 3 Room 1", "[1][0] Foyer Fortuna west",
+//"Floor 3 Room 1", "[1][0] Foyer Fortuna west", colour
     public void eventFloor3Room1(Scanner input){
         System.out.println("Story event: x to skip, enter to continue");
         String[] lines = {"There was a grizzled man sitting on the far side of the bar. He sat alone, empty glass cup in hand with his subordinates off to the side discussing something unimportant.",
@@ -1031,7 +1031,6 @@ public class Story {
             "\"If y'ask me, Fortuna has lost its way. I was once the right hand advisor to the big boss, believe it or not.\"",
             "\"Those threads on you tell me Fortuna has not changed since they disgraced me.\"",
             "The soldato in the back quiet down.",
-            "\"Kid, what's your goal here? What are you trying to do?\"",
         };
         String choice = input.nextLine().trim().toLowerCase();
 
@@ -1047,28 +1046,6 @@ public class Story {
             }
             
         }
-
-        /*
-        There was a grizzled man sitting on the far side of the bar. He sat alone, empty glass cup in hand with his subordinates off to the side discussing something unimportant. 
-        The windows revealed the reflection of his face as well as yourself standing near the entrance of the room. 
-        By now, you looked like a mess. He noticed. 
-        “Who are you? You gonna roughhouse this place like the rest of em?”
-        You stood in place.
-        “I’ve seen many people like you before. ”
-        He invites you to sit.
-        “If y’ask me, Fortuna has lost its way. I was once the advisor, believe it or not.”
-        “Those threads on you tell me it has not changed since they disgraced me.”
-        The soldato in the back quiet down. 
-        “Kid, what's your goal here? What are you trying to do?”
-
-
-        Lie - Say you are here to make it big
-        “I’ve seen many like you… Always terrible at lying.”
-        “I don’t know why you are here, but if your goal is the top with nothing but scraps on you, ”
-
-        
-        */
-
         boolean hasPlayerMadeChoice = false;
 
         System.out.println("\"Kid, what's your goal here? What are you trying to do?\"");
@@ -1085,7 +1062,7 @@ public class Story {
                 hasPlayerMadeChoice = true;
             } else if (choice.equals("2")){
                 System.out.println("");
-
+                F3r1eventChoice2(input);
 
                 hasPlayerMadeChoice = true;
             }
@@ -1118,10 +1095,37 @@ public class Story {
             
         }
 
-        main.winCoinEvent(F1R3WinCoinEvent);
-        //
+        main.winCoinEvent(F3R1WinCoinEvent);
+        main.winKeyItemEvent(F3R1KeyItems);
+        //another event to give the keycard
+
     }
-    public void F3r1eventChoice2(){//choice 2 - player says they want to make it big
+    public void F3r1eventChoice2(Scanner input){//choice 2 - player says they want to make it big
+        System.out.println("Story event: x to skip, enter to continue");
+        String[] lines = {"\"I've seen many like you… Always terrible at lying.\"",
+            "\"I don't know why you are here - or why you hide it - but if your goal is the top with nothing but scraps on you, a wake up call is what you really need.\"",
+            "\"Prove it to me. Prove you can make it big then.\"",
+            "He raises his hand and clicks his fingers. The soldato behind him are alerted immediately and ready their guns."
+        };
+        String choice = input.nextLine().trim().toLowerCase();
+
+        if (choice.equals("x")) {
+            for (String i : lines){
+                System.out.println(i);
+                System.out.println("");
+            }
+        } else {
+            for (String i : lines){
+                System.out.println(i);
+                input.nextLine(); 
+            }
+            
+        }
+
+        //battle
+        System.out.println("*Battle start*");///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println(""); 
+        storyBattle(F3R1);
 
     }
     public boolean isEventFloor3Room1Completed(){ 
@@ -1130,16 +1134,137 @@ public class Story {
 
 
 
-//"Floor 3 Room 3", "[1][2] Foyer east",
+//"Floor 3 Room 3", "[1][2] Foyer east - fixwood", 
     public void eventFloor3Room3(Scanner input){
-        System.out.println("eventFloor3Room3");
+        System.out.println("Story event: x to skip, enter to continue");
+        String[] lines = {"You enter a strange room with a deerhead, several pool tables, darts, and another bar counter. Its aesthetics are completely different to the rest of the building.",
+            "All of the people in the room seem to be too absorbed in activity to notice that you are inside with them. It isn't until a woman with a cigar and suspenders turns to the front entrance that your presence becomes known.",
+            "\"We got a new mate joining us. Looks like they've been through the shitter.\"",
+            "\"Kid, what are you even doing here? You lost? You should get lost.\"",
+            "A janitor comes up behind you and sweeps your dirt-ladden shoeprints off the shiny wooden flooring.",
+            "\"Ay, if they've made it here, test his luck!\"",
+            "The others look around and clamour among themselves.",
+            "The woman huffs the cigar for a moment, and turns to you.",
+        };
+        String choice = input.nextLine().trim().toLowerCase();
+
+        if (choice.equals("x")) {
+            for (String i : lines){
+                System.out.println(i);
+                System.out.println("");
+            }
+        } else {
+            for (String i : lines){
+                System.out.println(i);
+                input.nextLine(); 
+            }
+            
+        }
+
+        System.out.println("\"Young blood, you play darts?\"");
+        System.out.println("----");
+        System.out.println("1. Nod your head");
+        System.out.println("2. Shake your head");
         input.nextLine();
 
+        f3r3pt2(input);
+
+
         eventFloor3Room3Completed = true;
+    }
+    public void f3r3pt2(Scanner input){
+        System.out.println("Story event: x to skip, enter to continue");
+        String[] lines = {"She ignores your response and drags you over to the oche. She then leans over and whispers:",
+            "\"You look like me when I first stepped onto this floor. I'll give you a shot to keep your place here. If you miss or hit a single, I'm grounding you to a paste.\"",
+            "She then hands you a single dart. It pulses like the chips.",
+        };
+        String choice = input.nextLine().trim().toLowerCase();
+
+        if (choice.equals("x")) {
+            for (String i : lines){
+                System.out.println(i);
+                System.out.println("");
+            }
+        } else {
+            for (String i : lines){
+                System.out.println(i);
+                input.nextLine(); 
+            }
+            
+        }
+
+        boolean hasPlayerMadeChoice = false;
+        boolean hasWonDartsGame = false;
+
+        System.out.println("Play darts");
+        input.nextLine(); 
+
+        while (!hasPlayerMadeChoice){
+            System.out.println("1. Throw the dart");
+            choice = input.nextLine().trim().toLowerCase();
+            //darts game
+
+            if(choice.equals("1")){
+                System.out.println(".");
+                Random RNG = new Random();
+                int dartsChance = RNG.nextInt(1,101);
+
+                if (dartsChance<=30){
+                    System.out.println("You missed completely");
+                    hasWonDartsGame = false;
+                } else if (dartsChance<=80){
+                    System.out.println("You hit a single");
+                    hasWonDartsGame = false;
+                } else if (dartsChance <= 90){
+                    System.out.println("You hit a double ring");
+                    hasWonDartsGame = true;
+                    
+                } else if (dartsChance <= 95){
+                    System.out.println("You hit a triple ring");
+                    hasWonDartsGame = true;
+
+                } else {
+                    System.out.println("You hit bullseye");
+                    hasWonDartsGame = true;
+                }
+                
+                hasPlayerMadeChoice = true;
+            }
+            
+        }
+
+        if(hasWonDartsGame){
+            System.out.println("");
+            System.out.println("Not bad.");
+            input.nextLine();
+
+            main.winCoinEvent(F3R1WinCoinEvent); //same grey coins
+            input.nextLine();
+            System.out.println("One last test before I let you loose kid. Keep your place if you can win against me!");
+            input.nextLine();
+
+
+        } else {
+
+            System.out.println("");
+            System.out.println("\"Batters up! Hahaha!\"");
+            input.nextLine();
+
+
+        }
+
+        System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println("");
+        storyBattle(F3R3); //
+    
     }
     public boolean isEventFloor3Room3Completed(){
         return eventFloor3Room3Completed;
     }
+
+
+
+
 
 
 // FLOOR 4444444444444444444444444444444
