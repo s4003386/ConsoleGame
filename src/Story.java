@@ -1310,223 +1310,238 @@ public class Story {
 
             choice = input.nextLine().trim().toLowerCase();
 
-            boolean hasPlayerMadeChoice2 = false;
             if (choice.equals("1")){ //yes (strong control the weak)
-                System.out.println("He writes some more");
-                input.nextLine();
-                System.out.println("\"Do you consider yourself strong?\"");
-                System.out.println("----");
-                while(!hasPlayerMadeChoice2){
-                    System.out.println("1. Yes");
-                    System.out.println("2. No");
-
-                    choice = input.nextLine().trim().toLowerCase();
-
-                    if(choice.equals("1")){ //yes (Do you consider yourself strong?)
-                        System.out.println("\"I see. So this is how it is.\"");
-                        input.nextLine();
-                        System.out.println("\"Prove your theory then. Beat me, and beat the one behind the oaken doors. When you reach the top, tell me if you are happy?\"");
-                        input.nextLine();
-
-                        System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        System.out.println("");
-                        storyBattle(F4R1); 
-
-                        hasPlayerMadeChoice = true;
-                        hasPlayerMadeChoice2 = true;
-                        
-                    } else if (choice.equals("2")){//no (Do you consider yourself strong?)
-                        System.out.println("\"How curious.\"");
-                        input.nextLine();
-                        System.out.println("\"Are you happy like this? Being weak?\"");
-                        System.out.println("----");
-                        boolean hasPlayerMadeChoice3 = false;
-
-                        while(!hasPlayerMadeChoice3){ 
-                            System.out.println("1. Yes");
-                            System.out.println("2. No");
-
-                            choice = input.nextLine().trim().toLowerCase();
-
-                            if (choice.equals("1")){ // // no-Do you consider yourself strong? // yes - are you happy like this?
-                                System.out.println("\"Then why are you here? If not to prove you are strong? Stronger than those who took what you lost?\"");
-                                input.nextLine();
-                                System.out.println("\"Battle me, and see if you are truly happy if you lose.\"");
-                                input.nextLine();
-
-                                
-                                System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                System.out.println("");
-                                storyBattle(F4R1); 
-
-                                hasPlayerMadeChoice = true;
-                                hasPlayerMadeChoice2 = true;
-                                hasPlayerMadeChoice3 = true;
-
-
-                            } else if (choice.equals("2")){ // no - Do you consider yourself strong? // no - are you happy like this?
-
-                                System.out.println("What will you do about it then?");
-                                System.out.println("----");
-                                boolean hasplayermadechoice4 = false;
-                                while (!hasplayermadechoice4){
-                                    System.out.println("1. I will become stronger");
-                                    System.out.println("2. I don't know");
-
-                                    choice = input.nextLine().trim().toLowerCase();
-
-                                    if (choice.equals("1")){ //I will become stronger
-                                        System.out.println("\"Beat me then, and see if you are truly happy if you win.\"");
-                                        input.nextLine();
-
-                                        System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                        System.out.println("");
-                                        storyBattle(F4R1); 
-
-                                        hasPlayerMadeChoice = true;
-                                        hasPlayerMadeChoice2 = true;
-                                        hasPlayerMadeChoice3 = true;
-                                        hasplayermadechoice4 = true;
-
-                                    } else if (choice.equals("2")){ // I don't know
-                                        System.out.println("\"The mind is plagued, yet you have proven yourself stronger than most. Go to the oaken doors and tell me if you are truly happy after your ordeal.\"");
-                                        input.nextLine();
-
-                                        hasPlayerMadeChoice = true;
-                                        hasPlayerMadeChoice2 = true;
-                                        hasPlayerMadeChoice3 = true;
-                                        hasplayermadechoice4 = true;
-                                    }
-
-                                }
-                                
-                            }
-                        }
-
-
-                    }
-                }
+                f1r1Choice1(input);
+                hasPlayerMadeChoice = true;
 
             } else if (choice.equals("2")){ //no (strong control the weak)
-                System.out.println("----");
-                while(!hasPlayerMadeChoice2){
-                    System.out.println("\"Then who rules over the rest?\"");
-                    System.out.println("----");
+                f1r1Choice2(input);
+                hasPlayerMadeChoice = true;
+            }
+        }
+        eventFloor4Room1Completed = true;
+    }
 
-                    boolean hasPlayerMadeChoice3 = false;
-                    while(!hasPlayerMadeChoice3){
-                        System.out.println("1. The wealthy");
-                        System.out.println("2. I don't know");
+    //the strong must rule against the weak
+    public void f1r1Choice1(Scanner input){ // yes, strong control the weak
+        boolean hasPlayerMadeChoice = false;
+        
+        System.out.println("He writes some more");
+        input.nextLine();
+        System.out.println("\"Do you consider yourself strong?\"");
+        System.out.println("----");
 
-                        choice = input.nextLine().trim().toLowerCase();
+        while (!hasPlayerMadeChoice) {
+            System.out.println("1. Yes");
+            System.out.println("2. No");
 
-                        if (choice.equals("1")){ //the wealthy
-                            System.out.println("\"So money buys strength? How does one gain money then if the money is already controlled by the strong?\"");
-                            System.out.println("----");
-                            boolean hasplayermadechoice4 = false;
-                            while (!hasplayermadechoice4){
-                                System.out.println("1. They were not always strong");
-                                System.out.println("2. They gain money by being strong");
+            String choice = input.nextLine().trim().toLowerCase();
 
-                                choice = input.nextLine().trim().toLowerCase();
-
-                                if (choice.equals("1" ) || (choice.equals("2"))){ // They were not always strong, They gain money by being strong
-                                    System.out.println("\"I see\"");
-                                    input.nextLine();
-                                    System.out.println("\"Will you be happy if you are strong?\"");
-                                    System.out.println("----");
-                                    boolean hasplayermadechoice5 = false;
-                                    while (!hasplayermadechoice5) {
-                                        System.out.println("1. Yes");
-                                        System.out.println("2. No");
-
-                                        choice = input.nextLine().trim().toLowerCase();
-
-                                        if(choice.equals("1")){ // yes, Will you be happy if you are strong?
-                                            System.out.println("Beat me then, and see if you are truly happy if you win.");
-                                            input.nextLine();
-
-                                            System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                            System.out.println("");
-                                            storyBattle(F4R1); 
-
-                                            hasPlayerMadeChoice = true;
-                                            hasPlayerMadeChoice2 = true;
-                                            hasPlayerMadeChoice3 = true;
-                                            hasplayermadechoice4 = true;
-                                            hasplayermadechoice5 = true;
-
-                                        }else if (choice.equals("2")){ // no, Will you be happy if you are strong?
-                                            System.out.println("Then what will make you happy?");
-                                            System.out.println("----");
-                                            boolean hasPlayermadechoice6 = false;
-                                            while (hasPlayermadechoice6) {
-                                                System.out.println("1. Closure");
-                                                choice = input.nextLine().trim().toLowerCase();
-
-                                                if(choice.equals("1")){
-                                                    System.out.println("\"I see. Go to the oaken doors and tell me if you are truly happy after your ordeal.\"");
-                                                    input.nextLine();
-
-                                                    hasPlayerMadeChoice = true;
-                                                    hasPlayerMadeChoice2 = true;
-                                                    hasPlayerMadeChoice3 = true;
-                                                    hasplayermadechoice4 = true;
-                                                    hasplayermadechoice5 = true;
-                                                    hasPlayermadechoice6 = true;
-                                                }
-                                                
-                                            }
-
-                                        }
-
-
-                                    }
-
-                                }
-                            }
-                            input.nextLine();
-
-                        } else if (choice.equals("2")){ //I don't know
-                            System.out.println("\"One comes here to the 4th floor without having thought of much, I see.\"");
-                            input.nextLine();
-                            System.out.println("\"What are you truly looking for then?\"");
-                            System.out.println("----");
-                            boolean hasplayermadechoice4 = false;
-                            while (hasplayermadechoice4) {
-                                System.out.println("1. Closure");
-                                choice = input.nextLine().trim().toLowerCase();
-                                
-                                if(choice.equals("1")){
-                                    System.out.println("\"I see. Go to the oaken doors and tell me if you are truly happy after your ordeal.\"");
-                                    input.nextLine();
-
-                                    hasPlayerMadeChoice = true;
-                                    hasPlayerMadeChoice2 = true;
-                                    hasPlayerMadeChoice3 = true;
-                                    hasplayermadechoice4 = true;
-
-
-                                }
-
-
-                            }
-                        }
-                    }
-
-                }
+            if(choice.equals("1")){
+                f1r1Choice1_Choice1(input);
+                hasPlayerMadeChoice = true;
+            } else if (choice.equals("2")){
+                f1r1Choice1_Choice2(input);
+                hasPlayerMadeChoice = true;
             }
         }
 
-
-
-
-
-
-
-
-        eventFloor4Room1Completed = true;
     }
+    
+    //dead end - the strong must rule - I am strong
+    public void f1r1Choice1_Choice1(Scanner input){ //Do you consider yourself strong? - yes
+        System.out.println("\"I see. So this is how it is.\"");
+        input.nextLine();
+        System.out.println("Prove your theory then. Beat me, and beat the one behind the oaken doors. When you reach the top, tell me if you are happy?");
+        input.nextLine();
+
+        System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println("");
+        storyBattle(F4R1); //
+    }
+    //the strong must rule - I am not strong
+    public void f1r1Choice1_Choice2(Scanner input){ //Do you consider yourself strong? - no
+        boolean hasPlayerMadeChoice = false;
+
+        System.out.println("\"How curious.\"");
+        input.nextLine();
+        System.out.println("\"Are you happy like this? Being weak?\"");
+        System.out.println("----");
+
+        while (!hasPlayerMadeChoice) {
+            System.out.println("1. Yes");
+            System.out.println("2. No");
+
+            String choice = input.nextLine().trim().toLowerCase();
+
+            if(choice.equals("1")){
+                //f1r1Choice1_Choice2_Choice1(input);
+                System.out.println("\"Then why are you here? If not to prove you are strong? Stronger than those who took what you lost?\"");
+                input.nextLine();
+                System.out.println("\"Beat me, and see if you are truly happy if you lose.\"");
+                input.nextLine();
+
+                System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                System.out.println("");
+                storyBattle(F4R1); //
+
+                hasPlayerMadeChoice = true;
+            } else if (choice.equals("2")){
+                f1r1Choice1_Choice2_Choice2(input);
+                hasPlayerMadeChoice = true;
+            }
+        }
+    }
+    
+    //dead end / the strong must rule - I am not strong - I'm not happy like this
+    public void f1r1Choice1_Choice2_Choice2(Scanner input){ //What will you do about it then?
+        boolean hasPlayerMadeChoice = false;
+
+        System.out.println("What will you do about it then?");
+        System.out.println("----");
+
+        while (!hasPlayerMadeChoice) {
+            System.out.println("1. I will become strong");
+            System.out.println("2. I don't know");
+
+            String choice = input.nextLine().trim().toLowerCase();
+
+            if(choice.equals("1")){
+                //f1r1Choice1_Choice2_Choice1(input);
+                System.out.println("\"Beat me then, and see if you are truly happy if you win.\"");
+                input.nextLine();
+
+                System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                System.out.println("");
+                storyBattle(F4R1); //
+
+                hasPlayerMadeChoice = true;
+            } else if (choice.equals("2")){
+                System.out.println("\"The mind is plagued, yet you have proven yourself stronger than most. Go to the oaken doors and tell me if you are truly happy after your ordeal.\"");
+                input.nextLine();
+
+                hasPlayerMadeChoice = true;
+            }
+            
+        }
+    }
+
+
+    
+    // the strong do not control the weak
+    public void f1r1Choice2(Scanner input){
+        boolean hasPlayerMadeChoice = false;
+
+        System.out.println("\"Then who rules over the rest?\"");
+        System.out.println("----");
+
+        while (!hasPlayerMadeChoice) {
+            System.out.println("1. The wealthy");
+            System.out.println("2. I don't know");
+
+            String choice = input.nextLine().trim().toLowerCase();
+
+            if(choice.equals("1")){
+                f1r1Choice2_Choice1(input);
+                hasPlayerMadeChoice = true;
+            } else if (choice.equals("2")){
+                f1r1Choice2_Choice2(input);
+                hasPlayerMadeChoice = true;
+            }
+        }
+    }
+    // the strong do not control the weak - the wealthy
+    public void f1r1Choice2_Choice1(Scanner input){
+        boolean hasPlayerMadeChoice = false;
+
+        System.out.println("\"So money buys strength? How does one gain money then if the money is already controlled by the strong?\"");
+        System.out.println("----");
+
+        while (!hasPlayerMadeChoice) {
+            System.out.println("1. They were not always strong");
+            System.out.println("2. They gain money by being strong");
+
+            String choice = input.nextLine().trim().toLowerCase();
+
+            if(choice.equals("1")){
+                f1r1Choice2_Choice1_Choice1(input);
+                hasPlayerMadeChoice = true;
+            } else if (choice.equals("2")){
+                f1r1Choice2_Choice1_Choice1(input); //intentional
+                hasPlayerMadeChoice = true;
+            }
+        }
+
+    }
+    //dead end - the wealthy - They were not always strong
+    public void f1r1Choice2_Choice1_Choice1(Scanner input){
+        boolean hasPlayerMadeChoice = false;
+
+        System.out.println("\"I see. Will you be happy if you are strong?\"");
+        System.out.println("----");
+
+        while (!hasPlayerMadeChoice) {
+            System.out.println("1. Yes");
+            System.out.println("2. No");
+
+            String choice = input.nextLine().trim().toLowerCase();
+
+            if(choice.equals("1")){
+                System.out.println("\"Beat me then, and see if you are truly happy if you win.\"");
+                input.nextLine();
+
+                System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                System.out.println("");
+                storyBattle(F4R1); //
+
+                hasPlayerMadeChoice = true;
+            } else if (choice.equals("2")){
+                System.out.println("Then what will make you happy?");
+                System.out.println("----");
+
+                while (!hasPlayerMadeChoice) {
+                    System.out.println("1. Closure");
+
+                    choice = input.nextLine().trim().toLowerCase();
+
+                    if(choice.equals("1")){
+                        System.out.println("\"Go to the oaken doors and tell me if you are truly happy after your ordeal.\"");
+                        input.nextLine();
+                        hasPlayerMadeChoice = true;
+                    }
+                }
+
+                
+            }
+        }
+
+    }
+
+    //dead end - who rules - I dont know
+    public void f1r1Choice2_Choice2(Scanner input){
+        boolean hasPlayerMadeChoice = false;
+
+        System.out.println("\"One comes here to the 4th floor without having thought of much, I see.\"");
+        input.nextLine();
+        System.out.println("\"What are you truly looking for then?\"");
+        System.out.println("----");
+
+        while (!hasPlayerMadeChoice) {
+            System.out.println("1. Closure");
+
+            String choice = input.nextLine().trim().toLowerCase();
+
+            if(choice.equals("1")){
+                System.out.println("\"I see. Go to the oaken doors and tell me if you are truly happy after your ordeal.\"");
+                input.nextLine();
+                hasPlayerMadeChoice = true;
+            }
+        }
+
+    }
+
+
+
     public boolean isEventFloor4Room1Completed(){
         return eventFloor4Room1Completed;
     }
@@ -1542,6 +1557,13 @@ public class Story {
         return eventFloor4Room2Completed;
     }
 
+
+
+
+
+
+
+    
 //"Floor 4 Room 3", "[0][2] Foyer",
     public void eventFloor4Room3(Scanner input){
         System.out.println("eventFloor4Room3");
