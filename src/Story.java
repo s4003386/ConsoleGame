@@ -54,12 +54,23 @@ public class Story {
 
     //floor 2
     Coin[] F2R2Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)}; 
-    Battle F2R2 = new Battle("F1R1Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); 
+    Battle F2R2 = new Battle("F2R2Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); 
 
     Coin[] F2R1Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)}; 
     ArrayList<String> F2R1KeyItems = new ArrayList<String>(List.of("Floor3_Keycard"));
-    Battle F2R1 = new Battle("F1R1Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); 
+    Battle F2R1 = new Battle("F2R1Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); 
     
+    Coin[] F2R3Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)}; 
+    ArrayList<String> F2R3KeyItems = new ArrayList<String>(List.of("Floor3_Keycard"));
+    Battle F2R3 = new Battle("F2R3Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); 
+
+    //floor 3
+    Coin[] F3R2Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)}; 
+    Battle F3R2 = new Battle("F3R2Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); 
+
+    //floor 4
+
+    //special
 
     public static final String ANSI_RESET = "\u001B[0m"; //reset
     public static final String Speaker1 = "\u001B[31m"; //red
@@ -579,37 +590,39 @@ public class Story {
 
 
 
-//"Floor 2 Room 1", "[2][0] West",
-    public void eventFloor2Room1(Scanner input){
+
+    
+//"Floor 2 Room 2", "[2][1] Elevator",
+    public void eventFloor2Room2(Scanner input){
         System.out.println("Story event: x to skip, enter to continue");
         String[] lines = {"You attempted to pick the topmost floor, but it seems you were only allowed to travel one floor upward without a keycard.",
-        "Leaving the elevator reveals a wide open space with poker tables scattered around evenly. These tables were populated with various syndicates of people.",
-        Speaker2 + "\"Look, I got another one.\"" + ANSI_RESET,
-        Speaker4 + "\"Looking a little rough there eh?\"" + ANSI_RESET,
-        "The fellow in the flashy suit gestures to your dirty shirt.",
-        "Another taps me on the shoulder as the dealer begins handing out cards.",
-        Speaker3 + "\"Don't question it. It 's just like this 'round this floor.\"" + ANSI_RESET,
-        "There are 3 others on this table. One in a black suit with golden embroidery, another is a woman an ordinary dress shirt with chinos, and the last - a good looking man in a red vest and bowtie.",
-        "You take another glance at the chips on the table. They are like the chips from before, vaguely pulsating with emotions that you can feel.",
-        Speaker3 + "\"How much 'r youse betting, mate?\"" + ANSI_RESET,
-        "You placed an amount of chips on the table. The player next to you bets half.",
-        Speaker3 + "\"Awright.\"" + ANSI_RESET,
-        "The dealer hands out the 2 face down cards. You have a 10 and king of hearts.",
-        Speaker2 + "\"Ha, I'm calling it. I'm winning.\"" + ANSI_RESET,
-        Speaker3 + "\"Big talk for someone who lost the round before.\"" +ANSI_RESET,
-        Speaker2 + "\"Don't give me that! I got bucketloads to spend tonight.\"" + ANSI_RESET,
-        "She raises the bet with 2 purple coins.",
-        Speaker4 + "\"Says you. You folk need to see my Lotus Emira in the basement.\"" + ANSI_RESET,
-        Speaker2 + "\"You brought your car to this place without private parking? That piece of junk'l just get stolen ere.\"" + ANSI_RESET,
-        Speaker4 + "\"Who cares, I'll get a new one after this.\"" + ANSI_RESET,
-        "The dealer places one more community card. It is a king of hearts",
-        Speaker2 + "\"All in!\"",
-        Speaker4 + "\"What!?\"",
-        Speaker2 + "I said what I said." + ANSI_RESET,
-        "Everyone finally reveals their cards. You have a royal flush.",
-        Speaker2 + "\"Huh!??\"" + Speaker3 +"\"Huh.\"" + Speaker4 + "\"Haa!?\"" + ANSI_RESET,
-        "There was silence around the table. Everyone is looking at you.",
-        Speaker2 + "Say, why don’t we settle this with hands instead?" + ANSI_RESET
+            "Leaving the elevator reveals a wide open space with poker tables scattered around evenly. These tables were populated with various syndicates of people.",
+            Speaker2 + "\"Look, I got another one.\"" + ANSI_RESET,
+            Speaker4 + "\"Looking a little rough there eh?\"" + ANSI_RESET,
+            "The fellow in the flashy suit gestures to your dirty shirt.",
+            "Another taps me on the shoulder as the dealer begins handing out cards.",
+            Speaker3 + "\"Don't question it. It 's just like this 'round this floor.\"" + ANSI_RESET,
+            "There are 3 others on this table. One in a black suit with golden embroidery, another is a woman an ordinary dress shirt with chinos, and the last - a good looking man in a red vest and bowtie.",
+            "You take another glance at the chips on the table. They are like the chips from before, vaguely pulsating with emotions that you can feel.",
+            Speaker3 + "\"How much 'r youse betting, mate?\"" + ANSI_RESET,
+            "You placed an amount of chips on the table. The player next to you bets half.",
+            Speaker3 + "\"Awright.\"" + ANSI_RESET,
+            "The dealer hands out the 2 face down cards. You have a 10 and king of hearts.",
+            Speaker2 + "\"Ha, I'm calling it. I'm winning.\"" + ANSI_RESET,
+            Speaker3 + "\"Big talk for someone who lost the round before.\"" +ANSI_RESET,
+            Speaker2 + "\"Don't give me that! I got bucketloads to spend tonight.\"" + ANSI_RESET,
+            "She raises the bet with 2 purple coins.",
+            Speaker4 + "\"Says you. You folk need to see my Lotus Emira in the basement.\"" + ANSI_RESET,
+            Speaker2 + "\"You brought your car to this place without private parking? That piece of junk'l just get stolen ere.\"" + ANSI_RESET,
+            Speaker4 + "\"Who cares, I'll get a new one after this.\"" + ANSI_RESET,
+            "The dealer places one more community card. It is a king of hearts",
+            Speaker2 + "\"All in!\"",
+            Speaker4 + "\"What!?\"",
+            Speaker2 + "I said what I said." + ANSI_RESET,
+            "Everyone finally reveals their cards. You have a royal flush.",
+            Speaker2 + "\"Huh!??\"" + Speaker3 +"\"Huh.\"" + Speaker4 + "\"Haa!?\"" + ANSI_RESET,
+            "There was silence around the table. Everyone is looking at you.",
+            Speaker2 + "Say, why don't we settle this with hands instead?" + ANSI_RESET
         };
         String choice = input.nextLine().trim().toLowerCase();
 
@@ -628,17 +641,9 @@ public class Story {
 
 
         //battle
-
-        eventFloor2Room1Completed = true;
-    }
-    public boolean isEventFloor2Room1Completed(){
-        return eventFloor2Room1Completed;
-    }
-    
-//"Floor 2 Room 2", "[2][1] Elevator",
-    public void eventFloor2Room2(Scanner input){
-        System.out.println("eventFloor2Room2");
-        input.nextLine();
+        System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println("");
+        storyBattle(F2R2);
 
         eventFloor2Room2Completed = true;
     }
@@ -646,10 +651,185 @@ public class Story {
         return eventFloor2Room2Completed;
     }
 
-//"Floor 2 Room 3", "[2][2] East",
+
+    //"Floor 2 Room 1", "[2][0] West - Fortuna",
+    public void eventFloor2Room1(Scanner input){
+
+        System.out.println("Story event: x to skip, enter to continue");
+        String[] lines = {"You attempted to pick the topmost floor, but it seems you were only allowed to travel one floor upward without a keycard.",
+
+        };
+
+
+        /*
+        You enter a room full of well dressed individuals. All of them turn to you awkwardly.
+        “Did any of you invite this guy?”
+        They all mumbled under their breath. “No sir”, “I said nothing sir”, “Not a word sir.”
+        “Who are you?”
+        I’m just some guy - “Give this guy a good shank then.” immediate fight
+        I’m the Don of the RedBlacks - mood check. 50/50 to 10/90 depending on mood - immediate win if the player has a ‘mysterious keycard’
+        Win -
+        “Ah… You are?“
+        “What business do you have with us tonight then?”
+        I’m here to collect a debt
+        “You remember something like this?”
+        “Actually, I do. You remember the week before? Yvonne should have the invoice.”
+        “Well I’ll be damned.”
+        “Look, I'm going to be honest here. We don't have your money, and you're looking real easy to shut up.”
+        He points to your bloodied shirt. The men in the back start standing straight
+        “I’ll give you a choice. Join us in this match to earn your winnings back or lose the cash. Capiche? Winner takes all and a dinner at the top”
+        “No way, we’re inviting this guy in?”
+        “Shut it, Perry! Keep your manners in order!”
+        ‘Perry’ promptly had his pinky cut off
+        “We stay in line here. Fortuna takes loyalty veeeery seriously.”
+        “Tell me, what is your answer?”
+        Based on mood again
+        Win
+        One of the men whispers from the back
+        “Boss. What do we do?”
+        “Never said we weren’t allowed to rob them eh? My intentions are honest.”
+        Lose
+        (no fight, but you lose everything)
+        “Pleasure doing business with you…”
+        You were promptly led out the door
+        Drop out.
+        Perry locks the door
+        “You know the drill.”
+
+        Receive xyz coins after battle
+
+        Lose -
+        “Yeah right. We see through your bluff.”
+        The men in the back start standing straight
+
+        
+        */
+
+
+
+
+
+
+
+
+        String choice = input.nextLine().trim().toLowerCase();
+
+        if (choice.equals("x")) {
+            for (String i : lines){
+                System.out.println(i);
+                System.out.println("");
+            }
+        } else {
+            for (String i : lines){
+                System.out.println(i);
+                input.nextLine(); 
+            }
+            
+        }
+
+
+        //battle
+        System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println("");
+        storyBattle(F2R1);
+
+
+
+        System.out.println("f2r1");
+        input.nextLine();
+        eventFloor2Room1Completed = true;
+    }
+    public boolean isEventFloor2Room1Completed(){
+        return eventFloor2Room1Completed;
+    }
+
+//"Floor 2 Room 3", "[2][2] East - Fixwood",
     public void eventFloor2Room3(Scanner input){
         System.out.println("eventFloor2Room3");
         input.nextLine();
+
+
+        System.out.println("Story event: x to skip, enter to continue");
+        String[] lines = {"You attempted to pick the topmost floor, but it seems you were only allowed to travel one floor upward without a keycard.",
+
+        };
+
+
+        /*
+        You enter a room full of well dressed individuals. All of them turn to you awkwardly.
+        “Did any of you invite this guy?”
+        They all mumbled under their breath. “No sir”, “I said nothing sir”, “Not a word sir.”
+        “Who are you?”
+        I’m just some guy - “Give this guy a good shank then.” immediate fight
+        I’m the Don of the RedBlacks - mood check. 50/50 to 10/90 depending on mood - immediate win if the player has a ‘mysterious keycard’
+        Win -
+        “Ah… You are?“
+        “What business do you have with us tonight then?”
+        I’m here to collect a debt
+        “You remember something like this?”
+        “Actually, I do. You remember the week before? Yvonne should have the invoice.”
+        “Well I’ll be damned.”
+        “Look, I'm going to be honest here. We don't have your money, and you're looking real easy to shut up.”
+        He points to your bloodied shirt. The men in the back start standing straight
+        “I’ll give you a choice. Join us in this match to earn your winnings back or lose the cash. Capiche? Winner takes all and a dinner at the top”
+        “No way, we’re inviting this guy in?”
+        “Shut it, Perry! Keep your manners in order!”
+        ‘Perry’ promptly had his pinky cut off
+        “We stay in line here. Fortuna takes loyalty veeeery seriously.”
+        “Tell me, what is your answer?”
+        Based on mood again
+        Win
+        One of the men whispers from the back
+        “Boss. What do we do?”
+        “Never said we weren’t allowed to rob them eh? My intentions are honest.”
+        Lose
+        (no fight, but you lose everything)
+        “Pleasure doing business with you…”
+        You were promptly led out the door
+        Drop out.
+        Perry locks the door
+        “You know the drill.”
+
+        Receive xyz coins after battle
+
+        Lose -
+        “Yeah right. We see through your bluff.”
+        The men in the back start standing straight
+
+        
+        */
+
+
+
+
+
+
+
+
+        String choice = input.nextLine().trim().toLowerCase();
+
+        if (choice.equals("x")) {
+            for (String i : lines){
+                System.out.println(i);
+                System.out.println("");
+            }
+        } else {
+            for (String i : lines){
+                System.out.println(i);
+                input.nextLine(); 
+            }
+            
+        }
+
+
+        //battle
+        System.out.println("*Battle start*"); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println("");
+        storyBattle(F2R3);
+
+
+
+
 
         eventFloor2Room3Completed = true;
     }
