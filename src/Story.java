@@ -1540,16 +1540,38 @@ public class Story {
 
     }
 
-
-
     public boolean isEventFloor4Room1Completed(){
         return eventFloor4Room1Completed;
     }
 
+
+
+
+
+
+
+
 //"Floor 4 Room 2", "[0][1] Elevator hall",
     public void eventFloor4Room2(Scanner input){
-        System.out.println("eventFloor4Room2");
-        input.nextLine();
+        System.out.println("Story event: x to skip, enter to continue");
+        String[] lines = {"When the elevator door opened, there was one immediate difference in the environment compared to all of the other floors below.",
+            "It was exceedingly quiet, and the floor in comparison was much more brightly lit.",
+            "Everything was extravagant. Gold framed paintings lined the walls, along with luxurious red-gold furniture and rococo style chandeliers. Dead center was a golden statue of a heavyset man with a shark head, along with the largest poker table I have ever seen.",
+        };
+        String choice = input.nextLine().trim().toLowerCase();
+
+        if (choice.equals("x")) {
+            for (String i : lines){
+                System.out.println(i);
+                System.out.println("");
+            }
+        } else {
+            for (String i : lines){
+                System.out.println(i);
+                input.nextLine(); 
+            }
+            
+        }
 
         eventFloor4Room2Completed = true;
     }
@@ -1563,10 +1585,10 @@ public class Story {
 
 
 
-    
+
 //"Floor 4 Room 3", "[0][2] Foyer",
     public void eventFloor4Room3(Scanner input){
-        System.out.println("eventFloor4Room3");
+        System.out.println("At the end of the hallway lies a large oaken door. Once you travel east through the doors, you will never come back.");
         input.nextLine();
 
         eventFloor4Room3Completed = true;
@@ -1582,8 +1604,49 @@ public class Story {
 
 //"Floor 4 Room 4", "[0][3] Head office",
     public void eventFloor4Room4(Scanner input){
-        System.out.println("eventFloor4Room4");
-        input.nextLine();
+        System.out.println("Story event: x to skip, enter to continue");
+        String[] lines = {"With no one standing in your way, you opened the large wooden doors.",
+            "Inside was a large man with a shark head smoking a cigar.",
+            "The moment the door opened, he sat straight from his slumped position on his desk, clearly quite shocked from your entry.",
+            Speaker1 + "\"My, and I thought I've seen everything! Life sure likes to throw curveballs huh?\"" + ANSI_RESET,
+            "\"Where is my father?\"",
+            Speaker1 + "\"Your father? Not a clue smallfella.\"" ,
+            "\"Smart fella fart smella. You stink by the way. Smells like a run over cat.\""+ ANSI_RESET,
+            "\"He was here a week ago, and never walked out.\"",
+            Speaker1 + "\"I dunno. You think I keep tabs on everything here?\"" + ANSI_RESET,
+            "\"You know where he is.\"",
+            Speaker1 + "\"Hey security, there's this guy in my office. Can you get rid of him? Won't stop saying weird shit.\"" + ANSI_RESET,
+            "He pushed down his cigar in the smoking tray and leaned over the desk.",
+            Speaker1 + "\"Ok, which investor pissed you off this time? Jerry? Claude? Who? I'll give 'em a talk yeah? You're already here anyways. Got all their numbers in my contacts.\"" + ANSI_RESET,
+            "Silence filled the room.",
+            Speaker1 + "\"Look if you aren't here for that and aren't going to get out, I'm throwing you out myself. It's a loooong way down from here you know?\"" + ANSI_RESET,
+            "...",
+            "Only the tick of the antique clock could be heard",
+            Speaker1+ "\"Yeah. I know that look.\"",
+            "\"Fella I was a street kid like you. I couldn't stand being near these hooligans at the bottom of the food chain.\"",
+            "\"In this world, the strong control the weak, and I had to grow up.\"",
+            "\"You better grow up too.\""
+
+
+            //call boss fight here @kiera everything below you is your territory, I think.
+            
+
+        };
+        String choice = input.nextLine().trim().toLowerCase();
+
+        if (choice.equals("x")) {
+            for (String i : lines){
+                System.out.println(i);
+                System.out.println("");
+            }
+        } else {
+            for (String i : lines){
+                System.out.println(i);
+                input.nextLine(); 
+            }
+            
+        }
+
 
         eventFloor4Room4Completed = true;
     }
