@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
 
-//something something remember 3 data types need to be used as inputs for game..?
+
 
 
 //current list of bugs:
@@ -20,6 +20,9 @@ public class main {
         static Story RunningStory = new Story();
 
 
+    /**
+    * Creates a simple map based on the location class. Allows for navigation and printing of the location. Locations are also marked 'elevator'. If it is an elevator tile, certain functions are allowed (eg. going upwards if the player has a key item, being able to go down, etc)
+    */
     public static void setUpGame(){
         //'location' counts as one individual room. each is one object
         // to string in the class for location display
@@ -68,6 +71,11 @@ public class main {
         mainCharacter.setName(inputName);
     }
 
+    /**
+     * Method constantly invoked if the game is on (from the main method). Prints options for the player, such as showing current location, inventory, and most importantly, moving to the next tile.
+     * Once something is selected, the associated method is then used
+     * If that happens to be the move menu, The method for printing the moving menu is used, AND THEN LocationStoryCheck occurs from here after the player has moved.
+    */
     public static void showMenu(){
         boolean leaveMenu = false;
         while (leaveMenu==false){
@@ -124,6 +132,9 @@ public class main {
         mainCharacter.showInventory();
     }
 
+    /**
+     * Will move the player. Uses the mainCharacter object from Character class. Methods from the Character class are used to move the player
+     */
     public static void moveMenu(){
         System.out.println("\n");
         System.out.println("- - - - - -");
@@ -460,6 +471,10 @@ public class main {
         }
         }
     
+        /**
+         * Used by the move menu to check if the player is allowed to move upwards
+         * @return key item
+         */
         //checks if a player can move up to a certain floor
             //Floor2_Keycard
             //Floor3_Keycard
@@ -493,6 +508,9 @@ public class main {
     }
 
 
+    /**
+    * Below are methods associated with certain stories. All are called by the story class. Most of them are just simple methods that change what coins are in the players inventory
+    */
     //misc methods 
     public static ArrayList<Coin> getCoinItems(){ //getter
         return mainCharacter.getCoinItems();
@@ -544,7 +562,10 @@ public class main {
     }
 
 
-    
+    /**
+    * This method calls the battles. It is invoked from the story class from whatever method associated with a certain area
+        @param Battle
+    */
     public static void callBattle(Battle Battle){ //Called from story class
         Boolean isBattleWon = false;
 
@@ -594,7 +615,10 @@ public class main {
         // Kiera I have no idea what you are doing so just change it to suit whatever you have written
     }
 
-    
+        /**
+    *  The main method only checks if the intro has been played, and if true, constantly reruns main menu until the game is over
+        @param args
+    */
     public static void main(String[] args) {
         System.out.println("New Game");
         setUpGame();
@@ -616,3 +640,11 @@ public class main {
     } 
 }
 
+    /**
+    * Just in case, the general flow is
+    * 1. Player is on the main menu. They can do whatever here
+    * 2. As soon as the player moves, LocationStoryCheck will check if the player has played the story associated with a certain tile. If they have not, the method for that story is run.
+    * 3. Typically, there is a battle associated with a tile. If this is the case, the callBattle method is used from the story class to run the battle
+    * 4. Kiera's shenanigans happen here. 
+    * 5. Return to main menu as game is still considered running
+    */

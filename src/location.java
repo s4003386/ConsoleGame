@@ -5,6 +5,11 @@ import java.util.Scanner;
 
 //for location data on specific tiles or whatever
 
+/**
+ * This class simply holds the attributes for the location object
+ * Each tile gets a name, description and title.
+ * These objects are made in the Main class (setUpGame)
+ */
 public class location {
 
     private String locationName;
@@ -23,22 +28,6 @@ public class location {
         return isElevatorTile;
     }
 
-
-
-
-    
-    //create player
-    /* 
-    public static void createPlayer(){
-        System.out.println("\n ======== Character creation");
-
-        System.out.print("Enter character name");
-        String name = input.nextLine();
-
-        //create the player object
-        player new Character(name);
-
-    }*/
 
         
     @Override

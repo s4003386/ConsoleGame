@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
+/**
+ * This class simply defines the battles attributes. 
+ * The parameters for creating an object of this class define its ID (which battle is this?), The number of waves, Coin rewards etc
+ * Objects of this class are defined in the Story class.
+ * Also contains methods for distrubiting coin/key item rewards
+ */
 public class Battle {
     private String BattleID;
 

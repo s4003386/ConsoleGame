@@ -7,12 +7,22 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-
+/**
+ * The story class contains all text based story methods. Each map tile has one method associated with it. 
+ * The story is marked complete if the player steps on a new tile and plays through the story.
+ * The story class also defines the battles based on the Battles class
+ * Battles are called from a story method. (although some methods have no battles because in the story, a fight does not take place)
+ * I promise the only reason this one is very long, is because I went overboard with the story. 
+ */
 public class Story {
     //add colours and timing delays if there is time
     private boolean introCutsceneCompleted = false; //default false always
 
     //possibly the worst way of doing this but I digress. Gets marked completed if the method associated with it is called
+    
+    /**
+    * These variables are marked complete once the associated story has been played through. Each story section has a method associated with it.
+    */
     private boolean eventFloor1Room1Completed = false;
     private boolean eventFloor1Room2Completed = false;
     private boolean eventFloor1Room3Completed = false;
@@ -39,7 +49,11 @@ public class Story {
 
 
 
+    /**
 
+    * These are the input parameters for the battles. A battle object is made based on the battle class, and associated data based on the story is set.
+
+    */
 
     //floor 1 room 1
     Coin[] F1R1Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)}; //every coin is an object 'coin' with an enum type to deternine roll chance
@@ -88,8 +102,9 @@ public class Story {
 
 
 
-
-
+    /**
+    * Some events occur where the player does not battle. listed below are coin rewards for these events.
+    */
     //misc
     //F1R3 coin event
      Coin[] F1R3WinCoinEvent = {new Coin(Coin.CoinType.PURPLE), new Coin(Coin.CoinType.PURPLE), new Coin(Coin.CoinType.PURPLE)};
@@ -97,6 +112,10 @@ public class Story {
      //f3r1 coin event
     Coin[] F3R1WinCoinEvent = {new Coin(Coin.CoinType.GREY), new Coin(Coin.CoinType.GREY), new Coin(Coin.CoinType.GREY)};
 
+
+    /**
+    * Simply here for just being able to tell some speakers apart
+    */
     public static final String ANSI_RESET = "\u001B[0m"; //reset
     public static final String Speaker1 = "\u001B[31m"; //red
     public static final String Speaker2 = "\u001B[32m";//green
@@ -104,7 +123,9 @@ public class Story {
     public static final String Speaker4 = "\u001B[33m"; // yellow
 
 
-// start of game
+    /**
+    * The start of the game. This is the only method here called by the main method. Once it is complete, the player is able to freely move. All other methods are called by the method in the main class 'locationStoryCheck', which is always called after the player moves.
+    */
     public void introCutscene(Scanner input){
         String[] lines = {
             "The time is midnight. Below me is the body of the local 'red black' syndicate.",
@@ -146,7 +167,12 @@ public class Story {
     }
 
 
-    //debugging methods
+      //debugging methods
+    /**
+     * A simple method that always returns true. This is invoked by 'callBattle' temporarily just to mark a particular story battle as complete.  (kiera may change this later?).
+        @return isBattleWon
+    */
+  
     public boolean winBattleDebug(){
         //System.out.println(".");
         //System.out.println("Win or lose this event? (debug)"); // default win for now
@@ -156,7 +182,10 @@ public class Story {
         return debugWinLoseEvent;
 
     }
-
+    /**
+     * Simple printer for which stories are marked complete
+     * @return void
+     */
     public void showCompletedEvents(){
         System.out.println("[3][0] F1 R1: " + isEventFloor1Room1Completed());
         System.out.println("[3][1] F1 R2 elevator: " + isEventFloor1Room2Completed());
@@ -184,7 +213,10 @@ public class Story {
     }
 
 
-    //absolute spagghetti
+    /**
+    * These may be called by any of the below story methods (eg. storyBattle(F4R1) for floor 4 room 1). This passes it onto the main callBattle method where the battle is then properly run.
+        @param Battle
+    */
     public void storyBattle(Battle Battle){
 
         main.callBattle(Battle);
@@ -192,6 +224,13 @@ public class Story {
     }
 
 
+
+
+    /**
+    * To be honest, the rest is really self explanatory and relatively contained within itself.
+    * @param input
+    * from the main class. All use the same scanner object 
+    */
 
 // FLOOR 11111111111111111111111111111111111111111111111
 

@@ -3,6 +3,12 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * The character class defines the player's attributes + inventory
+ * Also contains certain methods for displaying and changing inventory
+ * Also keeps track of the location, and contains methods for moving. 
+ * Almost all of them are used by the main class.
+ */
 public class Character {
     //instance variable/attributes
     private String name;

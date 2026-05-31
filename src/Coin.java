@@ -1,5 +1,10 @@
 //package src;
 
+/**
+ * The coin simply holds data on what cointype it is, and it's roll chance
+ * depending on time, these categories may or may not be used. Inventory in the character class stores any earned coins.
+ */
+
 public class Coin {
     private CoinType type;
     private int CoinRollChance; //out of 100
