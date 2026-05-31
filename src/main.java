@@ -614,7 +614,9 @@ public class main {
 
 
         isBattleWon = Battle.startBattle(mainCharacter.getDeck(), Battle.getNamesL(), Battle.getEnemiesTypesL(), Battle.getEnemyDefL(), Battle.getEnemyCMVL(), Battle.getEnemyHPL(), mainCharacter); 
-        
+        //else if not working:
+        //isBattleWon = RunningStory.winBattleDebug(); 
+
         System.out.println("Won battle " + Battle.getBattleID()); //battleID from story class
        
 
@@ -663,8 +665,10 @@ public class main {
     public static void main(String[] args) {
         System.out.println("New Game");
         setUpGame();
+        
 
         do {
+            Cards.cards();
             //1st story trigger always runs regardless of player input
             if (!RunningStory.isIntroCutsceneCompleted()){
                 RunningStory.introCutscene(input);

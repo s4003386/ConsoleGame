@@ -105,7 +105,7 @@ public class Battle {
         System.out.println(combatOrder);
 
         ArrayList<Ai> aiList = new ArrayList<>();
-        for (int i= 0; i <= enemyList.size(); i++){
+        for (int i= 0; i < enemyList.size(); i++){
             aiList.add(
                 new Ai(type.get(i), 
                 enemyList.get(i), 
@@ -120,7 +120,7 @@ public class Battle {
             waves = 1;
         }
         int sumHp = 0;
-        for (int i = 0; i<=HP.size(); i++){
+        for (int i = 0; i<HP.size(); i++){
             sumHp += HP.get(i);
         }
 
@@ -140,7 +140,7 @@ public class Battle {
                 //sumHp = sumHpMax/2;
             }
             for (String unit : combatOrder) {
-                if (unit == "Player"){
+                if (unit.equals("Player")){
                     playerOutputBundle cards =  playerTurn(currentHand, enemyList, HP, combatOrder, mainCharacter);
                     currentHand.addAll(cards.hand());
                     discarded.addAll(cards.discard());
@@ -154,10 +154,10 @@ public class Battle {
                                 int dmg = rollDice(Cards.cardDictionary.get(cardId).num, Cards.cardDictionary.get(cardId).dice );
                                 int dmg2 = rollDice(Cards.cardDictionary.get(cardId).num2, Cards.cardDictionary.get(cardId).dice2 );
                                 for (String enemy : combatOrder) {
-                                    if (enemy != "Player"){
+                                    if (!enemy.equals("Player")){
                                         int temp = 0;
-                                        for (int i = 0; i <= enemyList.size(); i++){
-                                            if (enemy == enemyList.get(i)){
+                                        for (int i = 0; i < enemyList.size(); i++){
+                                            if (enemy.equals(enemyList.get(i))){
                                                 temp = i;
                                             }
                                         }
@@ -172,10 +172,10 @@ public class Battle {
                                     }
                                 }
                                 for (String enemy : combatOrder) {
-                                    if (enemy != "Player"){
+                                    if (!enemy.equals("Player")){
                                         int temp = 0;
-                                        for (int i = 0; i <= enemyList.size(); i++){
-                                            if (enemy == enemyList.get(i)){
+                                        for (int i = 0; i < enemyList.size(); i++){
+                                            if (enemy.equals(enemyList.get(i))){
                                                 temp = i;
                                             }
                                         }
@@ -195,10 +195,10 @@ public class Battle {
                                 dmg = rollDice(Cards.cardDictionary.get(cardId).num, Cards.cardDictionary.get(cardId).dice );
                                 int defbst = rollDice(Cards.cardDictionary.get(cardId).num2, Cards.cardDictionary.get(cardId).dice2);
                                 for (String enemy : combatOrder) {
-                                    if (enemy != "Player"){
+                                    if (!enemy.equals("Player")){
                                         int temp = 0;
-                                        for (int i = 0; i <= enemyList.size(); i++){
-                                            if (enemy == enemyList.get(i)){
+                                        for (int i = 0; i < enemyList.size(); i++){
+                                            if (enemy.equals(enemyList.get(i))){
                                                 temp = i;
                                             }
                                         }
@@ -221,10 +221,10 @@ public class Battle {
                                 dmg = rollDice(Cards.cardDictionary.get(cardId).num2, Cards.cardDictionary.get(cardId).dice2 );
                                 defbst = rollDice(Cards.cardDictionary.get(cardId).num, Cards.cardDictionary.get(cardId).dice);
                                 for (String enemy : combatOrder) {
-                                    if (enemy != "Player"){
+                                    if (!enemy.equals("Player")){
                                         int temp = 0;
-                                        for (int i = 0; i <= enemyList.size(); i++){
-                                            if (enemy == enemyList.get(i)){
+                                        for (int i = 0; i < enemyList.size(); i++){
+                                            if (enemy.equals(enemyList.get(i))){
                                                 temp = i;
                                             }
                                         }
@@ -249,10 +249,10 @@ public class Battle {
                                 int boostdmg = rollDice(Cards.cardDictionary.get(cardId).num, Cards.cardDictionary.get(cardId).dice );
                                 dmg = rollDice(Cards.cardDictionary.get(cardId).num2, Cards.cardDictionary.get(cardId).dice2 );
                                 for (String enemy : combatOrder) {
-                                    if (enemy != "Player"){
+                                    if (!enemy.equals("Player")){
                                         int temp = 0;
-                                        for (int i = 0; i <= enemyList.size(); i++){
-                                            if (enemy == enemyList.get(i)){
+                                        for (int i = 0; i < enemyList.size(); i++){
+                                            if (enemy.equals(enemyList.get(i))){
                                                 temp = i;
                                             }
                                         }
@@ -283,13 +283,13 @@ public class Battle {
                 }
                 else{
                     int temp = 0;
-                    for (int i = 0; i <= enemyList.size(); i++){
+                    for (int i = 0; i < enemyList.size(); i++){
                     if (unit == enemyList.get(i)){
                         temp = i;
                     }
 
                     int lowestHp = 20;
-                    for (i = 0; i <= HP.size(); i++){
+                    for (i = 0; i < HP.size(); i++){
                         if (lowestHp > HP.get(i)){
                             lowestHp = HP.get(i);
                         }
@@ -351,7 +351,7 @@ public class Battle {
             }
             System.out.println("Would you like to skip this battlle (x for yes anything else is a no)?");
             String skip = scanner.next();
-            if (skip == "x"){
+            if (skip.equals("x")){
                 break;
             }
         }
