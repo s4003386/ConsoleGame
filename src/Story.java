@@ -57,44 +57,45 @@ public class Story {
 
     //floor 1 room 1
     Coin[] F1R1Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)}; //every coin is an object 'coin' with an enum type to deternine roll chance
-    ArrayList<String> EmptyArray = new ArrayList<String>(); //add whatever
-    Battle F1R1 = new Battle("F1R1Battle", 1 ,  F1R1Reward, EmptyArray, EmptyArray, EmptyArray); //called when the story calls for it
+    ArrayList<String> EmptyArray = new ArrayList<String>();
+    Battle F1R1 = new Battle("F1R1Battle", F1R1Reward, EmptyArray, new ArrayList<>(List.of("RedBlack Grunt")), new ArrayList<>(List.of(1)), new ArrayList<>(List.of(10)), new ArrayList<>(List.of(0)), new ArrayList<>(List.of(20)) ); //called when the story calls for it
     //everything temporary right now is just an ArrayList string but it can be changed when it needs to in the battles class. just dont forget to change them here
     //floor 1 room 2 elevator
     Coin[] F1R2Reward = {new Coin(Coin.CoinType.BLUE), new Coin(Coin.CoinType.GREEN), new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.WHITE)};
     ArrayList<String> F1R2KeyItems = new ArrayList<String>(List.of("Floor2_Keycard"));
-    Battle F1R2 = new Battle("F1R2Battle", 1 ,  F1R2Reward, EmptyArray, F1R2KeyItems, EmptyArray); //called when the story calls for it
-
+    Battle F1R2 = new Battle("F1R2Battle", F1R2Reward, F1R2KeyItems,new ArrayList<>(List.of("RedBlack Grunt","RedBlack Grunt 2","RedBlack Grunt 3")), new ArrayList<>(List.of(1,1,1)), new ArrayList<>(List.of(10,11,9)), new ArrayList<>(List.of(0,0,0)), new ArrayList<>(List.of(20,20,20)) );
     //floor 2 ////////////////////////////////////////////////////
     Coin[] F2R2Reward = {new Coin(Coin.CoinType.RED), new Coin(Coin.CoinType.PURPLE), new Coin(Coin.CoinType.GREEN)}; 
-    Battle F2R2 = new Battle("F2R2Battle", 1 ,  F2R2Reward, EmptyArray, EmptyArray, EmptyArray); 
+    Battle F2R2 = new Battle("F2R2Battle",F2R2Reward, EmptyArray, new ArrayList<>(List.of("Redblack Bigshot", "Fixwood grunt", "Fortuna Grunt")), new ArrayList<>(List.of(1,1,1)), new ArrayList<>(List.of(14,10,10)), new ArrayList<>(List.of(0,0,0)), new ArrayList<>(List.of(20,20,20)) );
     //west r1
     Coin[] F2R1Reward = {new Coin(Coin.CoinType.YELLOW), new Coin(Coin.CoinType.RED), new Coin(Coin.CoinType.BLUE)}; 
     ArrayList<String> F2R1KeyItems = new ArrayList<String>(List.of("Floor3_Keycard"));
-    Battle F2R1 = new Battle("F2R1Battle", 1 ,  F2R1Reward, EmptyArray, F2R1KeyItems, EmptyArray); 
+    Battle F2R1 = new Battle("F2R1Battle", F2R1Reward, F2R1KeyItems, new ArrayList<>(List.of("Fixwood Soldato 1", "Fixwood Soldato 2", "Fixwoon capo Jane", "Fixwood right hand Marcus")), new ArrayList<>(List.of(1,1,1,1)), new ArrayList<>(List.of(10,10, 15, 12)), new ArrayList<>(List.of(0,0,0,0)), new ArrayList<>(List.of(20,20,20,25)) );
     //east r3
     Coin[] F2R3Reward = {new Coin(Coin.CoinType.BLACK), new Coin(Coin.CoinType.BLACK)}; 
     ArrayList<String> F2R3KeyItems = new ArrayList<String>(List.of("Floor3_Keycard"));
-    Battle F2R3 = new Battle("F2R3Battle", 1 ,  F2R3Reward, EmptyArray, F2R3KeyItems, EmptyArray); 
+    Battle F2R3 = new Battle("F2R3Battle", F2R3Reward, F2R3KeyItems ,new ArrayList<>(List.of("Fortuna Soldato 1","Fortuna Soldato 2","Fortuna capo Micheal", "Fortuna right hand Perry")), new ArrayList<>(List.of(1,1,1)), new ArrayList<>(List.of(10,8,15)), new ArrayList<>(List.of(0,0,0)), new ArrayList<>(List.of(25,25,20)) );
 
     //floor 3 ////////////////////////////////////////////////////
     Coin[] F3R2Reward = {new Coin(Coin.CoinType.GREEN), new Coin(Coin.CoinType.YELLOW), new Coin(Coin.CoinType.WHITE)}; 
-    Battle F3R2 = new Battle("F3R2Battle", 1 ,  F3R2Reward, EmptyArray, EmptyArray, EmptyArray); 
+    Battle F3R2 = new Battle("F3R2Battle", F3R2Reward, EmptyArray ,new ArrayList<>(List.of("Fortuna Capo","Fortuna underboss","Fixwood Capo")), new ArrayList<>(List.of(1,1,1)), new ArrayList<>(List.of(10,8,15)), new ArrayList<>(List.of(0,0,0)), new ArrayList<>(List.of(25,25,20)) );
     //west r1
     Coin[] F3R1Reward = {new Coin(Coin.CoinType.RED), new Coin(Coin.CoinType.PURPLE), new Coin(Coin.CoinType.GREEN)}; 
     ArrayList<String> F3R1KeyItems = new ArrayList<String>(List.of("Floor4_Keycard")); 
-    Battle F3R1 = new Battle("F3R1Battle", 1 ,  F2R2Reward, EmptyArray, F3R1KeyItems, EmptyArray); 
+    Battle F3R1 = new Battle("F3R1Battle", F2R2Reward, F3R1KeyItems ,new ArrayList<>(List.of("Fortuna Disgraced Underboss","Fortuna capo1","Fortuna capo2" )), new ArrayList<>(List.of(1,1,1)), new ArrayList<>(List.of(9,11,13)), new ArrayList<>(List.of(0,0,0)), new ArrayList<>(List.of(20,15,15)) );
     //east r3
     Coin[] F3R3Reward = {new Coin(Coin.CoinType.PURPLE), new Coin(Coin.CoinType.GREY), new Coin(Coin.CoinType.PURPLE)}; 
     ArrayList<String> F3R3KeyItems = new ArrayList<String>(List.of("Floor4_Keycard")); 
-    Battle F3R3 = new Battle("F3R3Battle", 1 ,  F3R3Reward, EmptyArray, F3R3KeyItems, EmptyArray); 
+    Battle F3R3 = new Battle("F3R3Battle", F3R3Reward, F3R3KeyItems ,new ArrayList<>(List.of("Fixwood Disgraced Underboss","Fortuna capo 1","Fortuna capo 2")), new ArrayList<>(List.of(1,1,1)), new ArrayList<>(List.of(10,12,12)), new ArrayList<>(List.of(0,0,0)), new ArrayList<>(List.of(20,20,20)) );
+
+    
 
 
     //floor 4 ///////////////////////////////////////////////////////
     //no fight for elevator floor
     //west - secretary
     Coin[] F4R1Reward = {new Coin(Coin.CoinType.GREY), new Coin(Coin.CoinType.YELLOW), new Coin(Coin.CoinType.PURPLE)}; 
-    Battle F4R1 = new Battle("F4R1Battle", 1 ,  F4R1Reward, EmptyArray, EmptyArray, EmptyArray); 
+    Battle F4R1 = new Battle("F4R1Battle", F4R1Reward, EmptyArray ,new ArrayList<>(List.of("Sharktown CEO", "Sharktown Security Officer 2","Sharktown CEO Phase 2", "Sharktown Security Officer 1")), new ArrayList<>(List.of(1,1,1,1)), new ArrayList<>(List.of(13,8,14,7)), new ArrayList<>(List.of(0,0,10,0)), new ArrayList<>(List.of(25,20,25,15)) );
     //no fights for east room
 
     //special

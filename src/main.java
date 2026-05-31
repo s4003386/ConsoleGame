@@ -90,6 +90,8 @@ public class main {
             //etc
             System.out.println("4. *Debug* What story is marked complete?"); //debuuuug. remove later
             System.out.println("5. Debug, lose coins");
+            System.out.println("6. Show Deck");
+            System.out.println("7. Run Tutorial For Combat");
 
             menuLocation = input.nextLine();
 
@@ -109,6 +111,14 @@ public class main {
                 RunningStory.showCompletedEvents();
             } else if (menuLocation.equals("5")){
                 loseCoinEvent();
+            }else if (menuLocation.equals(6)){
+                for (int i = 0; i<10;i++){
+                    System.out.println("Card ID:" + i);
+                    System.out.println("Cost:" + Cards.cardDictionary.get(i).cost);
+                    System.out.println(Cards.cardDictionary.get(i).display); // prints all cards and what they can do
+                }
+            }else if (menuLocation.equals(7)){
+                Tutorial.runTut();
             }
         }
     }
@@ -572,7 +582,7 @@ public class main {
         System.out.println("========================");
 
 
-        isBattleWon = RunningStory.winBattleDebug(); // replace winBattleDebug with real getter method at some point
+        isBattleWon = Battle.startBattle(mainCharacter.getDeck(), Battle.getNamesL(), Battle.getEnemiesTypesL(), Battle.getEnemyDefL(), Battle.getEnemyCMVL(), Battle.getEnemyHPL(), mainCharacter); 
         
         System.out.println("Won battle " + Battle.getBattleID()); //battleID from story class
        
