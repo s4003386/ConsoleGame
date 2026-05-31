@@ -130,7 +130,9 @@ public class Battle {
         while (sumHp > 0 || mainCharacter.getHp() == 0){
             playerLastTurn.clear();
             if (turnTally % 3 ==0){
+                System.out.println("");
                 System.out.println("COIN TOSS EVENT");
+                System.out.println("- - - -");
                 // set up once access to coin class is avaliable in main
                 // potentially make it a random buff instead of power return
                 mainCharacter.changePwr(-3); //-3 because it takes the value and subtracts it from the power value
@@ -387,6 +389,7 @@ public class Battle {
 
         System.out.println("Dealt Cards"); //Displays the cards you have been given
         for (int i = 0; i<3; i++){
+            System.out.println("");
             System.out.println("Card ID: " + currentHand.get(i));
             System.out.print("Cost of card " + Cards.cardDictionary.get(currentHand.get(i)).cost);
             System.out.print(Cards.cardDictionary.get(currentHand.get(i)).display);
