@@ -86,7 +86,7 @@ public class Story {
     //east r3
     Coin[] F3R3Reward = {new Coin(Coin.CoinType.PURPLE), new Coin(Coin.CoinType.GREY), new Coin(Coin.CoinType.PURPLE)}; 
     ArrayList<String> F3R3KeyItems = new ArrayList<String>(List.of("Floor4_Keycard")); 
-    Battle F3R3 = new Battle("F3R3Battle", F3R3Reward, F3R3KeyItems ,new ArrayList<>(List.of("Fixwood Disgraced Underboss","Fortuna capo 1","Fortuna capo 2")), new ArrayList<>(List.of(1,1,1)), new ArrayList<>(List.of(10,12,12)), new ArrayList<>(List.of(0,0,0)), new ArrayList<>(List.of(20,20,20)) );
+    Battle F3R3 = new Battle("F3R3Battle", F3R3Reward, F3R3KeyItems ,new ArrayList<>(List.of("Fixwood Underboss","Fortuna capo 1","Fortuna capo 2")), new ArrayList<>(List.of(1,1,1)), new ArrayList<>(List.of(10,12,12)), new ArrayList<>(List.of(0,0,0)), new ArrayList<>(List.of(20,20,20)) );
 
     
 

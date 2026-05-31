@@ -106,7 +106,13 @@ public class Battle {
 
         ArrayList<Ai> aiList = new ArrayList<>();
         for (int i= 0; i <= enemyList.size(); i++){
-            aiList.add(new Ai(type.get(i), enemyList.get(i), HP.get(i), Def.get(i), CMV.get(i),0));
+            aiList.add(
+                new Ai(type.get(i), 
+                enemyList.get(i), 
+                HP.get(i), 
+                Def.get(i), 
+                CMV.get(i),
+                0));
         }
 
         //creating a sum of HP for win/ lose / move on to next wave conditions
