@@ -344,12 +344,35 @@ public class Battle {
             }
             }
             while (currentHand.size() != 3){
+                
+                /* 
                 if (drawpile.size()<= 4){
                     drawpile.addAll(discarded);
                     Collections.shuffle(drawpile);
+                }*/
+                //currentHand.add(drawpile.get(0)); //problem line :(
+                //drawpile.remove(0);
+
+                if (drawpile.size() <= 0) {
+                    if (discarded.isEmpty()) {
+                        // No cards anywhere. cannot draw more
+                        System.out.println("No more cards in draw pile or discard. Ending draw.");
+                        break;
+                    }
+                    drawpile.addAll(discarded);
+                    discarded.clear();
+                    Collections.shuffle(drawpile);
+                    }
+
+                    // draw card if possible
+                    if (!drawpile.isEmpty()) {
+                        currentHand.add(drawpile.get(0));
+                        drawpile.remove(0);
+                    } else {
+                        
+                        System.out.println("Draw pile unexpectedly empty.");
+                        break;
                 }
-                currentHand.add(drawpile.get(0)); //problem line :(
-                drawpile.remove(0);
             }
             System.out.println("Would you like to skip this battlle (x for yes anything else is a no)?");
             String skip = scanner.next();
