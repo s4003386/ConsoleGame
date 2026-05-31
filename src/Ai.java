@@ -104,7 +104,7 @@ public class Ai {
                 else{
                     int length = Cards.getCardsByType(1).size();
                     ArrayList<Integer> Temp = new ArrayList<>(Cards.getCardsByType(1));
-                    chosenCard = Temp.get(random.nextInt(1, length + 1));
+                    chosenCard = Temp.get(random.nextInt(1, length ));
                 }
                 break;
         }

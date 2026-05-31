@@ -10,6 +10,10 @@ so if i missed anything i cant tell :D
 so if there is something horribly wrong with this please refer to my individual github and kais seperate submission to see if things run
 oh also the skip battle (added last second) was just incase if someone gets stuck :D so its compleatly untested 
 
+addendum from kai - I tried to play this on my own laptop, but the battle system seems to be playing up? Kiera's test file runs fine from what I heard. 
+If it plays up like what it is doing to me, go to the main file 'callBattle' function, and swap out the isBattleWon line with the one commented out. You should still be able to move.
+
+
 Links to our docs https://docs.google.com/document/d/1LC5lj-UfufJKUuJYsXlcn4oRxLUWEt0vSnZ_tnRdnvI/edit?usp=sharing (group)
 Keiras Personal one - https://docs.google.com/document/d/1JOfIYGGcZ_T1gySHv5HMxo6yisx11YaHUO2xnPZ8oHg/edit?usp=sharing 
 (combat in a more clean format )

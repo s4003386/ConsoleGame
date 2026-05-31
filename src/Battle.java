@@ -346,7 +346,7 @@ public class Battle {
                     drawpile.addAll(discarded);
                     Collections.shuffle(drawpile);
                 }
-                currentHand.add(drawpile.get(0));
+                currentHand.add(drawpile.get(0)); //problem line :(
                 drawpile.remove(0);
             }
             System.out.println("Would you like to skip this battlle (x for yes anything else is a no)?");
@@ -386,7 +386,7 @@ public class Battle {
         }
 
         System.out.println("Dealt Cards"); //Displays the cards you have been given
-        for (int i = 0; i<=3; i++){
+        for (int i = 0; i<3; i++){
             System.out.println("Card ID: " + currentHand.get(i));
             System.out.print("Cost of card " + Cards.cardDictionary.get(currentHand.get(i)).cost);
             System.out.print(Cards.cardDictionary.get(currentHand.get(i)).display);
@@ -397,17 +397,23 @@ public class Battle {
         ArrayList<Integer> discardedCards = new ArrayList<>();
         int input = 0;
         while (input!=246){
+            System.out.println("");
             System.out.println("Please select an action: \n 1. Select Cards to discard \n 2. Select Cards to play \n 3. Veiw Cards Again \n 4.Submit Actions");
-            input = scanner.nextInt();
-            switch (input) {
-                case 1: // discard
-                    for (int i = 0; i <= 3; i++){
+            System.out.println("- - - -");
+            //input = scanner.nextInt();
+            String inputString = scanner.nextLine();
+            switch (inputString) {
+                case "1": // discard
+                    for (int i = 0; i < 3; i++){
                         System.out.println("Card ID: " + currentHand.get(i));
                         System.out.print("Cost of card " + Cards.cardDictionary.get(currentHand.get(i)).cost);
                         System.out.print(Cards.cardDictionary.get(currentHand.get(i)).display);
+                        System.out.println("");
                         System.out.println("would you like to discard this card? \n 1. Yes \n 2. No");
-                        int del = scanner.nextInt();
-                        if (del == 1){
+                        System.out.println("- - - -");
+                        //int del = scanner.nextInt();
+                        inputString = scanner.nextLine();
+                        if (inputString.equals("1")){
                             int check = 0;
                             for (int card : playedCards) {
                                 check++;
@@ -432,8 +438,8 @@ public class Battle {
                         }
                     }
                     break;
-                case 2: //play
-                    for (int i = 0; i <= 3; i++){
+                case "2": //play
+                    for (int i = 0; i < 3; i++){
                         System.out.println("Card ID: " + currentHand.get(i));
                         System.out.println("Cost of card " + Cards.cardDictionary.get(currentHand.get(i)).cost);
                         System.out.println(Cards.cardDictionary.get(currentHand.get(i)).display);
@@ -469,15 +475,17 @@ public class Battle {
                         }
                     }
                     break;
-                case 3: //veiw
+                case "3": //veiw
                     System.out.println("Dealt Cards"); //Displays the cards you have been given
-                    for (int i = 0; i<=3; i++){
+                    System.out.println("- - - -");
+                    for (int i = 0; i<3; i++){
                         System.out.println("Card ID: " + currentHand.get(i));
                         System.out.println("Cost of card " + Cards.cardDictionary.get(currentHand.get(i)).cost);
                         System.out.println(Cards.cardDictionary.get(currentHand.get(i)).display);
                     }
                     if (discardedCards.size() > 0){
                         System.out.println("Discarded Cards"); //Displays the cards you have been given
+                        System.out.println("- - - -");
                         for (int i = 0; i<=3; i++){
                             System.out.println("Card ID: " + discardedCards.get(i));
                             System.out.println("Cost of card " + Cards.cardDictionary.get(discardedCards.get(i)).cost);
@@ -486,6 +494,7 @@ public class Battle {
                     }
                     if (playedCards.size() > 0){
                         System.out.println("Played Cards"); //Displays the cards you have been given
+                        System.out.println("- - - -");
                         for (int i = 0; i<=3; i++){
                             System.out.println("Card ID: " + playedCards.get(i));
                             System.out.println("Cost of card " + Cards.cardDictionary.get(playedCards.get(i)).cost);
@@ -493,7 +502,7 @@ public class Battle {
                         }
                     }
                     break;
-                case 4: // move on
+                case "4": // move on
                     input = 246;
                     break;
                 default: //typo
