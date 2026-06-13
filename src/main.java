@@ -615,7 +615,7 @@ public class main {
 
         isBattleWon = Battle.startBattle(mainCharacter.getDeck(), Battle.getNamesL(), Battle.getEnemiesTypesL(), Battle.getEnemyDefL(), Battle.getEnemyCMVL(), Battle.getEnemyHPL(), mainCharacter); 
         //else if not working:
-        //isBattleWon = RunningStory.winBattleDebug(); 
+        isBattleWon = RunningStory.winBattleDebug(); 
 
         System.out.println("Won battle " + Battle.getBattleID()); //battleID from story class
        
